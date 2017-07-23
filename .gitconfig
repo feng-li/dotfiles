@@ -1,0 +1,36 @@
+[user]
+	name = Feng Li
+	email = m@feng.li
+[core]
+	excludesfile = ~/Dropbox/system/git-ignore-global
+        editor = "emacsclient -nw -c -a ''"
+	quotepath = false
+[color]
+	ui = true
+	interactive = always
+	showbranch = always
+	status = always
+
+[instaweb]
+        httpd=webrick
+
+[difftool.latex]
+        cmd = git-latexdiff "$LOCAL" "$REMOTE"
+[difftool]
+        prompt = false
+[alias]
+        ldiff = difftool -t latex
+[push]
+	default = simple
+#[http]
+#	proxy = socks5://127.0.0.1:1080
+#[url "https://"]
+#	insteadOf = git://
+[credential]
+	helper = store
+[i18n "commit"]
+	encoding = utf-8
+[i18n]
+	logoutputencoding = utf-8
+[diff]
+	tool = meld

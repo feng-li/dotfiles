@@ -1,0 +1,21 @@
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+
+set bind-tty-special-chars off
+"\C-w": kill-region
+"\ew": copy-region-as-kill
+"\e2": set-mark
+
+Tab: complete
+
+## Let M+3 work
+set meta-flag on
+set convert-meta off
+set output-meta on
+
+
+$if Bash
+set colored-stats on
+$endif

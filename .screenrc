@@ -1,0 +1,47 @@
+## The escape key
+## escape "^_^_" ## The Swedish keyboard
+escape "^`^`"
+## escape "^A^A"
+## Start up message
+startup_message off
+autodetach on
+
+## Alt + Left, Right, Up, Down in gnome-terminal
+bindkey ^[[1;3D prev
+bindkey ^[[1;3C next
+bindkey ^[[1;3A prev
+bindkey ^[[1;3B next
+
+## Ctrl + Alt + Left, Right, Up, Down in putty
+bindkey ^[^[[A prev
+bindkey ^[^[[B next
+bindkey ^[^[[D prev
+bindkey ^[^[[C next
+
+## UTF-8 support
+defutf8 on
+
+## 256 color
+term "screen-256color"
+
+## Information bar
+hardstatus alwayslastline
+hardstatus string '%{= kB}%-Lw%{=s kB}%50> %n%f* %t %{-}%+Lw%<  %{= kG}%-=%D %M %d | %C:%s %A %1`%{-} | %S'
+
+## Turns visual bell off
+vbell off
+
+## Fix for residual editor text
+## altscreen on
+
+## SCroll back
+defscrollback 50000
+termcapinfo xterm* ti@:te@
+
+## do not trash BackSpace, usually DEL
+bindkey -k kb
+bindkey -d -k kb
+
+## do not trash Delete, usually ESC [ 3 ~
+bindkey -k kD
+bindkey -d -k kD
