@@ -22,10 +22,12 @@
         ldiff = difftool -t latex
 [push]
 	default = simple
-#[http]
-#	proxy = socks5://127.0.0.1:1080
-#[url "https://"]
-#	insteadOf = git://
+[http]
+	proxy = socks5h://127.0.0.1:1080
+[https]
+	proxy = socks5h://127.0.0.1:1080
+[url "https://"]
+	insteadOf = git://
 [credential]
 	helper = store
 [i18n "commit"]
