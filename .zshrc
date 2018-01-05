@@ -83,7 +83,7 @@ export EDITOR="emacsclient -nw -c"
 export ALTERNATE_EDITOR=""
 
 ## Dictionary
-export DICPATH=~/.emacs.d/hunspell/:$DICPATH
+export DICPATH=~/.emacs.d/hunspell:$DICPATH
 
 
 ######################################################################
