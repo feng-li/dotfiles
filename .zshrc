@@ -5,16 +5,21 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if [ -f $HOME/Dropbox/system/dir_colors/dircolors ]; then
+if [[ -f $HOME/Dropbox/system/dir_colors/dircolors ]]; then
     eval `dircolors $HOME/Dropbox/system/dir_colors/dircolors`
 fi
 
-if [ "$PS1" != "" -a "${STARTED_SCREEN:-x}" = x -a "${SSH_TTY:-x}" != x ]; then
-    STARTED_SCREEN=1 ; export STARTED_SCREEN
-    screen -RR  || echo "Screen failed! continuing with normal bash startup"
-fi
-# [end of auto-screen snippet]
 
+# Auto-screen invocation.  if we're in an interactive session then automatically put us
+# into a screen(1) session.
+if [[ ("$PS1" != "") && ("$STARTED_SCREEN" = "")]]; then
+  export STARTED_SCREEN=1
+  #[ -d /tmp/screen/screen-$USER ] || mkdir -p /tmp/screen/screen-$USER
+  #sleep 1
+  screen -DR WORKSPACE
+  # normally, execution of this rc script ends here...
+  #echo "Screen failed! continuing with normal bash startup"
+fi
 
 # export TERM=xterm-256color
 
@@ -26,7 +31,7 @@ export PATH
 ## Add LD_LIBRARY_PATH (use comma to seprate)
 LOCAL_LIB=$HOME/.APP/lib/
 USR_LOCAL_LIB=/usr/local/lib/
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LOCAL_LIB
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LOCAL_LIB:$USR_LOCAL_LIB
 export LD_LIBRARY_PATH
 
 ## TEXLIVE Enviroment Variables
@@ -35,6 +40,9 @@ export LD_LIBRARY_PATH
 #     export BIBINPUTS=./:$HOME/.texmf/bibtex/bib//:$BIBINPUTS
 #     export BSTINPUTS=./:$HOME/.texmf/bibtex/bst//:$BSTINPUTS
 # fi
+
+# Add root to access contral, synaptic will now work in wyland
+# xhost +si:localuser:root
 
 ## Intel MKL
 if [ -d "/opt/intel/mkl/lib/" ] ; then
