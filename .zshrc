@@ -12,10 +12,10 @@ fi
 
 # Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
-if [[ ("$PS1" != "") && ("$STARTED_SCREEN" = "")]]; then
-  export STARTED_SCREEN=1
-  #[ -d /tmp/screen/screen-$USER ] || mkdir -p /tmp/screen/screen-$USER
-  #sleep 1
+GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
+WORKSPACE_ATTACHED=$(echo `screen -ls WORKSPACE | grep Attached`)
+if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
+  export SCREEN_STARTED=1
   screen -DR WORKSPACE
   # normally, execution of this rc script ends here...
   #echo "Screen failed! continuing with normal bash startup"
