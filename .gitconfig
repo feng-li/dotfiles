@@ -2,7 +2,7 @@
 	name = Feng Li
 	email = m@feng.li
 [core]
-	excludesfile = ~/Dropbox/system/git-ignore-global
+	excludesfile = ~/Dropbox/system/dotfiles/git-ignore-global
         editor = "emacsclient -nw -c -a ''"
 	quotepath = false
 [color]
@@ -23,11 +23,11 @@
 [push]
 	default = simple
 [http]
-	proxy = socks5h://127.0.0.1:1080
+#	proxy = socks5h://127.0.0.1:1080
 [https]
-	proxy = socks5h://127.0.0.1:1080
-[url "https://"]
-	insteadOf = git://
+#	proxy = socks5h://127.0.0.1:1080
+#[url "https://"]
+#	insteadOf = git://
 [credential]
 	helper = store
 [i18n "commit"]
