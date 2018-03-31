@@ -22,7 +22,7 @@ bindkey ^[^[[C next
 defutf8 on
 
 ## 256 color
-term "screen-256color"
+term screen-256color
 
 ## Information bar
 hardstatus alwayslastline
@@ -45,3 +45,6 @@ bindkey -d -k kb
 ## do not trash Delete, usually ESC [ 3 ~
 bindkey -k kD
 bindkey -d -k kD
+
+## Allow bold colors - necessary for some reason
+attrcolor b ".I"
