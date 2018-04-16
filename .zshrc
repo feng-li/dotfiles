@@ -194,4 +194,5 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Color prompt
-PROMPT='%{$fg[magenta]%}%n%{$fg[magenta]%}@%{$fg[magenta]%}%m%{$reset_color%}:%{$fg[yellow]%}%~%{$reset_color%}$ '
+autoload -U colors && colors
+PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
