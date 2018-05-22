@@ -40,6 +40,9 @@ local(expr <- {
     ##             dir.create(R.user.path, recursive = TRUE)
     ##         }
 
+    ## Plot size in Jupyter Notebook with R kernel
+    options(repr.plot.width  = 4, repr.plot.height = 3)
+
 }, envir = .mylocal.env)
 
 

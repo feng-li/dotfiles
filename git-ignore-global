@@ -5,6 +5,7 @@
 **/..Rcheck/
 **/symbols.rds
 **/.texpadtmp/
+**/__pycache__
 
 # Backup files #
 ################

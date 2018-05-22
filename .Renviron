@@ -1,4 +1,4 @@
-R_LIBS_USER=~/.R/library/%v
+R_LIBS_USER=~/.R/library/
 
 R_COMPILE_PKGS=1
 

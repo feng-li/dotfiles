@@ -102,6 +102,7 @@ export DICPATH=~/.emacs.d/hunspell:$DICPATH
 if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+    ZSH_HIGHLIGHT_STYLES[cursor]='bg=magenta'
 fi
 
 
