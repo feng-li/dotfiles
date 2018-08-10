@@ -13,15 +13,15 @@ fi
 # Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
 GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
-WORKSPACE_ATTACHED=$(echo `screen -ls WORKSPACE | grep Attached`)
+WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
 if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
   export SCREEN_STARTED=1
-  screen -DR WORKSPACE
+  tmux attach -t WORKSPACE
   # normally, execution of this rc script ends here...
   #echo "Screen failed! continuing with normal bash startup"
 fi
 
-# export TERM=xterm-256color
+export TERM=xterm-256color
 
 ## Add a user PATH
 LOCALBIN=$HOME/.bin
