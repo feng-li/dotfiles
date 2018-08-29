@@ -1,0 +1,27 @@
+## Install all dependences
+## sudo apt-get install build-essential libatomic1 python gfortran perl wget m4 cmake pkg-config libsuitesparse-dev libutf8proc-dev libpcre2-dev libunwind-dev libopenlibm-dev libdsfmt-dev libmbedtls-dev libssh2-1-dev libgit2-dev
+
+# Flags for using libraries available on the system instead of building them.
+# Please read the notes around usage of SYSTEM flags in README.md
+USE_SYSTEM_LLVM:=0
+USE_SYSTEM_LIBUNWIND:=1
+USE_SYSTEM_PCRE:=1
+USE_SYSTEM_LIBM:=0
+USE_SYSTEM_OPENLIBM:=1
+USE_SYSTEM_DSFMT:=1
+USE_SYSTEM_BLAS:=1
+USE_SYSTEM_LAPACK:=1
+USE_SYSTEM_GMP:=1
+USE_SYSTEM_MPFR:=1
+USE_SYSTEM_SUITESPARSE:=1
+USE_SYSTEM_LIBUV:=0
+USE_SYSTEM_UTF8PROC:=1
+USE_SYSTEM_MBEDTLS:=1
+USE_SYSTEM_LIBSSH2:=1
+USE_SYSTEM_CURL:=1
+USE_SYSTEM_LIBGIT2:=1
+USE_SYSTEM_PATCHELF:=1
+
+prefix=$HOME/.APP/julia-dev/
+# For a maximum-performance build customized for the current machine CPU
+MARCH=native
