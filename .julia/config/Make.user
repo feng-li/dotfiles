@@ -22,6 +22,8 @@ USE_SYSTEM_CURL:=1
 USE_SYSTEM_LIBGIT2:=1
 USE_SYSTEM_PATCHELF:=1
 
-prefix=$HOME/.APP/julia-dev/
+D_GLIBCXX_USE_CXX11_ABI=1
+
+prefix=~/.APP/julia-dev/
 # For a maximum-performance build customized for the current machine CPU
 MARCH=native
