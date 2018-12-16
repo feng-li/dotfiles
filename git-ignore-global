@@ -7,7 +7,7 @@
 **/.texpadtmp/
 **/__pycache__
 **/.ipynb_checkpoints/
-
+**/.ropeproject/
 # Backup files #
 ################
 *~
