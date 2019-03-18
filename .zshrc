@@ -199,5 +199,5 @@ fi
 # autoload -U colors && colors
 # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
 # PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
-local ret_status="%(?:%{$fg_bold[magenta]%}%n@%m:%{$fg_bold[green]%}%n@%m)"
-PROMPT='${ret_status}:%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c $(git_prompt_info)% %{$reset_color%}'
+local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
+PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
