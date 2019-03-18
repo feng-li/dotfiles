@@ -101,13 +101,14 @@ export DICPATH=~/.emacs.d/hunspell:$DICPATH
 # zsh syntax highlighting
 if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # Set background of cursor to avoid invisible move...
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-    ZSH_HIGHLIGHT_STYLES[cursor]='bg=magenta'
+    ZSH_HIGHLIGHT_STYLES[cursor]='bg=white'
 fi
 
 
 if [ -f $HOME/Dropbox/system/oh-my-zsh/oh-my-zsh.sh ]; then
-
 
    # Path to your oh-my-zsh installation.
    export ZSH=$HOME/Dropbox/system/oh-my-zsh/
@@ -116,10 +117,10 @@ if [ -f $HOME/Dropbox/system/oh-my-zsh/oh-my-zsh.sh ]; then
    # it'll load a random theme each time that oh-my-zsh is loaded.
    # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
    # ZSH_THEME="robbyrussell"
-   ZSH_THEME=""
+   ZSH_THEME="dracula"
 
    # Uncomment the following line to use case-sensitive completion.
-   CASE_SENSITIVE="true"
+   # CASE_SENSITIVE="true"
 
    # Uncomment the following line to use hyphen-insensitive completion. Case
    # sensitive completion must be off. _ and - will be interchangeable.
@@ -160,7 +161,7 @@ if [ -f $HOME/Dropbox/system/oh-my-zsh/oh-my-zsh.sh ]; then
    # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
    # Example format: plugins=(rails git textmate ruby lighthouse)
    # Add wisely, as too many plugins slow down shell startup.
-   plugins=(git ssh screen)
+   plugins=(git ssh)
 
    source $ZSH/oh-my-zsh.sh
 fi
@@ -195,5 +196,8 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Color prompt
-autoload -U colors && colors
-PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
+# autoload -U colors && colors
+# PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
+# PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
+local ret_status="%(?:%{$fg_bold[magenta]%}%n@%m:%{$fg_bold[green]%}%n@%m)"
+PROMPT='${ret_status}:%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c $(git_prompt_info)% %{$reset_color%}'
