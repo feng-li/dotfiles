@@ -59,15 +59,15 @@ if [ -f /opt/intel/bin/compilervars.sh ]; then
 fi
 
 ## JAVA
-export JAVA_HOME=/usr/lib/jvm/default-java
+# export JAVA_HOME=/usr/lib/jvm/default-java
 
 ## Hadoop
-export HADOOP_HOME=$HOME/hadoop/
-export HADOOP_CLASSPATH=$JAVA_HOME/lib/tools.jar
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
+# export HADOOP_HOME=$HOME/hadoop/
+# export HADOOP_CLASSPATH=$JAVA_HOME/lib/tools.jar
+# export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
 
-export MAHOUT_HOME=$HOME/mahout/
-export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf/
+# export MAHOUT_HOME=$HOME/mahout/
+# export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf/
 
 ## No. of threads
 export OMP_NUM_THREADS=1
