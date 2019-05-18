@@ -5,8 +5,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if [[ -f $HOME/Dropbox/system/dir_colors/dircolors ]]; then
-    eval `dircolors $HOME/Dropbox/system/dir_colors/dircolors`
+if [[ -f $HOME/Dropbox/system/dotfiles/dir_colors/dircolors ]]; then
+    eval `dircolors $HOME/Dropbox/system/dotfiles/dir_colors/dircolors`
 fi
 
 
@@ -45,18 +45,18 @@ USR_LOCAL_LIB=/usr/local/lib/
 # xhost +si:localuser:root
 
 ## Intel MKL
-if [ -d "/opt/intel/mkl/lib/" ] ; then
+# if [ -d "/opt/intel/mkl/lib/" ] ; then
 
-    MKL_LIB_PATH=/opt/intel/mkl/lib/intel64
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MKL_LIB_PATH
-    export MKL_INTERFACE_LAYER=ILP64
+#     MKL_LIB_PATH=/opt/intel/mkl/lib/intel64
+#     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MKL_LIB_PATH
+#     export MKL_INTERFACE_LAYER=ILP64
 
-fi
+# fi
 
 ## Load icc to PATH
-if [ -f /opt/intel/bin/compilervars.sh ]; then
-    . /opt/intel/bin/compilervars.sh intel64 ilp64
-fi
+# if [ -f /opt/intel/bin/compilervars.sh ]; then
+#     . /opt/intel/bin/compilervars.sh intel64 ilp64
+# fi
 
 ## JAVA
 # export JAVA_HOME=/usr/lib/jvm/default-java
@@ -108,10 +108,10 @@ if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 fi
 
 
-if [ -f $HOME/Dropbox/system/oh-my-zsh/oh-my-zsh.sh ]; then
+if [ -f $HOME/Dropbox/system/dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
 
    # Path to your oh-my-zsh installation.
-   export ZSH=$HOME/Dropbox/system/oh-my-zsh/
+   export ZSH=$HOME/Dropbox/system/dotfiles/oh-my-zsh/
 
    # Set name of the theme to load. Optionally, if you set this to "random"
    # it'll load a random theme each time that oh-my-zsh is loaded.
