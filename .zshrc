@@ -161,7 +161,7 @@ if [ -f $HOME/Dropbox/system/dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
    # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
    # Example format: plugins=(rails git textmate ruby lighthouse)
    # Add wisely, as too many plugins slow down shell startup.
-   plugins=(git ssh)
+   plugins=(git)
 
    source $ZSH/oh-my-zsh.sh
 fi
