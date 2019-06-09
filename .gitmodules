@@ -7,3 +7,6 @@
 [submodule "zsh-dracula-theme"]
 	path = zsh-dracula-theme
 	url = git@github.com:dracula/zsh.git
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = git@github.com:feng-li/.emacs.d.git
