@@ -5,8 +5,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if [[ -f $HOME/Dropbox/system/dotfiles/dir_colors/dircolors ]]; then
-    eval `dircolors $HOME/Dropbox/system/dotfiles/dir_colors/dircolors`
+if [[ -f $HOME/.dotfiles/dir_colors/dircolors ]]; then
+    eval `dircolors $HOME/.dotfiles/dir_colors/dircolors`
 fi
 
 
@@ -108,10 +108,10 @@ if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 fi
 
 
-if [ -f $HOME/Dropbox/system/dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
+if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
 
    # Path to your oh-my-zsh installation.
-   export ZSH=$HOME/Dropbox/system/dotfiles/oh-my-zsh/
+   export ZSH=$HOME/.dotfiles/oh-my-zsh/
 
    # Set name of the theme to load. Optionally, if you set this to "random"
    # it'll load a random theme each time that oh-my-zsh is loaded.

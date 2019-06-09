@@ -2,7 +2,7 @@
 	name = Feng Li
 	email = m@feng.li
 [core]
-	excludesfile = ~/Dropbox/system/dotfiles/git-ignore-global
+	excludesfile = ~/.dotfiles/git-ignore-global
         editor = "emacsclient -nw -c -a ''"
 	quotepath = false
 [color]

@@ -47,31 +47,6 @@ export LD_LIBRARY_PATH
 #     export BSTINPUTS=./:$HOME/.texmf/bibtex/bst//:$BSTINPUTS
 # fi
 
-## Intel MKL
-if [ -d "/opt/intel/mkl/lib/" ] ; then
-
-    MKL_LIB_PATH=/opt/intel/mkl/lib/intel64
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MKL_LIB_PATH
-    export MKL_INTERFACE_LAYER=ILP64
-
-fi
-
-## Load icc to PATH
-if [ -f /opt/intel/bin/compilervars.sh ]; then
-    . /opt/intel/bin/compilervars.sh intel64 ilp64
-fi
-
-## JAVA
-export JAVA_HOME=/usr/lib/jvm/default-java
-
-## Hadoop
-export HADOOP_HOME=$HOME/hadoop/
-export HADOOP_CLASSPATH=$JAVA_HOME/lib/tools.jar
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
-
-export MAHOUT_HOME=$HOME/mahout/
-export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf/
-
 ## No. of threads
 export OMP_NUM_THREADS=1
 
