@@ -61,7 +61,7 @@ diff.bbl
 _region_.*
 *.fdb_latexmk
 _region_.tex
-
+**/arxiv/
 # Compiled source #
 ###################
 *.Rc
