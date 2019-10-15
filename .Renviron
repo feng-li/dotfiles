@@ -4,4 +4,4 @@ R_COMPILE_PKGS=1
 
 ## cdcopula Package
 
-R_CPL_LIB_ROOT_DIR=~/code/cdcopula/
+CDCOPULA_LIB_ROOT_DIR=~/code/cdcopula/
