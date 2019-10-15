@@ -3,5 +3,4 @@ R_LIBS_USER=~/.R/library/
 R_COMPILE_PKGS=1
 
 ## cdcopula Package
-
-CDCOPULA_LIB_ROOT_DIR=~/code/cdcopula/
+## CDCOPULA_LIB_ROOT_DIR=~/code/cdcopula/
