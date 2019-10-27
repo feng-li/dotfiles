@@ -6,8 +6,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 echo $DIR
 
+rm -rf $HOME/.dotfiles
 ln -sf $DIR $HOME/.dotfiles
-echo dotfiles setup: 'dotfiles' is softlinked to  $HOME/.dotfiles 
+echo dotfiles setup: 'dotfiles' is softlinked to  $HOME/.dotfiles
 
 ln -sf $DIR/.emacs.d $HOME
 mv $HOME/.emacs $HOME/.emacs_bak
@@ -31,6 +32,7 @@ echo dotfiles setup: 'dotfiles/.Renviron' is softlinked to  $HOME/.Renviron
 ln -sf $DIR/.Rprofile $HOME
 echo dotfiles setup: 'dotfiles/.Rprofile' is softlinked to  $HOME/.Rprofile
 
+ln -sf $DIR/flake8 $HOME/.config/flake8
+echo dotfiles setup: 'dotfiles/flake8' is softlinked to  $HOME/.config/flake8
 
 exit 0;
-
