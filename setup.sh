@@ -32,6 +32,10 @@ echo dotfiles setup: 'dotfiles/.Renviron' is softlinked to  $HOME/.Renviron
 ln -sf $DIR/.Rprofile $HOME
 echo dotfiles setup: 'dotfiles/.Rprofile' is softlinked to  $HOME/.Rprofile
 
+ln -sf $DIR/.lintr $HOME
+echo dotfiles setup: 'dotfiles/.lintr' is softlinked to  $HOME/.lintr
+
+
 ln -sf $DIR/flake8 $HOME/.config/flake8
 echo dotfiles setup: 'dotfiles/flake8' is softlinked to  $HOME/.config/flake8
 
