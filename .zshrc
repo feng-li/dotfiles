@@ -70,7 +70,7 @@ USR_LOCAL_LIB=/usr/local/lib/
 # export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf/
 
 ## No. of threads
-export OMP_NUM_THREADS=1
+## export OMP_NUM_THREADS=1
 
 ## Julia
 ## alias julia="julia -f"
@@ -78,7 +78,7 @@ export OMP_NUM_THREADS=1
 ## Emacs client as an editor
 
 ## Emacs no-window
-alias emacs="emacs -nw"
+alias emacs='emacsclient -create-frame --alternate-editor="" -nw'
 
 ## Emacsclient no-window
 alias ec="emacsclient -nw"
@@ -87,8 +87,9 @@ alias ec="emacsclient -nw"
 alias ecg="emacsclient -c"
 
 ## The default editor
-export EDITOR="emacsclient -nw -c"
 export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -nw -c"              # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
 
 ## Dictionary
 export DICPATH=~/.emacs.d/hunspell:$DICPATH

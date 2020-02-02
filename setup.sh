@@ -10,9 +10,17 @@ rm -rf $HOME/.dotfiles
 ln -sf $DIR $HOME/.dotfiles
 echo dotfiles setup: 'dotfiles' is softlinked to  $HOME/.dotfiles
 
+
+# Emacs
 ln -sf $DIR/.emacs.d $HOME
 mv $HOME/.emacs $HOME/.emacs_bak
 echo dotfiles setup: 'dotfiles/emacs.d/' is softlinked to  $HOME/.emacs.d/
+
+echo Enabling emacs daemon via systemctl
+systemctl enable --user emacs
+
+echo Starting emacs daemon via systemctl
+systemctl start --user emacs
 
 ln -sf $DIR/.inputrc $HOME
 echo dotfiles setup: 'dotfiles/.inputrc' is softlinked to  $HOME/.inputrc
