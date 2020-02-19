@@ -75,6 +75,12 @@ USR_LOCAL_LIB=/usr/local/lib/
 ## Julia
 ## alias julia="julia -f"
 
+
+## Use info to replace man if installed
+if [[ -f /usr/bin/info ]]; then
+    alias man=info
+fi
+
 ## Emacs client as an editor
 
 ## Emacs no-window
