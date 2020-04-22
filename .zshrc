@@ -173,7 +173,7 @@ if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
    source $ZSH/oh-my-zsh.sh
 
    # Add local catached dir
-   ZSH_CACHE_DIR="$HOME/.cache/zsh"
+   ZSH_CACHE_DIR="$HOME/.cache"
 
 fi
 

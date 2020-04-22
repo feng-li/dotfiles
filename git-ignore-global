@@ -10,13 +10,14 @@
 **/.ropeproject/
 # Backup files #
 ################
+.~*
 *~
 *\#*\#
 *.\#*\#
 *.\#*
 *.bak
 *conflicted copy*
-
+*.sav
 *\(Case\ Conflict\)*
 
 # History files

@@ -10,10 +10,8 @@
 	interactive = always
 	showbranch = always
 	status = always
-
 [instaweb]
         httpd=webrick
-
 [difftool.latex]
         cmd = git-latexdiff "$LOCAL" "$REMOTE"
 [difftool]
@@ -41,3 +39,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = true
