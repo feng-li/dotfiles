@@ -74,6 +74,7 @@ _region_.tex
 *.so
 *Pyc
 *.elc
+*.xopp
 
 # Packages #
 ############
