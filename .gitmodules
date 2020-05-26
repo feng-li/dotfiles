@@ -13,3 +13,6 @@
 [submodule "gedit-dracula-theme"]
 	path = gedit-dracula-theme
 	url = git@github.com:dracula/gedit.git
+[submodule "git-latexdiff"]
+	path = git-latexdiff
+	url = https://gitlab.com/git-latexdiff/git-latexdiff.git

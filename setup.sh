@@ -14,6 +14,10 @@ echo dotfiles setup: $DIR is softlinked to  $HOME/.dotfiles
 mv -f $HOME/.emacs.d  $HOME/.emacs.d_bak
 rm -rf $HOME/.emacs
 
+# git-latexdiff
+ln -sf $DIR/git-latexdiff/git-latexdiff $HOMe/.bin/
+echo git-latexdiff is osftlinked to $HOME/.bin/
+
 ln -sf $DIR/.emacs.d $HOME
 echo dotfiles setup: $DIR/emacs.d/ is softlinked to  $HOME/.emacs.d/
 

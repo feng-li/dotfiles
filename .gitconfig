@@ -16,8 +16,6 @@
         cmd = git-latexdiff "$LOCAL" "$REMOTE"
 [difftool]
         prompt = false
-[alias]
-        ldiff = difftool -t latex
 [push]
 	default = simple
 #[http]
