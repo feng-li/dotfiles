@@ -41,4 +41,5 @@
 [pull]
 	rebase = true
 [gc]
-	autoPackLimit = 10
+        auto = 500
+        autoPackLimit = 10
