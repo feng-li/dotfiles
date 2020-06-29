@@ -63,6 +63,8 @@ _region_.*
 *.fdb_latexmk
 _region_.tex
 **/arxiv/
+*.synctex*
+
 # Compiled source #
 ###################
 *.Rc
