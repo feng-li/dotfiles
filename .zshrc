@@ -24,7 +24,7 @@ fi
 export TERM=xterm-256color
 
 ## Add a user PATH
-LOCALBIN=$HOME/.bin
+LOCALBIN=$HOME/.local/bin
 PATH=$LOCALBIN:$PATH:
 export PATH
 

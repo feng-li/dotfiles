@@ -5,7 +5,7 @@
 	excludesfile = ~/.dotfiles/git-ignore-global
         editor = "emacsclient -nw -c -a ''"
 	quotepath = false
-	filemode = false
+	fileMode = false
 [color]
 	ui = true
 	interactive = always
