@@ -25,7 +25,7 @@ for RECIPE_TITLE in "${RECIPE_TITLES[@]}"; do
     ebook-convert "${RECIPE_TITLE}.recipe" ${OUT_DIR}/"${RECIPE_TITLE}"_${DATE}.${OUT_FORMAT}
 
     # Add Book to Calibre library
-    calibredb --with-library  $CALIBRE_LIBRARY add ${OUT_DIR}/"${RECIPE_TITLE}"_${DATE}.${OUT_FORMAT} --series News
+    calibredb --with-library  $CALIBRE_LIBRARY add ${OUT_DIR}/"${RECIPE_TITLE}"_${DATE}.${OUT_FORMAT} --duplicates
 
 done
 
