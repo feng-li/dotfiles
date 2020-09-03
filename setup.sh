@@ -1,31 +1,42 @@
 #! /usr/bin/env bash
 
-
 # Get current dir path for this script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 echo $DIR
 
-rm -rf $HOME/.dotfiles
-ln -sf $DIR $HOME/.dotfiles
-echo dotfiles setup: $DIR is softlinked to  $HOME/.dotfiles
+cd $DIR
+git 
+
+
+if [ "$(realpath "$DIR")" = "$(realpath "$HOME/.dotfiles")"  ]; then
+    echo Location of dotfiles and $HOME/.dotfiles are the same.
+else
+    rm -rf $HOME/.dotfiles
+    ln -sf $DIR $HOME/.dotfiles
+    echo dotfiles setup: $DIR is softlinked to  $HOME/.dotfiles
+fi
 
 # Emacs
 mv -f $HOME/.emacs.d  $HOME/.emacs.d_bak
 rm -rf $HOME/.emacs
 
-# git-latexdiff
-ln -sf $DIR/git-latexdiff/git-latexdiff $HOMe/.bin/
-echo git-latexdiff is softlinked to $HOME/.bin/
-
 ln -sf $DIR/.emacs.d $HOME
 echo dotfiles setup: $DIR/emacs.d/ is softlinked to  $HOME/.emacs.d/
 
-echo Enabling emacs daemon via systemctl
-systemctl enable --user emacs
+# echo Enabling emacs daemon via systemctl
+# systemctl enable --user emacs
 
-echo Starting emacs daemon via systemctl
-systemctl start --user emacs
+# echo Starting emacs daemon via systemctl
+# systemctl start --user emacs
+
+if [ ! -d $HOME/.bin ]; then
+    mkdir $HOME/.bin
+fi
+
+# git-latexdiff
+ln -sf $DIR/git-latexdiff/git-latexdiff $HOME/.bin/
+echo git-latexdiff is softlinked to $HOME/.bin/
 
 ln -sf $DIR/.inputrc $HOME
 echo dotfiles setup: $DIR/.inputrc is softlinked to  $HOME/.inputrc
@@ -45,11 +56,18 @@ echo dotfiles setup: $DIR/.Renviron is softlinked to  $HOME/.Renviron
 ln -sf $DIR/.Rprofile $HOME
 echo dotfiles setup: $DIR/.Rprofile is softlinked to  $HOME/.Rprofile
 
+if [ ! -d $HOME/.R ]; then
+    mkdir $HOME/.R
+fi
 ln -sf $DIR/.R/Makevars $HOME/.R/
 echo dotfiles setup: $DIR/.R/Makevars is softlinked to  $HOME/.R/Makevars
 
 ln -sf $DIR/.lintr $HOME
 echo dotfiles setup: $DIR/.lintr is softlinked to  $HOME/.lintr
+
+if [ ! -d $HOME/.config ]; then
+    mkdir $HOME/.config
+fi
 
 ln -sf $DIR/flake8 $HOME/.config/flake8
 echo dotfiles setup: $DIR/flake8 is softlinked to  $HOME/.config/flake8
