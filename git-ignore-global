@@ -64,6 +64,7 @@ _region_.*
 _region_.tex
 **/arxiv/
 *.synctex*
+*.bbl
 
 # Compiled source #
 ###################
