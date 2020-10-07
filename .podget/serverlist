@@ -1,0 +1,19 @@
+# Default Server List for podget
+#
+# Default format with category and name:
+#   <url> <category> <name>
+#
+# Alternate Formats:
+#   1. With a category but no name.
+#       <url> <category>
+#   2. With a name but no category (2 ways).
+#       <url> No_Category <name>
+#       <url> . <name>
+#   3. With neither a category or name.
+#       <url>
+#
+# For additional formating documentation, please refer to 'man podget'.
+#
+#FEEDS:
+# ----------------------------------------------------------------------------------------------------------------------------------
+https://podcasts.files.bbci.co.uk/p002w557.rss Science BBC Discovery
