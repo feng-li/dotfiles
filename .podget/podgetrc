@@ -60,7 +60,7 @@ WGET_BASEOPTS="-c -nH"
 # Most Recent
 # 0  == download all new items.
 # 1+ == download only the <count> most recent
-MOST_RECENT=0
+MOST_RECENT=5
 
 # Force
 # 0 == Only download new material.
@@ -70,11 +70,11 @@ FORCE=0
 # Autocleanup.
 # 0 == disabled
 # 1 == delete any old content
-CLEANUP=0
+CLEANUP=1
 
 # Number of days to keep files.   Cleanup will remove anything
 # older than this.
-CLEANUP_DAYS=7
+CLEANUP_DAYS=30
 
 # Stop downloading if available space on the partition drops below value (in KB)
 # default:  614400 (600MB)
