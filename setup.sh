@@ -71,4 +71,12 @@ fi
 ln -sf $DIR/flake8 $HOME/.config/flake8
 echo "dotfiles setup: $DIR/flake8 is softlinked to  $HOME/.config/flake8"
 
+
+if [ ! -d $HOME/.config/pip ]; then
+    mkdir $HOME/.config/pip
+fi
+
+ln -sf $DIR/pip.conf $HOME/.config/pip/pip.conf
+echo "dotfiles setup: $DIR/flake8 is softlinked to  $HOME/.config/flake8"
+
 exit 0;
