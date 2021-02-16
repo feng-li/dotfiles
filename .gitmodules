@@ -9,7 +9,7 @@
 	url = https://github.com/dracula/zsh.git
 [submodule ".emacs.d"]
 	path = .emacs.d
-	url = https://github.com/feng-li/.emacs.d.git
+	url = git@github.com:feng-li/.emacs.d.git
 [submodule "gedit-dracula-theme"]
 	path = gedit-dracula-theme
 	url = https://github.com/dracula/gedit.git
