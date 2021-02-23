@@ -41,23 +41,6 @@ USR_LOCAL_LIB=/usr/local/lib/
 #     export BSTINPUTS=./:$HOME/.texmf/bibtex/bst//:$BSTINPUTS
 # fi
 
-# Add root to access contral, synaptic will now work in wyland
-# xhost +si:localuser:root
-
-## Intel MKL
-# if [ -d "/opt/intel/mkl/lib/" ] ; then
-
-#     MKL_LIB_PATH=/opt/intel/mkl/lib/intel64
-#     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MKL_LIB_PATH
-#     export MKL_INTERFACE_LAYER=ILP64
-
-# fi
-
-## Load icc to PATH
-# if [ -f /opt/intel/bin/compilervars.sh ]; then
-#     . /opt/intel/bin/compilervars.sh intel64 ilp64
-# fi
-
 ## JAVA
 # export JAVA_HOME=/usr/lib/jvm/default-java
 
@@ -75,7 +58,6 @@ USR_LOCAL_LIB=/usr/local/lib/
 ## Julia
 ## alias julia="julia -f"
 
-
 ## Use info to replace man if installed
 if [[ -f /usr/bin/info ]]; then
     alias man=info
@@ -84,7 +66,7 @@ fi
 ## Emacs client as an editor
 
 ## Emacs no-window
-alias emacs='emacsclient -create-frame --alternate-editor="" -nw'
+alias emacs='emacsclient --alternate-editor="/usr/bin/emacs" -nw'
 
 ## Emacsclient no-window
 alias ec="emacsclient -nw"
@@ -94,8 +76,8 @@ alias ecg="emacsclient -c"
 
 ## The default editor
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -nw -c"              # $EDITOR opens in terminal
-export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
+export EDITOR="emacsclient -t"              # $EDITOR opens in terminal
+export VISUAL='emacsclient --alternate-editor="/usr/bin/emacs" -c'         # $VISUAL opens in GUI mode
 
 ## Dictionary
 export DICPATH=~/.emacs.d/hunspell:$DICPATH

@@ -47,12 +47,14 @@ TAGS
 *.out
 *.fff
 *.ttt
+*.bcf
 *.lof
 *.lot
 *.brf
 *.fls
 *.spl
 *.rip
+*.run.xml
 *.vrb
 *.spl.pgp
 diff.tex

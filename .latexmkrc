@@ -1,4 +1,4 @@
-# $pdflatex = "xelatex  -synctex=1 -halt-on-error --shell-escape  -file-line-error  %O %S";
-$pdf_mode = 1;  # tex -> pdf
-$view = 'none';   # do not use pdf viewer
-$bibtex_use = 2 # Run biber or bibtex if needed
+# $pdflatex = 'pdflatex  -synctex=1 -halt-on-error --shell-escape  -file-line-error  %O %S';
+$view = 'none';
+#$pdf_previewer = 'xdg-open %O %S';
+$bibtex_use = 1.5 # Run biber or bibtex if needed
