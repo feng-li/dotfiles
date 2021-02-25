@@ -77,6 +77,6 @@ if [ ! -d $HOME/.config/pip ]; then
 fi
 
 ln -sf $DIR/pip.conf $HOME/.config/pip/pip.conf
-echo "dotfiles setup: $DIR/flake8 is softlinked to  $HOME/.config/flake8"
+echo "dotfiles setup: $DIR/pip.conf is softlinked to  $HOME/.config/pip/pip.conf"
 
 exit 0;
