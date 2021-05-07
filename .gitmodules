@@ -16,3 +16,6 @@
 [submodule "git-latexdiff"]
 	path = git-latexdiff
 	url = https://gitlab.com/git-latexdiff/git-latexdiff.git
+[submodule "alacritty-dracula-theme"]
+	path = alacritty-dracula-theme
+	url = https://github.com/dracula/alacritty.git
