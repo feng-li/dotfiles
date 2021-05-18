@@ -21,7 +21,7 @@ if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
   #echo "Screen failed! continuing with normal bash startup"
 fi
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 ## Add a user PATH
 LOCALBIN=$HOME/.local/bin
