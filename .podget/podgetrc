@@ -12,15 +12,15 @@ CONFIG_SERVERLIST=serverlist
 # If this option is not configured then by default podget will place the session files in the directory defined by TMPDIR/podget or
 # if it is not defined in the users shell then the session files will be placed in the directory /tmp/podget.
 # If you prefer a different location, then configure this variable.
-# DIR_SESSION=/home/fli/tmp/podget
+DIR_SESSION=/tmp/podget
 
 # Directory where to store downloaded files
-DIR_LIBRARY=/home/fli/POD
+DIR_LIBRARY=/srv/data/nextcloud/fli/files/News/POD/
 
 # Directory to store logs in
 # By default, logs are stored in DIR_LIBRARY/.LOG
 # If you prefer a different location, then configure this variable.
-# DIR_LOG=/home/fli/POD/LOG
+DIR_LOG=/tmp/POD/LOG
 
 # Set logging file names
 LOG_FAIL=errors
@@ -60,7 +60,7 @@ WGET_BASEOPTS="-c -nH"
 # Most Recent
 # 0  == download all new items.
 # 1+ == download only the <count> most recent
-MOST_RECENT=5
+MOST_RECENT=1
 
 # Force
 # 0 == Only download new material.
@@ -74,7 +74,7 @@ CLEANUP=1
 
 # Number of days to keep files.   Cleanup will remove anything
 # older than this.
-CLEANUP_DAYS=30
+CLEANUP_DAYS=14
 
 # Stop downloading if available space on the partition drops below value (in KB)
 # default:  614400 (600MB)
@@ -86,7 +86,7 @@ MIN_SPACE=614400
 # Disable playlist creation [ No need to comment out other playlist variables ]
 # 0 == create
 # 1 == do not create
-NO_PLAYLIST=0
+NO_PLAYLIST=1
 
 # Build playlists (comment out or set to a blank string to accept default format: New-).
 PLAYLIST_NAMEBASE=New-

@@ -8,10 +8,10 @@ RECIPE_TITLES=("NY Times Global" "The Economist" "Daily Writing Tips")
 RECIPE_UPDATE_FREQUENCY=(1 7 7) # Update date frequency in days
 RECIPE_CLEAN_FREQUENCY=30 # Delete old books older than x days
 
-OUT_DIR=/home/fli/EBooks/News
+OUT_DIR=/tmp/EBooks/
 OUT_FORMAT=epub
 
-CALIBRE_LIBRARY=/home/fli/.cloud/EBooks # Register to a calibre library if non-empty value is given
+CALIBRE_LIBRARY=/srv/data/nextcloud/fli/files/News/EBooks # Register to a calibre library if non-empty value is given
 CALIBRE_LIBRARY_SERVER= # Send to a calibre server (not implemented yet)
 
 # Make DIR
