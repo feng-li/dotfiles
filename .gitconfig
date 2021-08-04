@@ -56,3 +56,5 @@
 	date = human-local
 [advice]
 	ignoredHook = false
+[http]
+	proxy = http://127.0.0.1:41091
