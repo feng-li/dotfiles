@@ -29,6 +29,10 @@
 # 	proxy = socks5h://127.0.0.1:1090
 # [url "https://"]
 # 	insteadOf = git://
+[alias]
+        noproxy = config --remove-section http
+        proxy = config http.proxy http://127.0.0.1:41091
+
 [credential]
 	helper = store
 [i18n "commit"]
