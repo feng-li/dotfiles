@@ -203,7 +203,7 @@ FILENAME_FORMATFIX3=0
 #
 # 0 == disabled (default)
 # 1 == enabled
-FILENAME_FORMATFIX4=0
+FILENAME_FORMATFIX4=1
 
 # Filename Cleanup 6: Remove "?referrer=rss" from the end of filenames as included in some feeds like
 # those from Vimcasts.org.  Setup to work for MP3, M4V, OGG and OGV files.
