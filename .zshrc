@@ -76,7 +76,7 @@ alias ecg="emacsclient -c"
 
 ## The default editor
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t" # $EDITOR opens in terminal
+export EDITOR="emacsclient -t --create-frame" # $EDITOR opens in terminal
 export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL opens in GUI mode
 
 ## Dictionary

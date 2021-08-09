@@ -6,7 +6,7 @@
 	quotepath = false
 	fileMode = false
 	sshCommand = ssh -i ~/.ssh/fli_rsa -F /dev/null
-	editor = emacsclient -t -a=""
+	editor = emacsclient --tty -create-frame -a=""
 [color]
 	ui = true
 	interactive = always
