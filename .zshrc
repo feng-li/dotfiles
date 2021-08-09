@@ -76,8 +76,8 @@ alias ecg="emacsclient -c"
 
 ## The default editor
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"              # $EDITOR opens in terminal
-export VISUAL='emacsclient --alternate-editor="command emacs" -c'         # $VISUAL opens in GUI mode
+export EDITOR="emacsclient -t" # $EDITOR opens in terminal
+export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL opens in GUI mode
 
 ## Dictionary
 export DICPATH=~/.emacs.d/hunspell:$DICPATH
