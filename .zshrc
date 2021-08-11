@@ -197,5 +197,5 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}✗ %{$fg[cyan]%}) "
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
-local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
+local ret_status="%(?:%{$fg[blue]%}%n@%m:%{$fg[green]%}%n@%m)"
 PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
