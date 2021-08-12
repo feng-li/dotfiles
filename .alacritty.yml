@@ -269,7 +269,7 @@ colors:
   #  background: CellForeground
 
   # Normal colors
-  #normal:
+  # normal:
   #  black:   '#1d1f21'
   #  red:     '#cc6666'
   #  green:   '#b5bd68'
