@@ -60,3 +60,7 @@
 	proxy = http://127.0.0.1:41091
 [init]
 	defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git://"]
+	insteadOf = https://
