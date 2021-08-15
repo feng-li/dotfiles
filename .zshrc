@@ -82,6 +82,8 @@ export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL open
 ## Dictionary
 export DICPATH=~/.emacs.d/hunspell:$DICPATH
 
+## GIT-LATEXDIFF
+alias git-ldiff="git-latexdiff  --lualatex --ignore-latex-errors"
 
 ######################################################################
 ## ZSH settings

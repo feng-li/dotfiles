@@ -15,11 +15,9 @@
 [instaweb]
         httpd=webrick
 [difftool.latex]
-        cmd = git-latexdiff --latexmk --ignore-latex-errors \"$REMOTE\" \"$LOCAL\"
+        cmd = git-latexdiff --latexmk --tmpdirprefix diff  --ignore-latex-errors \"$REMOTE\" \"$LOCAL\"
 [difftool]
         prompt = false
-# [alias]
-#         ldiff = difftool -t latex
 
 [push]
 	default = simple

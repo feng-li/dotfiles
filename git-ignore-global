@@ -54,6 +54,7 @@ TAGS
 *.fls
 *.spl
 *.rip
+*.xdv
 *.run.xml
 *.vrb
 *.spl.pgp
@@ -66,7 +67,6 @@ _region_.*
 _region_.tex
 **/arxiv/
 *.synctex*
-*.bbl
 
 # Compiled source #
 ###################
