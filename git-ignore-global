@@ -36,6 +36,7 @@
 # Emacs tags
 ##################
 TAGS
+*.pandoc
 
 # Latex temp files
 ##################
