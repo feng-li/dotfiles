@@ -71,7 +71,7 @@ fi
 ## Emacs client as an editor
 
 ## Emacs no-window
-alias emacs='emacsclient --alternate-editor="command emacs" -nw -e "(ibuffer)"'
+alias emacs='emacsclient --alternate-editor="command emacs" -nw'
 
 ## Emacsclient no-window
 alias ec='emacsclient -nw -e "(ibuffer)"'
