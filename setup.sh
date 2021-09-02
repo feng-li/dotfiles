@@ -29,13 +29,13 @@ echo "dotfiles setup: $DIR/emacs.d/ is softlinked to  $HOME/.emacs.d/"
 # echo Starting emacs daemon via systemctl
 # systemctl start --user emacs
 
-if [ ! -d $HOME/.bin ]; then
-    mkdir $HOME/.bin
+if [ ! -d $HOME/.local/bin/ ]; then
+    mkdir $HOME/.local/bin
 fi
 
 # git-latexdiff
 ln -sf $DIR/git-latexdiff/git-latexdiff $HOME/.bin/
-echo "git-latexdiff is softlinked to $HOME/.bin/"
+echo "git-latexdiff is softlinked to $HOME/.local/bin/"
 
 ln -sf $DIR/.inputrc $HOME
 echo "dotfiles setup: $DIR/.inputrc is softlinked to  $HOME/.inputrc"
@@ -75,7 +75,6 @@ echo "dotfiles setup: $DIR/flake8 is softlinked to  $HOME/.config/flake8"
 if [ ! -d $HOME/.config/pip ]; then
     mkdir $HOME/.config/pip
 fi
-
 ln -sf $DIR/pip.conf $HOME/.config/pip/pip.conf
 echo "dotfiles setup: $DIR/pip.conf is softlinked to  $HOME/.config/pip/pip.conf"
 

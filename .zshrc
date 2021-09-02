@@ -9,7 +9,6 @@ if [[ -f $HOME/.dotfiles/dir_colors/dircolors ]]; then
     eval `dircolors $HOME/.dotfiles/dir_colors/dircolors`
 fi
 
-
 # Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
 GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
@@ -22,6 +21,9 @@ if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
 fi
 
 # export TERM=xterm-256color
+if [[ $TERM = dumb ]]; then
+    unset zle_bracketed_paste
+fi
 
 ## Add a user PATH
 LOCALBIN=$HOME/.local/bin
