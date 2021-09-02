@@ -66,13 +66,13 @@ fi
 ## Emacs client as an editor
 
 ## Emacs no-window
-alias emacs='emacsclient --alternate-editor="command emacs" -nw'
+alias emacs='emacsclient --alternate-editor="command emacs" -nw -e "(ibuffer)"'
 
 ## Emacsclient no-window
-alias ec="emacsclient -nw"
+alias ec='emacsclient -nw -e "(ibuffer)"'
 
 ## Emacsclient window
-alias ecg="emacsclient -c"
+alias ecg='emacsclient -c -e "(ibuffer)"'
 
 ## The default editor
 export ALTERNATE_EDITOR=""
