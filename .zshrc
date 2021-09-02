@@ -65,6 +65,9 @@ if [[ -f /usr/bin/info ]]; then
     alias man=info
 fi
 
+if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
+    export XDG_RUNTIME_DIR=/run/user/$(id -ru)
+fi
 ## Emacs client as an editor
 
 ## Emacs no-window
