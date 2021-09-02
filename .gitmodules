@@ -1,21 +1,21 @@
 [submodule "gnome-terminal-dracula-theme"]
 	path = gnome-terminal-dracula-theme
-	url = https://github.com/dracula/gnome-terminal.git
+	url = git@github.com:dracula/gnome-terminal.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+	url = git@github.com:robbyrussell/oh-my-zsh.git
 [submodule "zsh-dracula-theme"]
 	path = zsh-dracula-theme
-	url = https://github.com/dracula/zsh.git
+	url = git@github.com:dracula/zsh.git
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = git@github.com:feng-li/.emacs.d.git
 [submodule "gedit-dracula-theme"]
 	path = gedit-dracula-theme
-	url = https://github.com/dracula/gedit.git
+	url = git@github.com:dracula/gedit.git
 [submodule "git-latexdiff"]
 	path = git-latexdiff
 	url = https://gitlab.com/git-latexdiff/git-latexdiff.git
 [submodule "alacritty-dracula-theme"]
 	path = alacritty-dracula-theme
-	url = https://github.com/dracula/alacritty.git
+	url = git@github.com:dracula/alacritty.git
