@@ -6,7 +6,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "dotfiles locate at $DIR"
 
 cd $DIR
-git submodule update --init --recursive
+git submodules update --recursive
+git submodules foreach git pull
 
 if [ "$(realpath "$DIR")" = "$(realpath "$HOME/.dotfiles")"  ]; then
     echo "Location of dotfiles and $HOME/.dotfiles are the same."
@@ -30,11 +31,11 @@ echo "dotfiles setup: $DIR/emacs.d/ is softlinked to  $HOME/.emacs.d/"
 # systemctl start --user emacs
 
 if [ ! -d $HOME/.local/bin/ ]; then
-    mkdir $HOME/.local/bin
+    mkdir -p $HOME/.local/bin
 fi
 
 # git-latexdiff
-ln -sf $DIR/git-latexdiff/git-latexdiff $HOME/.bin/
+ln -sf $DIR/git-latexdiff/git-latexdiff $HOME/.local/bin/
 echo "git-latexdiff is softlinked to $HOME/.local/bin/"
 
 ln -sf $DIR/.inputrc $HOME
@@ -73,7 +74,7 @@ echo "dotfiles setup: $DIR/flake8 is softlinked to  $HOME/.config/flake8"
 
 
 if [ ! -d $HOME/.config/pip ]; then
-    mkdir $HOME/.config/pip
+    mkdir -p $HOME/.config/pip
 fi
 ln -sf $DIR/pip.conf $HOME/.config/pip/pip.conf
 echo "dotfiles setup: $DIR/pip.conf is softlinked to  $HOME/.config/pip/pip.conf"
