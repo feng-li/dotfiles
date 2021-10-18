@@ -4,4 +4,4 @@
 
 podget --dir_config /home/fli/.dotfiles/.podget
 bash /home/fli/.dotfiles/ebook-convert/ebook-convert.sh
-php /srv/www/public_html/cloud/occ files:scan --path="/fli/files/News"
+php /srv/html/cloud/occ files:scan --path="/fli/files/News"
