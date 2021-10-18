@@ -7,6 +7,7 @@ echo "dotfiles locate at $DIR"
 
 cd $DIR
 git submodule update --recursive
+git submodule foreach git checkout master
 git submodule foreach git pull
 
 if [ "$(realpath "$DIR")" = "$(realpath "$HOME/.dotfiles")"  ]; then
