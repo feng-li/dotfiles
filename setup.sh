@@ -6,8 +6,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "dotfiles locate at $DIR"
 
 cd $DIR
-git submodules update --recursive
-git submodules foreach git pull
+git submodule update --recursive
+git submodule foreach git pull
 
 if [ "$(realpath "$DIR")" = "$(realpath "$HOME/.dotfiles")"  ]; then
     echo "Location of dotfiles and $HOME/.dotfiles are the same."
