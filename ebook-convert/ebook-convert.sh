@@ -11,7 +11,7 @@ RECIPE_CLEAN_FREQUENCY=30 # Delete old books older than x days
 OUT_DIR=/tmp/EBooks/
 OUT_FORMAT=epub
 
-CALIBRE_LIBRARY=/srv/data/nextcloud/fli/files/News/EBooks # Register to a calibre library if non-empty value is given
+CALIBRE_LIBRARY=/srv/data/oss/nextcloud/fli/files/News/EBooks # Register to a calibre library if non-empty value is given
 CALIBRE_LIBRARY_SERVER= # Send to a calibre server (not implemented yet)
 
 # Make DIR

@@ -15,7 +15,7 @@ CONFIG_SERVERLIST=serverlist
 DIR_SESSION=/tmp/podget
 
 # Directory where to store downloaded files
-DIR_LIBRARY=/srv/data/nextcloud/fli/files/News/POD/
+DIR_LIBRARY=/srv/data/oss/nextcloud/fli/files/News/POD/
 
 # Directory to store logs in
 # By default, logs are stored in DIR_LIBRARY/.LOG
