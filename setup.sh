@@ -3,15 +3,15 @@
 # Get current dir path for this script
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-echo  "[`dotfiles` located at $dotfiles_dir]"
-echo  "[`dotfiles` setup:]"
+echo  "['dotfiles' located at $dotfiles_dir]"
+echo  "['dotfiles' setup:]"
 cd $dotfiles_dir
 # git submodule update --recursive
 # git submodule foreach git checkout master
 # git submodule foreach git pull
 
 if [ "$(realpath "$dotfiles_dir")" = "$(realpath "$HOME/.dotfiles")"  ]; then
-    echo  "Location of `dotfiles` and $HOME/.dotfiles are the same."
+    echo  "Location of 'dotfiles' and $HOME/.dotfiles are the same."
 else
     rm -rf $HOME/.dotfiles
     ln -sf $dotfiles_dir    $HOME/.dotfiles
