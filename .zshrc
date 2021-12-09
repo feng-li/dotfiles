@@ -15,7 +15,7 @@ GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
 WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
 if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
   export SCREEN_STARTED=1
-  tmux attach -d || tmux new -s WORKSPACE
+  tmux new -A -s WORKSPACE
   # normally, execution of this rc script ends here...
   #echo "Screen failed! continuing with normal bash startup"
 fi
