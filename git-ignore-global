@@ -17,6 +17,7 @@
 *.\#*\#
 *.\#*
 *.bak
+*.tmp
 *conflicted copy*
 *.sav
 *\(Case\ Conflict\)*
