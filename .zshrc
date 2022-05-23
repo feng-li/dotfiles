@@ -87,6 +87,9 @@ export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL open
 ## Dictionary
 export DICPATH=~/.emacs.d/hunspell:$DICPATH
 
+## Emacs lsp speed up.
+export LSP_USE_PLISTS=true
+
 ## GIT-LATEXDIFF
 alias git-ldiff="git-latexdiff  --lualatex --ignore-latex-errors"
 
