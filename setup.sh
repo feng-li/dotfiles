@@ -48,6 +48,9 @@ echo  "$dotfiles_dir/.inputrc -> $HOME/.inputrc"
 ln -sf $dotfiles_dir/.zshrc    $HOME/.zshrc
 echo  "$dotfiles_dir/.zshrc -> $HOME/.zshrc"
 
+ln -sf $dotfiles_dir/.alacritty.yml    $HOME/.alacritty.yml
+echo  "$dotfiles_dir/.alacritty -> $HOME/.alacritty.yml"
+
 ln -sf $dotfiles_dir/.tmux.conf    $HOME/.tmux.conf
 echo  "$dotfiles_dir/.tmux.conf -> $HOME/.tmux.conf"
 

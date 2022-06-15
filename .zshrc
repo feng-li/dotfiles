@@ -70,6 +70,9 @@ fi
 # fi
 ## Emacs client as an editor
 
+## Emacs lsp speed up.
+export LSP_USE_PLISTS=true
+
 ## Emacs no-window
 alias emacs='emacsclient --alternate-editor="command emacs" -nw'
 
@@ -87,11 +90,8 @@ export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL open
 ## Dictionary
 export DICPATH=~/.emacs.d/hunspell:$DICPATH
 
-## Emacs lsp speed up.
-export LSP_USE_PLISTS=true
-
 ## GIT-LATEXDIFF
-alias git-ldiff="git-latexdiff  --lualatex --ignore-latex-errors"
+alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
 ######################################################################
 ## ZSH settings

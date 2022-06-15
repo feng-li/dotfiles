@@ -7,6 +7,7 @@
 	fileMode = false
 	sshCommand = ssh -i ~/.ssh/fli_rsa -F /dev/null
 	editor = emacsclient --tty -create-frame -a=""
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
 	interactive = always
@@ -60,3 +61,18 @@
 	insteadOf = https://github.com/
 # [url "git://"]
 # 	insteadOf = https://
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = red 52
+	newNormal = green
+	newHighlight = green 22
+[color "diff"]
+	meta = 11
+	frag = magenta
+	func = 146
+	commit = yellow
+	old = red
+	new = green
+	whitespace = red reverse
