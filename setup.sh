@@ -35,6 +35,10 @@ if [ ! -d $HOME/.local/bin/ ]; then
     mkdir -p $HOME/.local/bin
 fi
 
+ln -sf $dotfiles_dir/.java/    $HOME/.java
+echo  "$dotfiles_dir/.java/ -> $HOME/.java"
+
+
 # git-latexdiff
 ln -sf $dotfiles_dir/git-latexdiff/git-latexdiff    $HOME/.local/bin/
 echo  "$dotfiles_dir/git-latexdiff/git-latexdiff -> $HOME/.local/bin/"
