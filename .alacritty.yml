@@ -192,11 +192,11 @@ import:
   - ~/.dotfiles/alacritty-dracula-theme/dracula.yml
 
 # Colors (Tomorrow Night)
-# colors:
+colors:
   # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
+  primary:
+    background: '#1d1f21'
+    foreground: '#c5c8c6'
 
     # Bright and dim foreground colors
     #
@@ -204,8 +204,8 @@ import:
     # present. If the bright foreground color is not set, or
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
-    #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
+    # dim_foreground: '#828482'
+    # bright_foreground: '#eaeaea'
 
   # Cursor colors
   #
