@@ -61,8 +61,8 @@
   <entry key="importWorkingDirectory" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib"/>
   <entry key="keyGenAlwaysAddLetter" value="false"/>
   <entry key="keyGenFirstLetterA" value="true"/>
-  <entry key="lastEdited" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-kllab.bib"/>
-  <entry key="lastFocused" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-kllab.bib"/>
+  <entry key="lastEdited" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-yanfei.bib"/>
+  <entry key="lastFocused" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-yanfei.bib"/>
   <entry key="lastUsedExport" value="HTML list"/>
   <entry key="localAutoSave" value="false"/>
   <entry key="lyxpipe" value="/home/fli/.lyx/lyxpipe"/>
