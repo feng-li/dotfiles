@@ -9,6 +9,10 @@ if [[ -f $HOME/.dotfiles/dir_colors/dircolors ]]; then
     eval `dircolors $HOME/.dotfiles/dir_colors/dircolors`
 fi
 
+if [[ -f $HOME/.local/bin/zsh ]]; then
+    SHELL=$HOME/.local/bin/zsh
+fi
+
 # Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
 GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
@@ -111,8 +115,6 @@ if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
 
     # Path to your oh-my-zsh installation.
     export ZSH=$HOME/.dotfiles/oh-my-zsh
-
-
 
     # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
