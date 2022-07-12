@@ -21,7 +21,7 @@
 *conflicted copy*
 *.sav
 *\(Case\ Conflict\)*
-
+*.venv
 # History files
 ################
 .Rhistory
