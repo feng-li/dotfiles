@@ -1,5 +1,5 @@
 ######################################################################
-#### The system settings
+#### System settings
 ######################################################################
 
 # If you come from bash you might have to change your $PATH.
@@ -11,17 +11,6 @@ fi
 
 if [[ -f $HOME/.local/bin/zsh ]]; then
     SHELL=$HOME/.local/bin/zsh
-fi
-
-# Auto-screen invocation.  if we're in an interactive session then automatically put us
-# into a screen(1) session.
-GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
-WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
-if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
-  export SCREEN_STARTED=1
-  tmux new -A -s WORKSPACE
-  # normally, execution of this rc script ends here...
-  #echo "Screen failed! continuing with normal bash startup"
 fi
 
 export TERM=xterm-256color
@@ -92,11 +81,32 @@ export EDITOR="emacsclient -t --create-frame" # $EDITOR opens in terminal
 export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL opens in GUI mode
 
 ## Dictionary
-export DICPATH=~/.emacs.d/hunspell:$DICPATH
+export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 
 ## GIT-LATEXDIFF
 alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
+## Linux homebrew
+if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
+    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+
+    ## Use local git for brew
+    if [[ -f $HOME/.local/bin/curl ]]; then
+        export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
+    fi
+    if [[ -f $HOME/.local/bin/git ]]; then
+        export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+    fi
+fi
+
+# Auto-screen invocation.  if we're in an interactive session then automatically put us
+# into a screen(1) session.
+GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
+WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
+if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
+  export SCREEN_STARTED=1
+  tmux new -A -s WORKSPACE
+fi
 ######################################################################
 ## ZSH settings
 ######################################################################
@@ -109,7 +119,6 @@ if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
     ZSH_HIGHLIGHT_STYLES[cursor]='bg=white'
 fi
-
 
 if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
 
@@ -170,7 +179,6 @@ if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
 
     # Add local catached dir
     ZSH_CACHE_DIR="$HOME/.cache"
-
 fi
 
 # User configuration

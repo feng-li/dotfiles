@@ -2,6 +2,6 @@
 ##CXX=ccache clang++ -Qunused-arguments
 ##CCACHE_CPP2=yes
 
-CC=clang -Qunused-arguments
-CXX=clang++ -Qunused-arguments
-CCACHE_CPP2=yes
+# CC=clang -Qunused-arguments
+# CXX=clang++ -Qunused-arguments
+# CCACHE_CPP2=yes
