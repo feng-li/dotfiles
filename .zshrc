@@ -1,9 +1,8 @@
 ######################################################################
 #### System settings
 ######################################################################
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 
 if [[ -f $HOME/.dotfiles/dir_colors/dircolors ]]; then
     eval `dircolors $HOME/.dotfiles/dir_colors/dircolors`
