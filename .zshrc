@@ -66,7 +66,7 @@ fi
 export LSP_USE_PLISTS=true
 
 ## Emacs no-window
-alias emacs='emacsclient --alternate-editor="command emacs" -nw'
+alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
 
 ## Emacsclient no-window
 alias ec='emacsclient -nw -e "(ibuffer)"'
