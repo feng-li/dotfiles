@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE map SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<map MAP_XML_VERSION="1.0">
+  <entry key="article" value="jabref-entrytype: article: req[author;title;journal;year] opt[volume;number;pages;month;issn;note]"/>
+  <entry key="book" value="jabref-entrytype: book: req[author/editor;title;publisher;year] opt[volume;number;series;address;edition;month;isbn;note]"/>
+  <entry key="booklet" value="jabref-entrytype: booklet: req[title] opt[author;howpublished;address;month;year;note]"/>
+  <entry key="conference" value="jabref-entrytype: conference: req[author;title;booktitle;year] opt[editor;volume;number;series;pages;address;month;organization;publisher;note]"/>
+  <entry key="electronic" value="jabref-entrytype: electronic: req[] opt[author;month;year;title;language;howpublished;organization;address;note;url]"/>
+  <entry key="ieeetranbstctl" value="jabref-entrytype: ieeetranbstctl: req[] opt[ctluse_article_number;ctluse_paper;ctluse_forced_etal;ctluse_url;ctlmax_names_forced_etal;ctlnames_show_etal;ctluse_alt_spacing;ctlalt_stretch_factor;ctldash_repeated_names;ctlname_format_string;ctlname_latex_cmd;ctlname_url_prefix]"/>
+  <entry key="inbook" value="jabref-entrytype: inbook: req[chapter/pages;author/editor;title;publisher;year] opt[volume;number;series;type;address;edition;month;isbn;note]"/>
+  <entry key="incollection" value="jabref-entrytype: incollection: req[author;title;booktitle;publisher;year] opt[editor;volume;number;series;type;chapter;pages;address;edition;month;isbn;note]"/>
+  <entry key="inproceedings" value="jabref-entrytype: inproceedings: req[author;title;booktitle;year] opt[editor;volume;number;series;pages;address;month;organization;publisher;note]"/>
+  <entry key="manual" value="jabref-entrytype: manual: req[title] opt[author;organization;address;edition;month;year;isbn;note]"/>
+  <entry key="mastersthesis" value="jabref-entrytype: mastersthesis: req[author;title;school;year] opt[type;address;month;note]"/>
+  <entry key="misc" value="jabref-entrytype: misc: req[] opt[author;title;howpublished;month;year;note]"/>
+  <entry key="patent" value="jabref-entrytype: patent: req[year/yearfiled;nationality;number] opt[author;title;language;assignee;address;type;day;dayfiled;month;monthfiled;note;url]"/>
+  <entry key="periodical" value="jabref-entrytype: periodical: req[title;year] opt[editor;language;series;volume;number;organization;month;note;url]"/>
+  <entry key="phdthesis" value="jabref-entrytype: phdthesis: req[author;title;school;year] opt[type;address;month;note]"/>
+  <entry key="proceedings" value="jabref-entrytype: proceedings: req[title;year] opt[editor;volume;number;series;address;publisher;month;organization;isbn;note]"/>
+  <entry key="standard" value="jabref-entrytype: standard: req[organization/institution;title] opt[author;language;howpublished;type;number;revision;address;month;year;note;url]"/>
+  <entry key="techreport" value="jabref-entrytype: techreport: req[author;title;institution;year] opt[type;number;address;month;note]"/>
+  <entry key="unpublished" value="jabref-entrytype: unpublished: req[author;title;note] opt[month;year]"/>
+</map>
