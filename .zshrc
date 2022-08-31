@@ -172,7 +172,7 @@ if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(autoswitch-virtualenv zsh-autosuggestions git $plugins)
+    plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins)
 
     source $ZSH/oh-my-zsh.sh
 
