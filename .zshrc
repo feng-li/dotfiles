@@ -4,8 +4,10 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-if [[ -f $HOME/.dotfiles/dir_colors/dircolors ]]; then
-    eval `dircolors $HOME/.dotfiles/dir_colors/dircolors`
+dotfiles_dir=`dirname $(readlink $HOME/.zshrc)`
+
+if [[ -f $dotfiles_dir/dir_colors/dircolors ]]; then
+    eval `dircolors $dotfiles_dir/dir_colors/dircolors`
 fi
 
 if [[ -f $HOME/.local/bin/zsh ]]; then
@@ -98,7 +100,7 @@ if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
     fi
 fi
 
-# Auto-screen invocation.  if we're in an interactive session then automatically put us
+## Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
 GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
 WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
@@ -110,19 +112,19 @@ fi
 ## ZSH settings
 ######################################################################
 
-# zsh syntax highlighting
-if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# # zsh syntax highlighting
+# if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+#     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-    # Set background of cursor to avoid invisible move...
-    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-    ZSH_HIGHLIGHT_STYLES[cursor]='bg=white'
-fi
+#     # Set background of cursor to avoid invisible move...
+#     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+#     ZSH_HIGHLIGHT_STYLES[cursor]='bg=white'
+# fi
 
-if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
+if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
 
     # Path to your oh-my-zsh installation.
-    export ZSH=$HOME/.dotfiles/oh-my-zsh
+    export ZSH=$dotfiles_dir/oh-my-zsh
 
     # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -166,58 +168,31 @@ if [ -f $HOME/.dotfiles/oh-my-zsh/oh-my-zsh.sh ]; then
     # HIST_STAMPS="mm/dd/yyyy"
 
     # Would you like to use another custom folder than $ZSH/custom?
-    ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
+    ZSH_CUSTOM=$dotfiles_dir/zsh_custom
 
     # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins)
+    plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
 
     source $ZSH/oh-my-zsh.sh
 
     # Add local catached dir
     ZSH_CACHE_DIR="$HOME/.cache"
+
+    # Fancy color prompt
+    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔ %{$fg[cyan]%}) "
+    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}✗ %{$fg[cyan]%}) "
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}("
+    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+    AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
+
+    autoload -U colors && colors
+    local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
+    PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
+else
+    autoload -U colors && colors
+    # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
+    PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
 fi
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Color prompt
-# autoload -U colors && colors
-# PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
-# PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔ %{$fg[cyan]%}) "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}✗ %{$fg[cyan]%}) "
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
-
-local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
-PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'

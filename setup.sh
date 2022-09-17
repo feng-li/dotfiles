@@ -10,83 +10,53 @@ cd $dotfiles_dir
 # git submodule foreach git checkout master
 # git submodule foreach git pull
 
-if [ "$(realpath "$dotfiles_dir")" = "$(realpath "$HOME/.dotfiles")"  ]; then
-    echo  "Location of 'dotfiles' and $HOME/.dotfiles are the same."
-else
-    rm -rf $HOME/.dotfiles
-    ln -sf $dotfiles_dir    $HOME/.dotfiles
-    echo  "$dotfiles_dir -> $HOME/.dotfiles"
+# $XDG_CONFIG_HOME files
+if [ ! -d $HOME/.config ]; then
+    mkdir $HOME/.config
 fi
+for file in $dotfiles_dir/.config/*
+do
+    ln -sfv $file $HOME/.config/
+done
+
+# if [ "$(realpath "$dotfiles_dir")" = "$(realpath "$HOME/.dotfiles")"  ]; then
+#     echo  "Location of 'dotfiles' and $HOME/.dotfiles are the same."
+# else
+#     rm -rf $HOME/.dotfiles
+#     ln -sf $dotfiles_dir    $HOME/.dotfiles
+#     echo  "$dotfiles_dir -> $HOME/.dotfiles"
+# fi
 
 # Emacs
 mv -f $HOME/.emacs.d  $HOME/.emacs.d_bak
 rm -rf $HOME/.emacs
-
-ln -sf $dotfiles_dir/.emacs.d    $HOME/.emacs.d
-echo  "$dotfiles_dir/emacs.d/ -> $HOME/.emacs.d/"
+ln -sfv $dotfiles_dir/.emacs.d    $HOME/.emacs.d
 
 # echo  Enabling emacs daemon via systemctl
 # systemctl enable --user emacs
-
 # echo  Starting emacs daemon via systemctl
 # systemctl start --user emacs
+
+ln -sfv $dotfiles_dir/.java/    $HOME/.java
 
 if [ ! -d $HOME/.local/bin/ ]; then
     mkdir -p $HOME/.local/bin
 fi
 
-ln -sf $dotfiles_dir/.java/    $HOME/.java
-echo  "$dotfiles_dir/.java/ -> $HOME/.java"
-
-
-# git-latexdiff
-ln -sf $dotfiles_dir/git-latexdiff/git-latexdiff    $HOME/.local/bin/
-echo  "$dotfiles_dir/git-latexdiff/git-latexdiff -> $HOME/.local/bin/"
-
-ln -sf $dotfiles_dir/.latexmkrc    $HOME/.latexmkrc
-echo  "$dotfiles_dir/.latexmkrc -> $HOME/.latexmkrc"
+# # git-latexdiff
+# ln -sfv $dotfiles_dir/git-latexdiff/git-latexdiff    $HOME/.local/bin/
 
 ln -sf $dotfiles_dir/.inputrc    $HOME/.inputrc
-echo  "$dotfiles_dir/.inputrc -> $HOME/.inputrc"
+ln -sfv $dotfiles_dir/.zshrc    $HOME/.zshrc
 
-ln -sf $dotfiles_dir/.zshrc    $HOME/.zshrc
-echo  "$dotfiles_dir/.zshrc -> $HOME/.zshrc"
-
-ln -sf $dotfiles_dir/.alacritty.yml    $HOME/.alacritty.yml
-echo  "$dotfiles_dir/.alacritty -> $HOME/.alacritty.yml"
-
-ln -sf $dotfiles_dir/.tmux.conf    $HOME/.tmux.conf
-echo  "$dotfiles_dir/.tmux.conf -> $HOME/.tmux.conf"
-
-ln -sf $dotfiles_dir/.gitconfig    $HOME/.gitconfig
-echo  "$dotfiles_dir/.gitconfig -> $HOME/.gitconfig"
-
-ln -sf $dotfiles_dir/.Renviron    $HOME/.Renviron
-echo  "$dotfiles_dir/.Renviron -> $HOME/.Renviron"
-
-ln -sf $dotfiles_dir/.Rprofile    $HOME/.Rprofile
-echo  "$dotfiles_dir/.Rprofile -> $HOME/.Rprofile"
+ln -sfv $dotfiles_dir/.Renviron    $HOME/.Renviron
+ln -sfv $dotfiles_dir/.Rprofile    $HOME/.Rprofile
+ln -sfv $dotfiles_dir/.lintr       $HOME/.lintr
 
 if [ ! -d $HOME/.R ]; then
     mkdir $HOME/.R
 fi
 ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
-echo  "$dotfiles_dir/.R/Makevars -> $HOME/.R/Makevars"
 
-ln -sf $dotfiles_dir/.lintr    $HOME/.lintr
-echo  "$dotfiles_dir/.lintr -> $HOME/.lintr"
-
-if [ ! -d $HOME/.config ]; then
-    mkdir $HOME/.config
-fi
-
-ln -sf $dotfiles_dir/.config/flake8     $HOME/.config/flake8
-echo  "$dotfiles_dir/.config/flake8 ->  $HOME/.config/flake8"
-
-if [ ! -d $HOME/.config/pip ]; then
-    mkdir -p $HOME/.config/pip
-fi
-ln -sf $dotfiles_dir/.config/pip/pip.conf    $HOME/.config/pip/pip.conf
-echo  "$dotfiles_dir/.config/pip/pip.conf -> $HOME/.config/pip/pip.conf"
 
 exit 0;
