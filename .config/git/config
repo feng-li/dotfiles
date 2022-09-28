@@ -16,18 +16,11 @@
 [instaweb]
         httpd=webrick
 [difftool.latex]
-        cmd = git-latexdiff --latexmk --tmpdirprefix diff  --ignore-latex-errors \"$REMOTE\" \"$LOCAL\"
+        cmd = git-latexdiff --latexmk --tmpdirprefix diff --ignore-latex-errors \"$REMOTE\" \"$LOCAL\"
 [difftool]
         prompt = false
-
 [push]
 	default = simple
-# [http]
-# 	proxy = socks5h://127.0.0.1:1090
-# [https]
-# 	proxy = socks5h://127.0.0.1:1090
-# [url "https://"]
-# 	insteadOf = git://
 [alias]
         noproxy = config --global --remove-section http
         proxy = config --global  http.proxy http://127.0.0.1:41091
@@ -76,3 +69,7 @@
 	old = red
 	new = green
 	whitespace = red reverse
+[merge]
+	conflictStyle = diff3
+[http]
+	proxy = http://127.0.0.1:41091
