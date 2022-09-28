@@ -71,5 +71,3 @@
 	whitespace = red reverse
 [merge]
 	conflictStyle = diff3
-[http]
-	proxy = http://127.0.0.1:41091
