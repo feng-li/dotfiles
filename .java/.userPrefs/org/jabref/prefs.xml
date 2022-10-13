@@ -20,9 +20,9 @@
   <entry key="columnSortTypes" value=""/>
   <entry key="columnWidths" value="100;100;100;100;100;100;100;100"/>
   <entry key="consoleCommand" value=""/>
-  <entry key="customExportFormat0" value="mylistrefs;/home/fli/nextcloud/workspace/texmf/bibtex/bib/export/layout/listrefs/listrefs;html"/>
-  <entry key="customExportFormat1" value="mylistrefs_snippets;/home/fli/nextcloud/workspace/texmf/bibtex/bib/export/layout/listrefs/snippets/listrefs_snippets;html"/>
-  <entry key="customExportFormat2" value="mylist;/home/fli/nextcloud/workspace/texmf/bibtex/bib/export/layout/listrefs/ol/listrefs;html"/>
+  <entry key="customExportFormat0" value="mylistrefs;/home/fli/carbon/workspace/texmf/bibtex/bib/export/layout/listrefs/listrefs;html"/>
+  <entry key="customExportFormat1" value="mylistrefs_snippets;/home/fli/carbon/workspace/texmf/bibtex/bib/export/layout/listrefs/snippets/listrefs_snippets;html"/>
+  <entry key="customExportFormat2" value="mylist;/home/fli/carbon/workspace/texmf/bibtex/bib/export/layout/listrefs/ol/listrefs;html"/>
   <entry key="customTabFields_0" value="doi;crossref;keywords;eprint;url;file;groups;owner;timestamp;printed;priority;qualityassured;ranking;readstatus;relevance"/>
   <entry key="customTabFields_1" value="abstract"/>
   <entry key="customTabFields_2" value="comment"/>
@@ -44,7 +44,7 @@
   <entry key="exportSecSort" value="doi"/>
   <entry key="exportTerDescending" value="true"/>
   <entry key="exportTerSort" value="title"/>
-  <entry key="exportWorkingDirectory" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/export/layout/listrefs/ol"/>
+  <entry key="exportWorkingDirectory" value="/home/fli/carbon/workspace/texmf/bibtex/bib/export/layout/listrefs/ol"/>
   <entry key="externalFileTypes" value=""/>
   <entry key="externalJournalLists" value=""/>
   <entry key="extraFileColumns" value="true"/>
@@ -52,17 +52,17 @@
   <entry key="fetcherCustomKeyUses" value="false;false;false;false"/>
   <entry key="fetcherCustomKeys" value=";;;"/>
   <entry key="fileBrowserCommand" value=""/>
-  <entry key="fileDirectory" value="/home/fli/nextcloud/Papers/sorted"/>
+  <entry key="fileDirectory" value="/home/fli/carbon/Papers/sorted"/>
   <entry key="fxTheme" value=""/>
   <entry key="generateKeysBeforeSaving" value="false"/>
   <entry key="grobidEnabled" value="true"/>
   <entry key="grobidOptOut" value="true"/>
   <entry key="groupSidepaneVisible" value="false"/>
-  <entry key="importWorkingDirectory" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib"/>
+  <entry key="importWorkingDirectory" value="/home/fli/carbon/workspace/texmf/bibtex/bib"/>
   <entry key="keyGenAlwaysAddLetter" value="false"/>
   <entry key="keyGenFirstLetterA" value="true"/>
-  <entry key="lastEdited" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/nextcloud/workspace/texmf/bibtex/bib/references-feng.bib"/>
-  <entry key="lastFocused" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/references-feng.bib"/>
+  <entry key="lastEdited" value="/home/fli/carbon/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib"/>
+  <entry key="lastFocused" value="/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib"/>
   <entry key="lastUsedExport" value="HTML list"/>
   <entry key="localAutoSave" value="false"/>
   <entry key="lyxpipe" value="/home/fli/.lyx/lyxpipe"/>
@@ -86,7 +86,7 @@
   <entry key="proxyHostname" value="127.0.0.1"/>
   <entry key="proxyPort" value="41091"/>
   <entry key="pushToApplication" value="TeXstudio"/>
-  <entry key="recentDatabases" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib/references-feng.bib;/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-kllab.bib;/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/nextcloud/workspace/texmf/bibtex/bib/references-yanfei.bib;/home/fli/nextcloud/workspace/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/references-feng.bib;/home/fli/texmf/bibtex/bib/references-yanfei.bib"/>
+  <entry key="recentDatabases" value="/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-kllab.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/references-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/references-feng.bib;/home/fli/texmf/bibtex/bib/references-yanfei.bib"/>
   <entry key="regExpSearchExpression" value="Papers/**/*[title].*\\.[extension]"/>
   <entry key="searchDalogColumnSortOrder" value=""/>
   <entry key="searchDialogColumnSortTypes" value="ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING"/>
@@ -109,6 +109,6 @@
   <entry key="webSearchVisible" value="false"/>
   <entry key="winEdtPath" value="WinEdt"/>
   <entry key="windowMaximised" value="true"/>
-  <entry key="workingDirectory" value="/home/fli/nextcloud/workspace/texmf/bibtex/bib"/>
+  <entry key="workingDirectory" value="/home/fli/carbon/workspace/texmf/bibtex/bib"/>
   <entry key="xmpPrivacyFilters" value="owner;pdf;review;timestamp;note;keywords"/>
 </map>
