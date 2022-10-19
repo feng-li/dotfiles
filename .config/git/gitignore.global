@@ -8,6 +8,8 @@
 **/__pycache__
 **/.ipynb_checkpoints/
 **/.ropeproject/
+**/.eggs/
+*.egg-info/
 # Backup files #
 ################
 .~*
@@ -68,6 +70,7 @@ diff.bbl
 _region_.*
 *.fdb_latexmk
 _region_.tex
+*.bbl
 **/arxiv/
 *.synctex*
 
