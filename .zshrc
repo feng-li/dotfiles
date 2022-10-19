@@ -70,6 +70,9 @@ export LSP_USE_PLISTS=true
 ## Emacs no-window only in no SSH session
 if [[ -z ${SSH_TTY} ]]; then
     alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
+else
+    eval `ssh-agent -s`
+    ssh-add ~/.ssh/fli_rsa
 fi
 
 ## Emacsclient no-window
@@ -88,10 +91,6 @@ export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 
 ## GIT-LATEXDIFF
 alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
-
-if [[ -f $HOME/.local/bin/diff-so-fancy ]]; then
-    alias "git diff"="git diff --diff-filter=`diff-so-fancy --patch`"
-fi
 
 ## Linux homebrew
 if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
