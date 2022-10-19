@@ -72,7 +72,7 @@ if [[ -z ${SSH_TTY} ]]; then
     alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
 else
     eval `ssh-agent -s`
-    ssh-add ~/.ssh/fli_rsa
+    # ssh-add ~/.ssh/fli_rsa
 fi
 
 ## Emacsclient no-window
@@ -93,17 +93,17 @@ export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
 ## Linux homebrew
-if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
-    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+# if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
+#     eval "$($HOME/.linuxbrew/bin/brew shellenv)"
 
-    ## Use local git for brew
-    if [[ -f $HOME/.local/bin/curl ]]; then
-        export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-    fi
-    if [[ -f $HOME/.local/bin/git ]]; then
-        export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-    fi
-fi
+#     ## Use local git for brew
+#     if [[ -f $HOME/.local/bin/curl ]]; then
+#         export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
+#     fi
+#     if [[ -f $HOME/.local/bin/git ]]; then
+#         export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+#     fi
+# fi
 
 ## Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
@@ -128,8 +128,11 @@ fi
 
 if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
 
+    export FPATH=$HOME/.local/share/zsh/$ZSH_VERSION/functions:$FPATH
+
     # Path to your oh-my-zsh installation.
     export ZSH=$dotfiles_dir/oh-my-zsh
+
 
     # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
