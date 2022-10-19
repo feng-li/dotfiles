@@ -37,7 +37,7 @@ ln -sfv $dotfiles_dir/.emacs.d    $HOME/.emacs.d
 # echo  Starting emacs daemon via systemctl
 # systemctl start --user emacs
 
-ln -sfv $dotfiles_dir/.java/    $HOME/.java
+ln -sfv $dotfiles_dir/.java    $HOME/.java
 
 if [ ! -d $HOME/.local/bin/ ]; then
     mkdir -p $HOME/.local/bin
@@ -45,6 +45,7 @@ fi
 
 # # git-latexdiff
 # ln -sfv $dotfiles_dir/git-latexdiff/git-latexdiff    $HOME/.local/bin/
+ln -sfv $dotfiles_dir/diff-so-fancy/diff-so-fancy $HOME/.local/bin/
 
 ln -sf $dotfiles_dir/.inputrc    $HOME/.inputrc
 ln -sfv $dotfiles_dir/.zshrc    $HOME/.zshrc
@@ -60,7 +61,7 @@ ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 
 
 # Install brew
-echo "Please use 
+echo "Please use
 
 /bin/bash -c $dotfiles_dir/homebrew_install/install.sh
 

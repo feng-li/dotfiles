@@ -34,3 +34,6 @@
 [submodule "homebrew_install"]
 	path = homebrew_install
 	url = https://github.com/Homebrew/install.git
+[submodule "diff-so-fancy"]
+	path = diff-so-fancy
+	url = https://github.com/so-fancy/diff-so-fancy.git
