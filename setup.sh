@@ -59,4 +59,12 @@ fi
 ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 
 
+# Install brew
+echo "Please use 
+
+/bin/bash -c $dotfiles_dir/homebrew_install/install.sh
+
+to install homebrew.
+"
+
 exit 0;

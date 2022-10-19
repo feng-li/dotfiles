@@ -67,8 +67,10 @@ fi
 ## Emacs lsp speed up.
 export LSP_USE_PLISTS=true
 
-## Emacs no-window
-alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
+## Emacs no-window only in no SSH session
+if [[ -z ${SSH_TTY} ]]; then
+    alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
+fi
 
 ## Emacsclient no-window
 alias ec='emacsclient -nw -e "(ibuffer)"'

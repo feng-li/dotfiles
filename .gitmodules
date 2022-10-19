@@ -31,3 +31,6 @@
 [submodule "zsh_custom/plugins/zsh-syntax-highlighting"]
 	path = zsh_custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "homebrew_install"]
+	path = homebrew_install
+	url = https://github.com/Homebrew/install.git
