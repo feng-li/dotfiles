@@ -197,8 +197,13 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
 
     autoload -U colors && colors
-    local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
-    PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
+    if [[ -z ${SSH_TTY} ]]; then
+        local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
+        PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
+    else
+        local ret_status="%(?:%{$fg[red]%}%n@%m:%{$fg[green]%}%n@%m)"
+        PROMPT='${ret_status}:%{$fg[red]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
+    fi
 else
     autoload -U colors && colors
     # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
