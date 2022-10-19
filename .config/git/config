@@ -54,8 +54,8 @@
 	insteadOf = https://github.com/
 # [url "git://"]
 # 	insteadOf = https://
-[interactive]
-	diffFilter = diff-so-fancy --patch
+# [interactive]
+#	diffFilter = diff-so-fancy --patch
 [color "diff-highlight"]
 	oldNormal = red
 	oldHighlight = red 52

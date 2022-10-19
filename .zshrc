@@ -89,6 +89,10 @@ export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 ## GIT-LATEXDIFF
 alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
+if [[ -f $HOME/.local/bin/diff-so-fancy ]]; then
+    alias "git diff"="git diff --diff-filter=`diff-so-fancy --patch`"
+fi
+
 ## Linux homebrew
 if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
     eval "$($HOME/.linuxbrew/bin/brew shellenv)"
