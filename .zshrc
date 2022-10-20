@@ -25,10 +25,10 @@ PATH=$LOCALBIN:$PATH:
 export PATH
 
 ## Add LD_LIBRARY_PATH (use comma to seprate)
-LOCAL_LIB=$HOME/.APP/lib/
+LOCAL_LIB=$HOME/.local/lib/
 USR_LOCAL_LIB=/usr/local/lib/
-# LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LOCAL_LIB:$USR_LOCAL_LIB
-# export LD_LIBRARY_PATH
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LOCAL_LIB:$USR_LOCAL_LIB
+export LD_LIBRARY_PATH
 
 ## TEXLIVE Enviroment Variables
 # if [ -d "$HOME/.texmf" ] ; then
@@ -71,7 +71,7 @@ export LSP_USE_PLISTS=true
 if [[ -z ${SSH_TTY} ]]; then
     alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
 else
-    eval `ssh-agent -s`
+    # eval `ssh-agent -s`
     # ssh-add ~/.ssh/fli_rsa
 fi
 
@@ -93,22 +93,29 @@ export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
 ## Linux homebrew
-# if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
-#     eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
 
-#     ## Use local git for brew
-#     if [[ -f $HOME/.local/bin/curl ]]; then
-#         export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-#     fi
-#     if [[ -f $HOME/.local/bin/git ]]; then
-#         export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-#     fi
-# fi
+    export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+    export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+    export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+
+    ## Use local git for brew
+    if [[ -f $HOME/.local/bin/curl ]]; then
+        export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
+    fi
+    if [[ -f $HOME/.local/bin/git ]]; then
+        export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+    fi
+
+fi
 
 ## Auto-screen invocation.  if we're in an interactive session then automatically put us
 # into a screen(1) session.
 GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
 WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
+export TMUX_TMPDIR=$HOME/.cache/tmux
 if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
   export SCREEN_STARTED=1
   tmux new -A -s WORKSPACE
