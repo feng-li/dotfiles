@@ -111,11 +111,16 @@ if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
 
 fi
 
-## Auto-screen invocation.  if we're in an interactive session then automatically put us
-# into a screen(1) session.
-GNOME_TERM_PID=$(echo `ps -C gnome-terminal-server -o pid=`)
-WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
+## Auto-TMUX invocation.  if we're in an interactive session then automatically put us
+# into a tmux session.
+
+if [ ! -d $HOME/.cache/tmux ]; then
+    mkdir -p $HOME/.cache/tmux
+fi
 export TMUX_TMPDIR=$HOME/.cache/tmux
+export TMUX=$HOME/.cache/tmux/tmux_${HOST}_${UID}
+
+WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
 if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
   export SCREEN_STARTED=1
   tmux new -A -s WORKSPACE
@@ -123,15 +128,6 @@ fi
 ######################################################################
 ## ZSH settings
 ######################################################################
-
-# # zsh syntax highlighting
-# if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-#     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#     # Set background of cursor to avoid invisible move...
-#     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-#     ZSH_HIGHLIGHT_STYLES[cursor]='bg=white'
-# fi
 
 if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
 
