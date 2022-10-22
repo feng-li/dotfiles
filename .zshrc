@@ -25,9 +25,8 @@ PATH=$LOCALBIN:$PATH:
 export PATH
 
 ## Add LD_LIBRARY_PATH (use comma to seprate)
-LOCAL_LIB=$HOME/.local/lib/
-USR_LOCAL_LIB=/usr/local/lib/
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LOCAL_LIB:$USR_LOCAL_LIB
+LOCAL_LIB=$HOME/.local/lib
+LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
 ## TEXLIVE Enviroment Variables
@@ -49,7 +48,7 @@ export LD_LIBRARY_PATH
 # export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf/
 
 ## No. of threads
-## export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=1
 
 ## Julia
 ## alias julia="julia -f"

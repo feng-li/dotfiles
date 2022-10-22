@@ -8,7 +8,16 @@ case $- in
       *) return;;
 esac
 
+# Source local development environment
+if [ -f $HOME/.local/setvars/*.sh ]; then
+    source $HOME/.local/setvars/*.sh
+fi
 
+# Use local zsh if no root access
+if [ -f $HOME/.local/bin/zsh ]; then
+    export SHELL=$HOME/.local/bin/zsh
+    [ -z "$ZSH_VERSION" ] && exec $HOME/.local/bin/zsh -l
+fi
 
 ################################################################################
 ## Personal configuration
@@ -30,14 +39,13 @@ fi
 export TERM=xterm-256color
 
 ## Add a user PATH
-LOCALBIN=$HOME/.bin
-PATH=$LOCALBIN:$PATH:
+LOCALBIN=$HOME/.local/bin
+PATH=$LOCALBIN:$PATH
 export PATH
 
 ## Add LD_LIBRARY_PATH (use comma to seprate)
-LOCAL_LIB=$HOME/.APP/lib/
-USR_LOCAL_LIB=/usr/local/lib/
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LOCAL_LIB
+LOCAL_LIB=$HOME/.local/lib/
+LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
 ## TEXLIVE Enviroment Variables
