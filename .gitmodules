@@ -1,18 +1,9 @@
-[submodule "gnome-terminal-dracula-theme"]
-	path = gnome-terminal-dracula-theme
-	url = https://github.com/dracula/gnome-terminal.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "zsh-dracula-theme"]
-	path = zsh-dracula-theme
-	url = https://github.com/dracula/zsh.git
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = git@github.com:feng-li/.emacs.d.git
-[submodule "gedit-dracula-theme"]
-	path = gedit-dracula-theme
-	url = https://github.com/dracula/gedit.git
 [submodule "git-latexdiff"]
 	path = git-latexdiff
 	url = https://gitlab.com/git-latexdiff/git-latexdiff.git
@@ -31,9 +22,6 @@
 [submodule "zsh_custom/plugins/zsh-syntax-highlighting"]
 	path = zsh_custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "homebrew_install"]
-	path = homebrew_install
-	url = https://github.com/Homebrew/install.git
 [submodule "diff-so-fancy"]
 	path = diff-so-fancy
 	url = https://github.com/so-fancy/diff-so-fancy.git
