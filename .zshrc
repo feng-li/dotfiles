@@ -93,23 +93,23 @@ export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
 ## Linux homebrew
-if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
+# if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
 
-    export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-    export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-    export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+#     export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+#     export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+#     export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 
-    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+#     eval "$($HOME/.linuxbrew/bin/brew shellenv)"
 
-    ## Use local git for brew
-    if [[ -f $HOME/.local/bin/curl ]]; then
-        export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-    fi
-    if [[ -f $HOME/.local/bin/git ]]; then
-        export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-    fi
+#     ## Use local git for brew
+#     if [[ -f $HOME/.local/bin/curl ]]; then
+#         export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
+#     fi
+#     if [[ -f $HOME/.local/bin/git ]]; then
+#         export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+#     fi
 
-fi
+# fi
 
 ## Auto-TMUX invocation.  if we're in an interactive session then automatically put us
 # into a tmux session.
@@ -136,6 +136,10 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Path to your oh-my-zsh installation.
     export ZSH=$dotfiles_dir/oh-my-zsh
 
+    export ZSH_DISABLE_COMPFIX="true"
+   
+    # Zsh profile tool
+    # zmodload zsh/zprof
 
     # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -185,8 +189,12 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
+    plugins=(autoswitch_virtualenv zsh-autosuggestions git ssh-agent $plugins zsh-syntax-highlighting)
 
+    # Extra files send to ssh-agent
+    zstyle :omz:plugins:ssh-agent identities fli_rsa
+
+    # This should be the last line
     source $ZSH/oh-my-zsh.sh
 
     # Add local catached dir
@@ -199,6 +207,8 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
     AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
 
+    #zprof
+    
     autoload -U colors && colors
     if [[ -z ${SSH_TTY} ]]; then
         local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
@@ -208,7 +218,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
         PROMPT='${ret_status}:%{$fg[red]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
     fi
 else
-    autoload -U colors && colors
+    # autoload -U colors && colors
     # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
     PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
 fi
