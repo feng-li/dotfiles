@@ -83,7 +83,9 @@ if(interactive())
     {
         message(c("Working directory: ","\"", getwd(),"\""))
         message(c("R home:            ","\"", Sys.getenv("R_HOME"),"\""))
-        ## message(c("Attached packages: ","\"", search()[search()%in%paste("package:",loadedNamespaces(),sep="")],"\""))
+        ## message(c("Attached packages: ","\"",
+        ## search()[search()%in%paste("package:",loadedNamespaces(),sep="")],"\""))
+        message(c("BLAS:  ", "\"", utils::sessionInfo()$BLAS), "\"")
         message(c("OMP_NUM_THREADS:   ","\"", Sys.getenv("OMP_NUM_THREADS"),"\""))
     }
     .welcome()

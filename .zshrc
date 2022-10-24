@@ -29,13 +29,6 @@ LOCAL_LIB=$HOME/.local/lib
 LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
-## TEXLIVE Enviroment Variables
-# if [ -d "$HOME/.texmf" ] ; then
-#     export TEXMFHOME=$HOME/.texmf
-#     export BIBINPUTS=./:$HOME/.texmf/bibtex/bib//:$BIBINPUTS
-#     export BSTINPUTS=./:$HOME/.texmf/bibtex/bst//:$BSTINPUTS
-# fi
-
 ## JAVA
 # export JAVA_HOME=/usr/lib/jvm/default-java
 
@@ -137,7 +130,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     export ZSH=$dotfiles_dir/oh-my-zsh
 
     export ZSH_DISABLE_COMPFIX="true"
-   
+
     # Zsh profile tool
     # zmodload zsh/zprof
 
@@ -189,11 +182,14 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(autoswitch_virtualenv zsh-autosuggestions git ssh-agent $plugins zsh-syntax-highlighting)
+    plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
 
-    # Extra files send to ssh-agent
-    zstyle :omz:plugins:ssh-agent identities fli_rsa
-
+    if [[ -z ${SLURM_JOB_ID} ]]; then
+	 plugins=(ssh-agent $plugins)
+	 # Extra files send to ssh-agent
+	 zstyle :omz:plugins:ssh-agent identities fli_rsa
+    fi
+    
     # This should be the last line
     source $ZSH/oh-my-zsh.sh
 
@@ -208,7 +204,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
 
     #zprof
-    
+
     autoload -U colors && colors
     if [[ -z ${SSH_TTY} ]]; then
         local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
