@@ -184,12 +184,13 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Add wisely, as too many plugins slow down shell startup.
     plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
 
+    # Run ssh-agen when in SSH but not in SLURM,
     if [[ -z ${SLURM_JOB_ID} ]]; then
 	 plugins=(ssh-agent $plugins)
 	 # Extra files send to ssh-agent
 	 zstyle :omz:plugins:ssh-agent identities fli_rsa
     fi
-    
+
     # This should be the last line
     source $ZSH/oh-my-zsh.sh
 
@@ -203,7 +204,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
     AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
 
-    #zprof
+    # zprof
 
     autoload -U colors && colors
     if [[ -z ${SSH_TTY} ]]; then
