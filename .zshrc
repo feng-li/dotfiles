@@ -185,7 +185,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
 
     # Run ssh-agen when in SSH but not in SLURM,
-    if [[ -z ${SLURM_JOB_ID} ]]; then
+    if [[ (${SSH_TTY})  && (-z ${SLURM_JOB_ID}) ]]; then
 	 plugins=(ssh-agent $plugins)
 	 # Extra files send to ssh-agent
 	 zstyle :omz:plugins:ssh-agent identities fli_rsa
