@@ -14,10 +14,10 @@ if [[ -f $HOME/.local/bin/zsh ]]; then
     SHELL=$HOME/.local/bin/zsh
 fi
 
-export TERM=xterm-256color
 if [[ $TERM = dumb ]]; then
     unset zle_bracketed_paste
 fi
+# export TERM=xterm-256color
 
 ## Add a user PATH
 LOCALBIN=$HOME/.local/bin:$HOME/.local/share/coursier/bin
