@@ -19,6 +19,9 @@ do
     ln -sfv $file $HOME/.config/
 done
 
+# Terminfo 
+ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
+
 # if [ "$(realpath "$dotfiles_dir")" = "$(realpath "$HOME/.dotfiles")"  ]; then
 #     echo  "Location of 'dotfiles' and $HOME/.dotfiles are the same."
 # else
