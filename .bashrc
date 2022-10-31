@@ -9,8 +9,8 @@ case $- in
 esac
 
 # Source local development environment
-if [ -f $HOME/.local/setvars/*.sh ]; then
-    source $HOME/.local/setvars/*.sh
+if [ -f $HOME/.dotfiles/setvars/*.sh ]; then
+    source $HOME/.dotfiles/setvars/*.sh
 fi
 
 # Use local zsh if no root access
