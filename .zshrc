@@ -51,6 +51,10 @@ if [[ -f /usr/bin/info ]]; then
     alias man=info
 fi
 
+
+## SET TERM for ssh
+alias ssh="TERM=xterm-256color $(which ssh)"
+
 # if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
 #     export XDG_RUNTIME_DIR=/run/user/$(id -ru)
 # fi
@@ -67,7 +71,7 @@ else
     # ssh-add ~/.ssh/fli_rsa
 fi
 
-export EMACS_SERVER_FILE=$HOME/.config/emacs/$HOSTNAME/server
+export EMACS_SERVER_FILE=$HOME/.config/emacs/${HOST}/server
 ## Emacsclient no-window
 alias ec='emacsclient -nw -e "(ibuffer)"'
 
