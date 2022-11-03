@@ -19,12 +19,17 @@ if [[ $TERM = dumb ]]; then
 fi
 # export TERM=xterm-256color
 
+# SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
+if [[ (${SSH_TTY})  && (-d $HOME/.local/texlive) ]]; then
+    export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
+fi
+
 ## Add a user PATH
 LOCALBIN=$HOME/.local/bin:$HOME/.local/share/coursier/bin
 PATH=$LOCALBIN:$PATH:
 export PATH
 
-## Add LD_LIBRARY_PATH (use comma to seprate)
+## Add LD_LIBRARY_PATH (use comma to separate)
 LOCAL_LIB=$HOME/.local/lib
 LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
@@ -110,7 +115,6 @@ alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
 ## Auto-TMUX invocation.  if we're in an interactive session then automatically put us
 # into a tmux session.
-
 if [ ! -d $HOME/.cache/tmux ]; then
     mkdir -p $HOME/.cache/tmux
 fi
