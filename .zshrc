@@ -72,8 +72,10 @@ export LSP_USE_PLISTS=true
 if [[ -z ${SSH_TTY} ]]; then
     alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
 else
-    # eval `ssh-agent -s`
-    # ssh-add ~/.ssh/fli_rsa
+    export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
+    if [[ -f $EMACS_SERVER_FILE ]]; then
+       alias emacs='emacsclient --alternate-editor="" -nw'
+    fi
 fi
 
 ## Emacsclient no-window
