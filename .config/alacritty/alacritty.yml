@@ -119,10 +119,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) M+ 1mn medium
     #   - (Windows) Consolas
-    family: MPlus Code 50 medium
+    family: M PLUS 1 Code
 
     # The `style` can be specified to pick a specific face.
-    # style: Regular
+    style: Medium
 
   # Bold font face
   # bold:

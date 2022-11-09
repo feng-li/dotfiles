@@ -76,7 +76,6 @@ else
     # ssh-add ~/.ssh/fli_rsa
 fi
 
-export EMACS_SERVER_FILE=$HOME/.config/emacs/${HOST}/server
 ## Emacsclient no-window
 alias ec='emacsclient -nw -e "(ibuffer)"'
 
