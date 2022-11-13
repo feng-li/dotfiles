@@ -69,17 +69,11 @@ alias ssh="TERM=xterm-256color $(which ssh)"
 export LSP_USE_PLISTS=true
 
 ## Emacs no-window only in no SSH session
-if [[ -z ${SSH_TTY} ]]; then
-    alias emacs='emacsclient --alternate-editor="emacs -Q" -nw'
-else
-    export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
-    if [[ -f $EMACS_SERVER_FILE ]]; then
-       alias emacs='emacsclient --alternate-editor="" -nw'
-    fi
-fi
+export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
+alias ec='emacsclient --alternate-editor="emacs -Q" -nw'
 
 ## Emacsclient no-window
-alias ec='emacsclient -nw -e "(ibuffer)"'
+alias ect='emacsclient -nw -e "(ibuffer)"'
 
 ## Emacsclient window
 alias ecg='emacsclient -c -e "(ibuffer)"'
