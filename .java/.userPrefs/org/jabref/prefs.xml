@@ -61,8 +61,8 @@
   <entry key="importWorkingDirectory" value="/home/fli/carbon/workspace/texmf/bibtex/bib"/>
   <entry key="keyGenAlwaysAddLetter" value="false"/>
   <entry key="keyGenFirstLetterA" value="true"/>
-  <entry key="lastEdited" value="/home/fli/carbon/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib"/>
-  <entry key="lastFocused" value="/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib"/>
+  <entry key="lastEdited" value="/home/fli/carbon/workspace/texmf/bibtex/bib/publications-feng.bib"/>
+  <entry key="lastFocused" value="/home/fli/carbon/workspace/texmf/bibtex/bib/publications-feng.bib"/>
   <entry key="lastUsedExport" value="HTML list"/>
   <entry key="localAutoSave" value="false"/>
   <entry key="lyxpipe" value="/home/fli/.lyx/lyxpipe"/>
@@ -86,7 +86,7 @@
   <entry key="proxyHostname" value="127.0.0.1"/>
   <entry key="proxyPort" value="41091"/>
   <entry key="pushToApplication" value="TeXstudio"/>
-  <entry key="recentDatabases" value="/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-kllab.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/references-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/references-feng.bib;/home/fli/texmf/bibtex/bib/references-yanfei.bib"/>
+  <entry key="recentDatabases" value="/home/fli/carbon/workspace/texmf/bibtex/bib/publications-kllab.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-feng.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/references-feng.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/publications-yanfei.bib;/home/fli/carbon/workspace/texmf/bibtex/bib/references-yanfei.bib;/home/fli/texmf/bibtex/bib/publications-feng.bib;/home/fli/texmf/bibtex/bib/references-feng.bib;/home/fli/texmf/bibtex/bib/references-yanfei.bib"/>
   <entry key="regExpSearchExpression" value="Papers/**/*[title].*\\.[extension]"/>
   <entry key="searchDalogColumnSortOrder" value=""/>
   <entry key="searchDialogColumnSortTypes" value="ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING"/>

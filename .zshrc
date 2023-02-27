@@ -20,8 +20,11 @@ fi
 # export TERM=xterm-256color
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
-if [[ (${SSH_TTY})  && (-d $HOME/.local/texlive) ]]; then
-    export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
+if [[ (${SSH_TTY}) ]]; then
+    if [[ -d $HOME/.local/texlive ]]; then    
+	export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
+    fi
+    export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
 fi
 
 ## Add a user PATH
@@ -69,8 +72,7 @@ alias ssh="TERM=xterm-256color $(which ssh)"
 export LSP_USE_PLISTS=true
 
 ## Emacs no-window only in no SSH session
-export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
-alias ec='emacsclient --alternate-editor="emacs -Q" -nw'
+alias em='emacsclient --alternate-editor="emacs -Q" -nw'
 
 ## Emacsclient no-window
 alias ect='emacsclient -nw -e "(ibuffer)"'
@@ -81,7 +83,7 @@ alias ecg='emacsclient -c -e "(ibuffer)"'
 ## The default editor
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t --create-frame" # $EDITOR opens in terminal
-export VISUAL='emacsclient --alternate-editor="command emacs" -c' # $VISUAL opens in GUI mode
+export VISUAL='emacsclient --alternate-editor="emacs -Q" -c' # $VISUAL opens in GUI mode
 
 ## Dictionary
 export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
