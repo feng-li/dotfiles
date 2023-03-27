@@ -1,6 +1,8 @@
 ######################################################################
 #### System settings
 ######################################################################
+# zmodload zsh/zprof  
+
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
@@ -224,3 +226,4 @@ else
     # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
     PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
 fi
+#zprof  
