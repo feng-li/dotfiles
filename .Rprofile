@@ -16,7 +16,7 @@ if(interactive() && dir.exists("~/code/"))
 local(expr <- {
 
     ## Set CRAN
-    ## options(repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+    options(repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
     ## options(repos="https://cloud.r-project.org/")
 
     # options(download.file.method="wget")
