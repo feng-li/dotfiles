@@ -130,7 +130,7 @@ fi
 ######################################################################
 
 if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
-
+    
     export FPATH=$HOME/.local/share/zsh/$ZSH_VERSION/functions:$FPATH
 
     # Path to your oh-my-zsh installation.
@@ -191,6 +191,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Add wisely, as too many plugins slow down shell startup.
     plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
 
+    
     # Run ssh-agen when in SSH but not in SLURM,
     if [[ (${SSH_TTY})  && (-z ${SLURM_JOB_ID}) ]]; then
 	 plugins=(ssh-agent $plugins)
@@ -226,4 +227,4 @@ else
     # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
     PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
 fi
-#zprof  
+# zprof  
