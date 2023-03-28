@@ -1,7 +1,7 @@
 ######################################################################
 #### System settings
 ######################################################################
-# zmodload zsh/zprof  
+# zmodload zsh/zprof
 
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
@@ -23,7 +23,7 @@ fi
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ (${SSH_TTY}) ]]; then
-    if [[ -d $HOME/.local/texlive ]]; then    
+    if [[ -d $HOME/.local/texlive ]]; then
 	export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
     fi
     export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
@@ -38,6 +38,12 @@ export PATH
 LOCAL_LIB=$HOME/.local/lib
 LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
+
+## RUST
+if [[ -d $HOME/.cargo ]]; then
+    . "$HOME/.cargo/env"
+fi
+
 
 ## JAVA
 # export JAVA_HOME=/usr/lib/jvm/default-java
@@ -130,7 +136,7 @@ fi
 ######################################################################
 
 if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
-    
+
     export FPATH=$HOME/.local/share/zsh/$ZSH_VERSION/functions:$FPATH
 
     # Path to your oh-my-zsh installation.
@@ -191,7 +197,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Add wisely, as too many plugins slow down shell startup.
     plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
 
-    
+
     # Run ssh-agen when in SSH but not in SLURM,
     if [[ (${SSH_TTY})  && (-z ${SLURM_JOB_ID}) ]]; then
 	 plugins=(ssh-agent $plugins)
@@ -227,4 +233,4 @@ else
     # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
     PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
 fi
-# zprof  
+# zprof
