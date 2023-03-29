@@ -40,7 +40,7 @@ LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
 ## RUST
-if [[ -d $HOME/.cargo ]]; then
+if [[ -f $HOME/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 fi
 
