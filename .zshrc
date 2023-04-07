@@ -12,6 +12,7 @@ if [[ -f $dotfiles_dir/dir_colors/dircolors ]]; then
     eval `dircolors $dotfiles_dir/dir_colors/dircolors`
 fi
 
+# Local version zsh
 if [[ -f $HOME/.local/bin/zsh ]]; then
     SHELL=$HOME/.local/bin/zsh
 fi
@@ -23,8 +24,15 @@ fi
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ (${SSH_TTY}) ]]; then
-    if [[ -d $HOME/.local/texlive ]]; then
-	export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
+    # PATH=/usr/local/bin:/usr/bin:/bin
+    # LD_LIBRARY_PATH=
+    # if [[ -z (`gcc --version | awk '/gcc/ && ($3+0)<9.1{print "Version is lower than 9.1"}'`) ]]; then
+    if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
+	source $HOME/.local/setvars/compilers.sh
+    fi
+	
+    if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
+	# export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
     fi
     export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
 fi
@@ -35,7 +43,7 @@ PATH=$LOCALBIN:$PATH:
 export PATH
 
 ## Add LD_LIBRARY_PATH (use comma to separate)
-LOCAL_LIB=$HOME/.local/lib
+LOCAL_LIB=$HOME/.local/lib:$HOME/.local/lib64
 LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
@@ -43,7 +51,6 @@ export LD_LIBRARY_PATH
 if [[ -f $HOME/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 fi
-
 
 ## JAVA
 # export JAVA_HOME=/usr/lib/jvm/default-java
@@ -233,4 +240,3 @@ else
     # PS1="%{$fg[magenta]%}%n@%m:%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}%{$fg[yellow]%}%B$%b%{$reset_color%} "
     PS1="%{$fg[green]%}%n@%m:%{$reset_color%}%{$fg[blue]%}%~%{$reset_color%}%{$fg[green]%}%B$%b%{$reset_color%} "
 fi
-# zprof
