@@ -30,11 +30,11 @@ if [[ (${SSH_TTY}) ]]; then
     if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
 	source $HOME/.local/setvars/compilers.sh
     fi
-	
+
     if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
 	# export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
     fi
-    export EMACS_SERVER_FILE=$HOME/.emacs.d/server/server
+    # export EMACS_SERVER_FILE=$HOME/.emacs.d/server/${HOST}_${UID}
 fi
 
 ## Add a user PATH
