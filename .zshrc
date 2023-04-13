@@ -29,6 +29,7 @@ if [[ (${SSH_TTY}) ]]; then
     # if [[ -z (`gcc --version | awk '/gcc/ && ($3+0)<9.1{print "Version is lower than 9.1"}'`) ]]; then
     if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
 	source $HOME/.local/setvars/compilers.sh
+	source $HOME/.local/setvars/spark-standalone.sh
     fi
 
     if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
@@ -51,17 +52,6 @@ export LD_LIBRARY_PATH
 if [[ -f $HOME/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 fi
-
-## JAVA
-# export JAVA_HOME=/usr/lib/jvm/default-java
-
-## Hadoop
-# export HADOOP_HOME=$HOME/hadoop/
-# export HADOOP_CLASSPATH=$JAVA_HOME/lib/tools.jar
-# export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
-
-# export MAHOUT_HOME=$HOME/mahout/
-# export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf/
 
 ## No. of threads
 export OMP_NUM_THREADS=1
