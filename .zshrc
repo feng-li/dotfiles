@@ -27,11 +27,17 @@ if [[ (${SSH_TTY}) ]]; then
     # PATH=/usr/local/bin:/usr/bin:/bin
     # LD_LIBRARY_PATH=
     # if [[ -z (`gcc --version | awk '/gcc/ && ($3+0)<9.1{print "Version is lower than 9.1"}'`) ]]; then
+    # GCC
     if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
 	source $HOME/.local/setvars/compilers.sh
-	source $HOME/.local/setvars/spark-standalone.sh
     fi
 
+    # Spark
+    if [[ -f $HOME/.local/mapreduce/spark-on-slurm/setup-spark-env.sh ]]; then
+	source $HOME/.local/mapreduce/spark-on-slurm/setup-spark-env.sh
+    fi
+
+    # TeXLive
     if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
 	# export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
     fi
