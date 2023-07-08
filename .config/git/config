@@ -54,7 +54,7 @@
 # 	insteadOf = https://github.com/
 # [url "git@github.com:"]
 # 	insteadOf = ssh://git@github.com:
-	
+
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [color "diff-highlight"]
