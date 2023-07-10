@@ -74,10 +74,11 @@ fi
 ## SET TERM for ssh
 alias ssh="TERM=xterm-256color $(which ssh)"
 
-# if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
-#     export XDG_RUNTIME_DIR=/run/user/$(id -ru)
-# fi
-## Emacs client as an editor
+## Emacs client as an editor. Set the XDG environment to allow emacsclient find the
+## server.
+if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
+    export XDG_RUNTIME_DIR=/run/user/$(id -ru)
+fi
 
 ## Emacs lsp speed up.
 export LSP_USE_PLISTS=true
