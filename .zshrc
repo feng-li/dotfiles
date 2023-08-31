@@ -24,6 +24,12 @@ fi
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ (${SSH_TTY}) ]]; then
+
+    # Time zone
+    if [[ -z $TZ ]]; then
+	export TZ='Asia/Shanghai'
+    fi
+    
     # GCC
     if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
 	source $HOME/.local/setvars/compilers.sh
