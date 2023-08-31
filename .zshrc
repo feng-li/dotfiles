@@ -24,9 +24,6 @@ fi
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ (${SSH_TTY}) ]]; then
-    # PATH=/usr/local/bin:/usr/bin:/bin
-    # LD_LIBRARY_PATH=
-    # if [[ -z (`gcc --version | awk '/gcc/ && ($3+0)<9.1{print "Version is lower than 9.1"}'`) ]]; then
     # GCC
     if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
 	source $HOME/.local/setvars/compilers.sh
@@ -130,11 +127,11 @@ fi
 export TMUX_TMPDIR=$HOME/.cache/tmux
 export TMUX=$HOME/.cache/tmux/tmux_${HOST}_${UID}
 
-WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
-if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
-  export SCREEN_STARTED=1
-  tmux new -As WORKSPACE
-fi
+# WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
+# if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
+#   export SCREEN_STARTED=1
+#   tmux new -As WORKSPACE
+# fi
 ######################################################################
 ## ZSH settings
 ######################################################################

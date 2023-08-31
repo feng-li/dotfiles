@@ -14,6 +14,9 @@ CMAKE_HOME=$HOME/.local/compilers/cmake-3.24.2
 MKLROOT=$HOME/.local/intel/oneapi/mkl/latest
 LLVM_HOME=$HOME/.local/compilers/llvm-15.0.3
 
+## CentOS DEVTOOLSET
+DEVTOOLSET=/opt/rh/devtoolset-11
+
 my_set_dev_env(){
 
     ## GCC
@@ -37,6 +40,12 @@ my_set_dev_env(){
     export LD_LIBRARY_PATH=$MKL_LIB_PATH:$LD_LIBRARY_PATH
 }
 
+my_set_devtoolset_env(){
+
+    source ${DEVTOOLSET}/enable
+
+}
+
 my_unset_dev_env(){
 
     export PATH=$orig_PATH
@@ -49,6 +58,6 @@ my_unset_dev_env(){
 
 }
 
-
 # Activate the dev environment
-my_set_dev_env
+# my_set_dev_env
+my_set_devtoolset_env
