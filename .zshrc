@@ -198,6 +198,10 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Would you like to use another custom folder than $ZSH/custom?
     ZSH_CUSTOM=$dotfiles_dir/zsh_custom
 
+
+    # Suggestion Highlight Style
+    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a8a8a8"
+
     # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
