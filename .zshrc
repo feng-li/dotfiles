@@ -210,7 +210,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
 
 
     # Run ssh-agen when in SSH but not in SLURM,
-    if [[ (${SSH_TTY})  && (-z ${SLURM_JOB_ID}) ]]; then
+    if [[ (${SSH_TTY})  && (-f $HOME/.ssh/fli_rsa ) && (-z ${SLURM_JOB_ID}) ]]; then
 	 plugins=(ssh-agent $plugins)
 	 # Extra files send to ssh-agent
 	 zstyle :omz:plugins:ssh-agent identities fli_rsa
