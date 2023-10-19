@@ -133,11 +133,10 @@ fi
 export TMUX_TMPDIR=$HOME/.cache/tmux
 export TMUX=$HOME/.cache/tmux/tmux_${HOST}_${UID}
 
-# WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
-# if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
-#   export SCREEN_STARTED=1
-#   tmux new -As WORKSPACE
-# fi
+WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
+if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
+  tmux new -As WORKSPACE
+fi
 ######################################################################
 ## ZSH settings
 ######################################################################
