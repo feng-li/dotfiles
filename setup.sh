@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Get current dir path for this script
-dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+dotfiles_dir=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd || /bin/pwd || pwd)
 
 echo  "['dotfiles' located at $dotfiles_dir]"
 echo  "['dotfiles' setup:]"
@@ -19,7 +19,7 @@ do
     ln -sfv $file $HOME/.config/
 done
 
-# Terminfo 
+# Terminfo
 ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
 
 # if [ "$(realpath "$dotfiles_dir")" = "$(realpath "$HOME/.dotfiles")"  ]; then
