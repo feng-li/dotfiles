@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
 # Get current dir path for this script
-dotfiles_dir=$(echo "$(cd "$(dirname "$1")"; pwd -P)/$(basename "$1")")
+
+dotfiles_dir=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd || /bin/pwd || pwd)
 
 echo  "['dotfiles' located at $dotfiles_dir]"
 echo  "['dotfiles' setup:]"
