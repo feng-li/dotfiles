@@ -1,0 +1,50 @@
+import = ["~/.dotfiles/alacritty-dracula-theme/dracula.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#1d1f21"
+foreground = "#c5c8c6"
+
+[cursor]
+blink_interval = 400
+
+[cursor.style]
+blinking = "Always"
+
+[font]
+size = 10.5
+
+[font.normal]
+family = "M PLUS Code Latin 50"
+style = "Medium"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Control"
+
+[[mouse.bindings]]
+action = "ExpandSelection"
+mouse = "Middle"
+
+[[mouse.bindings]]
+action = "ExpandSelection"
+mods = "Control"
+mouse = "Middle"
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mode = "~Vi"
+mouse = "Right"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+startup_mode = "Maximized"
