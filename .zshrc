@@ -68,6 +68,12 @@ export OMP_NUM_THREADS=1
 ## Julia
 ## alias julia="julia -f"
 
+## TexLive
+# alias latex='latex -interaction=nonstopmode -shell-escape -output-directory="auto"'
+# alias pdflatex='pdflatex -interaction=nonstopmode -shell-escape -output-directory="auto"'
+# alias xelatex='xelatex -interaction=nonstopmode -shell-escape -output-directory="auto"'
+# alias luatex='luatex -interaction=nonstopmode -shell-escape -output-directory="auto"'
+
 ## Use info to replace man if installed
 if [[ -f /usr/bin/info ]]; then
     alias man=info
