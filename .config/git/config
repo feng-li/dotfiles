@@ -5,7 +5,6 @@
 	excludesfile = ~/.config/git/gitignore.global
 	quotepath = false
 	fileMode = false
-	sshCommand = ssh -i ~/.ssh/fli_rsa -F /dev/null
 	editor = emacsclient --tty -create-frame -a=""
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
@@ -23,7 +22,7 @@
 	default = simple
 [alias]
         noproxy = config --global --remove-section http
-        proxy = config --global  http.proxy http://127.0.0.1:41091
+        proxy = config --global  http.proxy http://127.0.0.1:7890
 
 [credential]
 	helper = store
@@ -50,10 +49,9 @@
 	ignoredHook = false
 [init]
 	defaultBranch = main
-#[url "ssh://git@github.com:"]
-# 	insteadOf = https://github.com/
-# [url "git@github.com:"]
-# 	insteadOf = ssh://git@github.com:
+
+[url "git@github.com:"]
+ 	insteadOf = "ssh://git@sshgithub.com:443/"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
