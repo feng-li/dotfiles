@@ -41,9 +41,11 @@ my_set_dev_env(){
 }
 
 my_set_devtoolset_env(){
-
-    source ${DEVTOOLSET}/enable
-
+    if [[ -f ${DEVTOOLSET}/enabl ]]; then
+        source ${DEVTOOLSET}/enable
+    else
+        echo "DEVTOOSET not found. Skipped."
+    fi
 }
 
 my_unset_dev_env(){
