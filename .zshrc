@@ -18,9 +18,9 @@ if [[ -f $HOME/.local/bin/zsh ]]; then
 fi
 
 if [[ $TERM = dumb ]]; then
-    unset zle_bracketed_paste
+    # unset zle_bracketed_paste
 fi
-# export TERM=xterm-256color
+# export TERM=screen-256color
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ (${SSH_TTY}) ]]; then
