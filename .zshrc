@@ -131,10 +131,10 @@ alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
 
 # fi
 
-## Auto-TMUX invocation.  If we're in an interactive session,
+## Auto-TMUX invocation.  If we're in an interactive session and not inside a tmux,
 ## then automatically put us into a tmux session.
 WORKSPACE_ATTACHED=$(echo `tmux ls | grep attached`)
-if [[ ("$PS1" != "") && ("$WORKSPACE_ATTACHED" = "")]]; then
+if [[ ("$PS1" != "")  && ("$TMUX" = "")  && ("$WORKSPACE_ATTACHED" = "") ]]; then
   tmux new -As WORKSPACE
 fi
 ######################################################################
