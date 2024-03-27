@@ -47,11 +47,12 @@
 	date = human-local
 [advice]
 	ignoredHook = false
+	skippedCherryPicks = false
 [init]
 	defaultBranch = main
 
 [url "git@github.com:"]
- 	insteadOf = "ssh://git@sshgithub.com:443/"
+ 	insteadOf = "ssh://git@ssh.github.com:443/"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
