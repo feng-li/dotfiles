@@ -60,6 +60,7 @@ TAGS
 *.spl
 *.rip
 *.xdv
+*.rel
 *.run.xml
 *.vrb
 *.spl.pgp
