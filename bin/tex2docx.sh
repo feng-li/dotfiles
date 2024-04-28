@@ -2,8 +2,8 @@
 
 tex_input=$1
 
-if [ $tex_input==''  ]; then
-    echo "Input tex file required"
+if [[ -z $tex_input  ]]; then
+    echo "Input tex file required!"
     exit 1;
 fi
 
