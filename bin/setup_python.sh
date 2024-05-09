@@ -3,6 +3,7 @@
 set -e
 
 python3_ver=$1
+update=$2
 
 if [ -z ${python3_ver} ];then
     echo "Python version not given!"
@@ -15,7 +16,7 @@ python_virtualenv_name=python${python3_ver}
 python_virtualenv_path=${HOME}/.virtualenvs
 
 # Install a base Python if not available
-if [[ ! -f $python_dist_path/bin/python3 ]]; then
+if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
 
     if [[ ! -d $python_dist_path ]]; then
        mkdir -p $python_dist_path
@@ -26,7 +27,7 @@ if [[ ! -f $python_dist_path/bin/python3 ]]; then
 
     cd $python_dist_path
 
-    curl -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest -o latest.json
+    curl --clobber  -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest -o latest.json
 
     browser_download_url=$(grep -oP '"browser_download_url": "\K[^"]+x86_64-unknown-linux-gnu[^"]+pgo[^"]+lto[^"]+zst' latest.json | grep -m 1 -e "${python3_ver}")
     python_pkg=$(basename ${browser_download_url})
