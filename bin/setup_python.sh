@@ -35,13 +35,22 @@ if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
     curl -L ${browser_download_url} -o ${python_pkg}
 
     # Only unzip the python directory and extract to current dist path
-    tar -I zstd -axvf $python_pkg python/install --strip-components=2
+    tar -I zstd -axf $python_pkg python/install --strip-components=2
     cd -
 fi
 
 # Install and upgrade pip and virtualenv to base environment
 export PATH=${python_dist_path}/bin:$PATH
 pip install pip virtualenv --upgrade --break-system-packages
+
+
+echo -e "
+Python installed to ${python_dist_path}
+"
+# Add python, pip, virtualenv to current ~/.local/bin
+ln -sfv ${python_dist_path}/bin/python${python3_ver} ${HOME}/.local/bin/
+ln -sfv ${python_dist_path}/bin/pip${python3_ver} ${HOME}/.local/bin/
+ln -sfv ${python_dist_path}/bin/virtualenv ${HOME}/.local/bin/
 
 # Setup virtual environment for current project
 virtualenv ${python_virtualenv_path}/${python_virtualenv_name} --python ${python_dist_path}/bin/python3
@@ -52,11 +61,6 @@ echo -e "
 Python virtualenv setup completely. Use the following command to activate
        source ${python_virtualenv_path}/${python_virtualenv_name}/bin/activate
 "
-
-# Add python, pip, virtualenv to current ~/.local/bin
-ln -sfv ${python_dist_path}/bin/python${python3_ver} ${HOME}/.local/bin/
-ln -sfv ${python_dist_path}/bin/pip${python3_ver} ${HOME}/.local/bin/
-ln -sfv ${python_dist_path}/bin/virtualenv ${HOME}/.local/bin/
 
 # Install other dependences
 # source $conda_path/activate dismod_mr
