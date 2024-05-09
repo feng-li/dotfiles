@@ -42,14 +42,18 @@ fi
 export PATH=${python_dist_path}/bin:$PATH
 pip install pip virtualenv --upgrade --break-system-packages
 
+# Add python, pip, virtualenv to current ~/.local/bin
+ln -sfv ${python_dist_path}/bin/python${python3_ver} ${HOME}/.local/bin/
+ln -sfv ${python_dist_path}/bin/pip${python3_ver} ${HOME}/.local/bin/
+ln -sfv ${python_dist_path}/bin/virtualenv ${HOME}/.local/bin/
+
 # Setup virtual environment for current project
 virtualenv ${python_virtualenv_path}/${python_virtualenv_name} --python ${python_dist_path}/bin/python3
 echo ${python_virtualenv_name} > .venv
 chmod 600 .venv
 
-# Message
 echo -e "
-Python environment setup completely. Use the following command to activate
+Python virtualenv setup completely. Use the following command to activate
        source ${python_virtualenv_path}/${python_virtualenv_name}/bin/activate
 "
 
