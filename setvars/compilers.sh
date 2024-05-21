@@ -11,8 +11,10 @@ export orig_CPLUS_INCLUDE_PAT=$CPLUS_INCLUDE_PATH
 ## source $HOME/.opt/gsrc/setup.sh
 GCC_HOME=$HOME/.local/compilers/gcc-jit-10.2.0
 CMAKE_HOME=$HOME/.local/compilers/cmake-3.24.2
-MKLROOT=$HOME/.local/intel/oneapi/mkl/latest
 LLVM_HOME=$HOME/.local/compilers/llvm-15.0.3
+
+##
+MKLROOT=$HOME/.local/intel/oneapi/mkl/latest
 
 ## CentOS DEVTOOLSET
 DEVTOOLSET=/opt/rh/devtoolset-11
@@ -36,8 +38,8 @@ my_set_dev_env(){
     export PATH=$LLVM_HOME/bin:$PATH
 
     ## Intel MKL
-    export MKL_LIB_PATH=$MKLROOT/lib/intel64
-    export LD_LIBRARY_PATH=$MKL_LIB_PATH:$LD_LIBRARY_PATH
+    ## export MKL_LIB_PATH=$MKLROOT/lib/intel64
+    ## export LD_LIBRARY_PATH=$MKL_LIB_PATH:$LD_LIBRARY_PATH
 }
 
 my_set_devtoolset_env(){
