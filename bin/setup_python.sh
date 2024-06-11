@@ -68,5 +68,10 @@ Python virtualenv setup completely. Use the following command to activate
 # pip install dismod_mr
 
 # Jupyter notebook
+pip install jupyter notebook jupyterlab-rise
+
+echo -e "
+JupyterLab, Jupyter notebook 7, RISE are installed.
+"
 # pip install ipykernel
 # python -m ipykernel install --name=Python3.6-PyMC2.3.8 --user
