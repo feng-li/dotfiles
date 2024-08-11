@@ -44,7 +44,6 @@ fi
 export PATH=${python_dist_path}/bin:$PATH
 pip install virtualenv --upgrade --break-system-packages
 
-
 echo -e "
 Python installed to ${python_dist_path}
 "
