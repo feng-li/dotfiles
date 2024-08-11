@@ -10,7 +10,7 @@ $view = 'none';
 
 $bibtex_use = 2;  # Run biber or bibtex if needed
 
-$aux_dir = 'auto'; # Save intermedient files to different folder
+$aux_dir = 'auto'; # Save intermedient files to different folder, not compatible with "minted"
 
 # Maximum runs of xelatex reached without getting stable files
 $max_repeat = 10;

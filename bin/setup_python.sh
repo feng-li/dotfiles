@@ -41,7 +41,7 @@ fi
 
 # Install and upgrade pip and virtualenv to base environment
 export PATH=${python_dist_path}/bin:$PATH
-pip install pip virtualenv --upgrade --break-system-packages
+pip install virtualenv --upgrade --break-system-packages
 
 
 echo -e "
