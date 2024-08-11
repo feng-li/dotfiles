@@ -1,0 +1,28 @@
+{
+ "argv": [
+  "/home/lifeng/.virtualenvs/python3.9-dcu/bin/python",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "Python3.9-dcu",
+ "language": "python",
+ "metadata": {
+  "debugger": true
+ },
+    "env": {
+	"PATH":"/opt/dtk/cuda/bin:/opt/dtk/bin:/opt/dtk/llvm/bin:/opt/dtk/hip/bin:/opt/dtk/hip/bin/hipify:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:",
+	"LD_LIBRARY_PATH":"/opt/dtk/hip/lib:/opt/dtk/llvm/lib:/opt/dtk/lib:/opt/dtk/lib64:/opt/dtk/cuda/lib64",
+	"DTKROOT":"/opt/dtk",
+	"AMDGPU_TARGETS":"gfx906;gfx926",
+	"ROCM_PATH":"/opt/dtk",
+	"HIP_PATH":"/opt/dtk/hip",
+	"MIOPEN_FIND_MODE":"3",
+	"C_INCLUDE_PATH":"/opt/dtk/include:/opt/dtk/llvm/include",
+	"CPLUS_INCLUDE_PATH":"/opt/dtk/include:/opt/dtk/llvm/include",
+	"CUDA_PATH":"/opt/dtk/cuda",
+	"CUDA_BIN_PATH":"/opt/dtk/cuda/bin",
+	"CUDAARCHS":"52"
+    }
+}

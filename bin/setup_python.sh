@@ -27,7 +27,8 @@ if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
 
     cd $python_dist_path
 
-    curl --clobber  -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest -o latest.json
+    # Force download the json file
+    curl -o latest.json -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest 
 
     browser_download_url=$(grep -oP '"browser_download_url": "\K[^"]+x86_64-unknown-linux-gnu[^"]+pgo[^"]+lto[^"]+zst' latest.json | grep -m 1 -e "${python3_ver}")
     python_pkg=$(basename ${browser_download_url})
@@ -73,5 +74,10 @@ pip install jupyter notebook jupyterlab-rise
 echo -e "
 JupyterLab, Jupyter notebook 7, RISE are installed.
 "
-# pip install ipykernel
-# python -m ipykernel install --name=Python3.6-PyMC2.3.8 --user
+
+# Jupyter ipykernel for current Python
+python -m ipykernel install --name=${python_virtualenv_name}  --user
+
+echo -e "
+ipykernel for this Python is installed.
+"
