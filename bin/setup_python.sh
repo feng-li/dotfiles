@@ -28,7 +28,7 @@ if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
     cd $python_dist_path
 
     # Force download the json file
-    curl -o latest.json -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest 
+    curl -o latest.json -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest
 
     browser_download_url=$(grep -oP '"browser_download_url": "\K[^"]+x86_64-unknown-linux-gnu[^"]+pgo[^"]+lto[^"]+zst' latest.json | grep -m 1 -e "${python3_ver}")
     python_pkg=$(basename ${browser_download_url})
@@ -42,7 +42,7 @@ fi
 
 # Install and upgrade pip and virtualenv to base environment
 export PATH=${python_dist_path}/bin:$PATH
-pip install virtualenv --upgrade --break-system-packages
+pip install virtualenv --upgrade --break-system-packages --quiet
 
 echo -e "
 Python installed to ${python_dist_path}
@@ -68,7 +68,7 @@ Python virtualenv setup completely. Use the following command to activate
 # pip install dismod_mr
 
 # Jupyter notebook
-pip install jupyter notebook jupyterlab-rise
+pip --quiet install jupyter notebook jupyterlab-rise
 
 echo -e "
 JupyterLab, Jupyter notebook 7, RISE are installed.
