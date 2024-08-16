@@ -8,7 +8,7 @@
   <entry key="abbrAuthorNames" value="true"/>
   <entry key="acceptRecommendations" value="true"/>
   <entry key="askedCollectTelemetry" value="true"/>
-  <entry key="autoCompleteFields" value="title;publisher;author;entryset;related;crossref;editor;journal;keywords"/>
+  <entry key="autoCompleteFields" value="keywords;related;editor;journal;title;publisher;author;entryset;crossref"/>
   <entry key="autoResizeMode" value="false"/>
   <entry key="autolinkExactKeyOnly" value="false"/>
   <entry key="avoidOverwritingKey" value="false"/>
@@ -21,9 +21,8 @@
   <entry key="columnSortTypes" value=""/>
   <entry key="columnWidths" value="100;100;100;100;100;100;100;100"/>
   <entry key="consoleCommand" value=""/>
-  <entry key="customExportFormat0" value="mylistrefs_snippets;/home/fli/texmf/bibtex/bib/export/layout/listrefs/snippets/listrefs_snippets;html"/>
-  <entry key="customExportFormat1" value="mylistrefs;/home/fli/texmf/bibtex/bib/export/layout/listrefs/listrefs;html"/>
-  <entry key="customExportFormat2" value="mylist;/home/fli/texmf/bibtex/bib/export/layout/listrefs/ol/listrefs;html"/>
+  <entry key="customExportFormat0" value="mylistrefs_snippets;/home/fli/texmf/bibtex/bib/export/layout/snippets/listrefs;html"/>
+  <entry key="customExportFormat1" value="mylistrefs;/home/fli/texmf/bibtex/bib/export/layout/ordered/listrefs;html"/>
   <entry key="customTabFields_0" value="doi;crossref;keywords;eprint;url;file;groups;owner;timestamp;printed;priority;qualityassured;ranking;readstatus;relevance"/>
   <entry key="customTabFields_1" value="abstract"/>
   <entry key="customTabName_0" value="General"/>
@@ -43,7 +42,7 @@
   <entry key="exportSecSort" value="doi"/>
   <entry key="exportTerDescending" value="true"/>
   <entry key="exportTerSort" value="title"/>
-  <entry key="exportWorkingDirectory" value="/home/fli/texmf/bibtex/bib/export/layout/listrefs/ol"/>
+  <entry key="exportWorkingDirectory" value="/home/fli/texmf/bibtex/bib/export/layout/ordered"/>
   <entry key="externalFileTypes" value="CHM:chm:application/mshelp::WWW;Djvu:djvu:image/vnd.djvu::FILE;Excel:xls:application/excel::FILE_EXCEL;Excel 2007+:xlsx:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet::FILE_EXCEL;GIF image:gif:image/gif::PICTURE;JPG image:jpg:image/jpeg::PICTURE;LaTeX:tex:application/x-latex::FILE_TEXT;MHT:mht:multipart/related::WWW;Markdown:md:text/markdown::FILE_TEXT;OpenDocument presentation:odp:application/vnd.oasis.opendocument.presentation::FILE_OPENOFFICE;OpenDocument spreadsheet:ods:application/vnd.oasis.opendocument.spreadsheet::FILE_OPENOFFICE;OpenDocument text:odt:application/vnd.oasis.opendocument.text::FILE_OPENOFFICE;PDF:pdf:application/pdf::PDF_FILE;PNG image:png:image/png::PICTURE;PostScript:ps:application/postscript::FILE;PowerPoint:ppt:application/vnd.ms-powerpoint::FILE_POWERPOINT;PowerPoint 2007+:pptx:application/vnd.openxmlformats-officedocument.presentationml.presentation::FILE_POWERPOINT;Rich Text Format:rtf:application/rtf::FILE_TEXT;TIFF image:tiff:image/tiff::PICTURE;Text:txt:text/plain::FILE_TEXT;URL:html:text/html::WWW;Word:doc:application/msword::FILE_WORD;Word 2007+:docx:application/vnd.openxmlformats-officedocument.wordprocessingml.document::FILE_WORD;ePUB:epub:application/epub+zip::WWW"/>
   <entry key="externalJournalLists" value=""/>
   <entry key="extraFileColumns" value="true"/>
@@ -79,7 +78,7 @@
   <entry key="namesFf" value="false"/>
   <entry key="namesLastOnly" value="false"/>
   <entry key="namesNatbib" value="true"/>
-  <entry key="nonWrappableFields" value="file;isbn;issn;url;doi"/>
+  <entry key="nonWrappableFields" value="doi;issn;isbn;url;file"/>
   <entry key="openFoldersOfAttachedFiles" value="false"/>
   <entry key="openLastEdited" value="true"/>
   <entry key="previewStyle" value="&lt;font face=&quot;sans-serif&quot;&gt;&lt;b&gt;\bibtextype&lt;/b&gt;&lt;a name=&quot;\citationkey&quot;&gt;\begin{citationkey} (\citationkey)&lt;/a&gt;\end{citationkey}&#10;\begin{author}&lt;BR&gt;&lt;BR&gt;\format[Authors(LastFirst, FullName,Sep= / ,LastSep= / ),HTMLChars]{\author}\end{author}&#10;\begin{editor &amp; !author}&lt;BR&gt;&lt;BR&gt;\format[Authors(LastFirst,FullName,Sep= / ,LastSep= / ),HTMLChars]{\editor} (\format[IfPlural(Eds.,Ed.)]{\editor})\end{editor &amp; !author}&#10;\begin{title}&lt;BR&gt;&lt;b&gt;\format[HTMLChars]{\title}&lt;/b&gt; \end{title}&#10;&lt;BR&gt;\begin{date}\date\end{date}\begin{edition}, \edition. edition\end{edition}&#10;\begin{editor &amp; author}&lt;BR&gt;&lt;BR&gt;\format[Authors(LastFirst,FullName,Sep= / ,LastSep= / ),HTMLChars]{\editor} (\format[IfPlural(Eds.,Ed.)]{\editor})\end{editor &amp; author}&#10;\begin{booktitle}&lt;BR&gt;&lt;i&gt;\format[HTMLChars]{\booktitle}&lt;/i&gt;\end{booktitle}&#10;\begin{chapter} \format[HTMLChars]{\chapter}&lt;BR&gt;\end{chapter}\begin{editor &amp; !author}&lt;BR&gt;\end{editor &amp; !author}\begin{!editor}&lt;BR&gt;\end{!editor}\begin{journal}&lt;BR&gt;&lt;i&gt;\format[HTMLChars]{\journal}&lt;/i&gt; \end{journal} \begin{volume}, Vol. \volume\end{volume}\begin{series}&lt;BR&gt;\format[HTMLChars]{\series}\end{series}\begin{number}, No. \format[HTMLChars]{\number}\end{number}&#10;\begin{school} \format[HTMLChars]{\school}, \end{school}&#10;\begin{institution} &lt;em&gt;\format[HTMLChars]{\institution}, &lt;/em&gt;\end{institution}&#10;\begin{publisher}&lt;BR&gt;\format[HTMLChars]{\publisher}\end{publisher}\begin{location}: \format[HTMLChars]{\location} \end{location}&#10;\begin{pages}&lt;BR&gt; p. \format[FormatPagesForHTML]{\pages}\end{pages}&#10;\begin{abstract}&lt;BR&gt;&lt;BR&gt;&lt;b&gt;Abstract: &lt;/b&gt;\format[HTMLChars]{\abstract} \end{abstract}&#10;\begin{owncitation}&lt;BR&gt;&lt;BR&gt;&lt;b&gt;Own citation: &lt;/b&gt;\format[HTMLChars]{\owncitation} \end{owncitation}&#10;\begin{comment}&lt;BR&gt;&lt;BR&gt;&lt;b&gt;Comment: &lt;/b&gt;\format[Markdown,HTMLChars(keepCurlyBraces)]{\comment}\end{comment}&#10;&lt;/font&gt;&#10;"/>
@@ -115,5 +114,5 @@
   <entry key="winEdtPath" value="WinEdt"/>
   <entry key="windowMaximised" value="true"/>
   <entry key="workingDirectory" value="/home/fli/texmf/bibtex/bib"/>
-  <entry key="xmpPrivacyFilters" value="owner;note;review;timestamp;pdf;keywords"/>
+  <entry key="xmpPrivacyFilters" value="keywords;review;owner;timestamp;pdf;note"/>
 </map>
