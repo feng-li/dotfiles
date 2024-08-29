@@ -8,7 +8,7 @@ background = "#1d1f21"
 foreground = "#c5c8c6"
 
 [cursor]
-blink_interval = 400
+blink_interval = 300
 
 [cursor.style]
 blinking = "Always"
@@ -27,7 +27,7 @@ key = "F11"
 [[keyboard.bindings]]
 action = "CreateNewWindow"
 key = "N"
-mods = "Control"
+mods = "Super" # Make sure disable Gnome's "Focus the active notification" key -- Win + N
 
 [[mouse.bindings]]
 action = "ExpandSelection"
