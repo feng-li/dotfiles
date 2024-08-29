@@ -54,8 +54,8 @@ ln -sfv ${python_dist_path}/bin/virtualenv ${HOME}/.local/bin/
 
 # Setup virtual environment for current project
 virtualenv ${python_virtualenv_path}/${python_virtualenv_name} --python ${python_dist_path}/bin/python3
-echo ${python_virtualenv_name} > .venv
-chmod 600 .venv
+# echo ${python_virtualenv_name} > .venv
+# chmod 600 .venv
 
 echo -e "
 Python virtualenv setup completely. Use the following command to activate

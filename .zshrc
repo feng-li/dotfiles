@@ -205,8 +205,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(autoswitch_virtualenv zsh-autosuggestions git direnv $plugins zsh-syntax-highlighting)
-
+    plugins=(zsh-autosuggestions git direnv $plugins zsh-syntax-highlighting)
 
     # Run ssh-agen when in SSH but not in SLURM,
     if [[ (${SSH_TTY})  && (-f $HOME/.ssh/fli_rsa ) && (-z ${SLURM_JOB_ID}) ]]; then
@@ -226,7 +225,9 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}✗ %{$fg[cyan]%}) "
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}("
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-    AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
+
+    # Message for zsh-autoswitch-virtualenv
+    # AUTOSWITCH_MESSAGE_FORMAT="$(tput setaf 1)Activating (%venv_name) [%py_version]$(tput sgr0)"
 
     # zprof
 
