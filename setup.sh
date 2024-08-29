@@ -63,6 +63,8 @@ if [ ! -d $HOME/.R ]; then
 fi
 ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 
+# Install the direnv binary
+curl -sfL https://direnv.net/install.sh | bash
 
 # Install brew
 echo "Please use

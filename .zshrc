@@ -205,7 +205,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
-    plugins=(autoswitch_virtualenv zsh-autosuggestions git $plugins zsh-syntax-highlighting)
+    plugins=(autoswitch_virtualenv zsh-autosuggestions git direnv $plugins zsh-syntax-highlighting)
 
 
     # Run ssh-agen when in SSH but not in SLURM,
