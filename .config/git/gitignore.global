@@ -10,6 +10,11 @@
 **/.ropeproject/
 **/.eggs/
 *.egg-info/
+
+# Secrets #
+################
+*secrets*
+
 # Backup files #
 ################
 .~*
