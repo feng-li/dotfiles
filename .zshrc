@@ -23,7 +23,7 @@ fi
 # export TERM=screen-256color
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
-if [[ (${SSH_TTY}) ]]; then
+if [[ -n ${SSH_TTY} ]]; then
 
     # Time zone
     if [[ -z $TZ ]]; then
@@ -208,7 +208,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     plugins=(zsh-autosuggestions git direnv $plugins zsh-syntax-highlighting)
 
     # Run ssh-agen when in SSH but not in SLURM,
-    if [[ (${SSH_TTY})  && (-f $HOME/.ssh/fli_rsa ) && (-z ${SLURM_JOB_ID}) ]]; then
+    if [[ (-n ${SSH_TTY})  && (-f $HOME/.ssh/fli_rsa ) && (-z ${SLURM_JOB_ID}) ]]; then
 	 plugins=(ssh-agent $plugins)
 	 # Extra files send to ssh-agent
 	 zstyle :omz:plugins:ssh-agent identities fli_rsa
