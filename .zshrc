@@ -31,8 +31,8 @@ if [[ -n ${SSH_TTY} ]]; then
     fi
 
     # GCC
-    if [[ -f $HOME/.local/setvars/compilers.sh ]]; then
-	source $HOME/.local/setvars/compilers.sh
+    if [[ -f $dotfiles_dir/setvars/compilers.sh ]]; then
+	source $dotfiles_dir/setvars/compilers.sh
     fi
 
     # Spark

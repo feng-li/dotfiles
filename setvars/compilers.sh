@@ -45,9 +45,9 @@ my_set_mkl_env(){
     export LD_LIBRARY_PATH=$MKL_LIB_PATH:$LD_LIBRARY_PATH
 
     ## dynamic preload to avoid lib conflict
-    export LD_PRELOAD=$MKL_LIB_PATH/libmkl_core.so:$MKL_LIB_PATH/libmkl_sequential.so 
+    export LD_PRELOAD=$MKL_LIB_PATH/libmkl_core.so:$MKL_LIB_PATH/libmkl_sequential.so
 
-    
+
 }
 
 my_set_devtoolset_env(){
@@ -74,4 +74,4 @@ my_unset_dev_env(){
 # Activate the dev environment
 # my_set_dev_env
 my_set_devtoolset_env
-my_set_mkl_env
+# my_set_mkl_env

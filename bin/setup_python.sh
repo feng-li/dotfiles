@@ -69,10 +69,12 @@ Python virtualenv setup completely. Use the following command to activate
 
 # Jupyter notebook
 pip --quiet install jupyter notebook jupyterlab-rise
-
 echo -e "
 JupyterLab, Jupyter notebook 7, RISE are installed.
 "
+
+# Langueage servers and syntax checker flake8
+pip  --quiet install flake8
 
 # Jupyter ipykernel for current Python
 python -m ipykernel install --name=${python_virtualenv_name}  --user

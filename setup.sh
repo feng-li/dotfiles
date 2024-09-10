@@ -64,14 +64,13 @@ fi
 ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 
 # Install the direnv binary
+export PATH=$HOME/.local/bin:$PATH
 curl -sfL https://direnv.net/install.sh | bash
 
 # Install brew
-echo "Please use
-
-/bin/bash -c $dotfiles_dir/homebrew_install/install.sh
-
-to install homebrew.
-"
+# echo "Please use
+# /bin/bash -c $dotfiles_dir/homebrew_install/install.sh
+# to install homebrew.
+# "
 
 exit 0;
