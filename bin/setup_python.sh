@@ -18,6 +18,9 @@ python_virtualenv_path=${HOME}/.virtualenvs
 # Install a base Python if not available
 if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
 
+    # Remove existing contents
+    rm -rf $python_dist_path
+
     if [[ ! -d $python_dist_path ]]; then
        mkdir -p $python_dist_path
     fi
@@ -80,7 +83,7 @@ pip --quiet install flake8
 
 # ipykernel for virtual environment
 pip --quiet install ipykernel
-python -m ipykernel install --user --name ${python_virtualenv_name} --display-name ${python_virtualenv_path}/${python_virtualenv_name} 
+python -m ipykernel install --user --name ${python_virtualenv_name} --display-name ${python_virtualenv_path}/${python_virtualenv_name}
 
 echo -e "
 ipykernel for this Python virtual environment is installed.
