@@ -52,16 +52,6 @@ ln -sfv ${python_dist_path}/bin/python${python3_ver} ${HOME}/.local/bin/
 ln -sfv ${python_dist_path}/bin/pip${python3_ver} ${HOME}/.local/bin/
 ln -sfv ${python_dist_path}/bin/virtualenv ${HOME}/.local/bin/
 
-# Setup virtual environment for current project
-virtualenv ${python_virtualenv_path}/${python_virtualenv_name} --python ${python_dist_path}/bin/python3
-# echo ${python_virtualenv_name} > .venv
-# chmod 600 .venv
-
-echo -e "
-Python virtualenv setup completely. Use the following command to activate
-       source ${python_virtualenv_path}/${python_virtualenv_name}/bin/activate
-"
-
 # Install other dependences
 # source $conda_path/activate dismod_mr
 # pip install --upgrade pip
@@ -70,15 +60,28 @@ Python virtualenv setup completely. Use the following command to activate
 # Jupyter notebook
 pip --quiet install jupyter notebook jupyterlab-rise
 echo -e "
-JupyterLab, Jupyter notebook 7, RISE are installed.
+JupyterLab, Jupyter notebook 7, RISE are installed at
+    $python_dist_path
 "
 
-# Langueage servers and syntax checker flake8
-pip  --quiet install flake8
-
-# Jupyter ipykernel for current Python
-python -m ipykernel install --name=${python_virtualenv_name}  --user
+# Setup virtual environment for current project
+virtualenv ${python_virtualenv_path}/${python_virtualenv_name} --python ${python_dist_path}/bin/python3
 
 echo -e "
-ipykernel for this Python is installed.
+Python virtualenv setup completely. Use the following command to activate
+       source ${python_virtualenv_path}/${python_virtualenv_name}/bin/activate
+"
+
+# Jupyter ipykernel for current Python
+source ${python_virtualenv_path}/${python_virtualenv_name}/bin/activate
+
+# Langueage servers and syntax checker flake8
+pip --quiet install flake8
+
+# ipykernel for virtual environment
+pip --quiet install ipykernel
+python -m ipykernel install --user --name ${python_virtualenv_name} --display-name ${python_virtualenv_path}/${python_virtualenv_name} 
+
+echo -e "
+ipykernel for this Python virtual environment is installed.
 "
