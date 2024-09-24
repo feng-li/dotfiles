@@ -60,7 +60,6 @@
   <entry key="journalPopup" value="DISABLED"/>
   <entry key="keyGenAlwaysAddLetter" value="false"/>
   <entry key="keyGenFirstLetterA" value="true"/>
-  <entry key="lastEdited" value="/home/fli/texmf/bibtex/bib/publications-feng.bib"/>
   <entry key="lastFocused" value="/home/fli/texmf/bibtex/bib/publications-feng.bib"/>
   <entry key="lastUsedExport" value="HTML list"/>
   <entry key="localAutoSave" value="false"/>
@@ -70,9 +69,9 @@
   <entry key="mainTableColumnSortTypes" value="ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;ASCENDING;DESCENDING;ASCENDING;DESCENDING;DESCENDING;ASCENDING"/>
   <entry key="mainTableColumnWidths" value="28.0;28.0;28.0;104.0;104.0;400.0;71.5;436.0;80.0;28.0;28.0"/>
   <entry key="mainWindowPosX" value="0.0"/>
-  <entry key="mainWindowPosY" value="32.0"/>
-  <entry key="mainWindowSizeX" value="1128.0"/>
-  <entry key="mainWindowSizeY" value="720.0"/>
+  <entry key="mainWindowPosY" value="0.0"/>
+  <entry key="mainWindowSizeX" value="1920.0"/>
+  <entry key="mainWindowSizeY" value="1080.0"/>
   <entry key="mergeEntriesDiffMode" value="WORD"/>
   <entry key="namesAsIs" value="false"/>
   <entry key="namesFf" value="false"/>

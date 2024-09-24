@@ -9,14 +9,16 @@ case $- in
 esac
 
 # Source local development environment
-if [ -f $HOME/.dotfiles/setvars/*.sh ]; then
-    source $HOME/.dotfiles/setvars/*.sh
-fi
+# if [ -f $HOME/.dotfiles/setvars/*.sh ]; then
+#     source $HOME/.dotfiles/setvars/*.sh
+# fi
 
-# Use local zsh if no root access
+# Setup local zsh and tmux if no root access
 if [ -f $HOME/.local/bin/zsh ]; then
     export SHELL=$HOME/.local/bin/zsh
-    [ -z "$ZSH_VERSION" ] && exec $HOME/.local/bin/zsh -l
+    if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+        $HOME/.local/bin/tmux new -As WORKSPACE
+    fi
 fi
 
 ################################################################################
