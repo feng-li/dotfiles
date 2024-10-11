@@ -9,6 +9,7 @@ foreground = "#c5c8c6"
 
 [cursor]
 blink_interval = 300
+blink_timeout = 0
 
 [cursor.style]
 blinking = "Always"
