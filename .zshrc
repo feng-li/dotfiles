@@ -20,7 +20,7 @@ fi
 if [[ $TERM = dumb ]]; then
     # unset zle_bracketed_paste
 fi
-# export TERM=screen-256color
+export TERM=xterm-256color
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ -n ${SSH_TTY} ]]; then
