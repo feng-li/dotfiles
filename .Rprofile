@@ -95,7 +95,8 @@ if(interactive())
     ##------------------------------------------------------------
     ##
     options(browserNLdisabled = TRUE, # Disable newline in browser
-            width = 90 # max print width
+            max.print = 10000, # max print size
+            width = 150 # max print width
             )
 }
 
