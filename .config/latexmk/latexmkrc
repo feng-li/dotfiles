@@ -13,7 +13,7 @@ $bibtex_use = 2;  # Run biber or bibtex if needed
 $aux_dir = 'auto'; # Save intermedient files to different folder, not compatible with "minted"
 
 # Maximum runs of xelatex reached without getting stable files
-$max_repeat = 10;
+$max_repeat = 20;
 
 # biber by default assumes we're running a more modern compiler like XeLaTeX or LuaTeX on
 # the backend, which isn't true in arXiv submission
