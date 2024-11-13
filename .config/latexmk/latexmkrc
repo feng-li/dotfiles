@@ -1,16 +1,18 @@
-#$pdflatex = 'pdflatex -draftmode  -synctex=1 -halt-on-error --shell-escape  -file-line-error  %O %S';
 
-#$latex = 'latex -interaction=nonstopmode -shell-escape';
-#$pdflatex = 'pdflatex -interaction=nonstopmode -shell-escape';
-#$xelatex = 'xelatex -interaction=nonstopmode -shell-escape';
+# $latex = 'latex -shell-escape -file-line-error  %O %S';
+# $pdflatex = 'pdflatex -shell-escape -file-line-error  %O %S';
+# $xelatex = 'xelatex -shell-escape -file-line-error %O %S';
 
-#$pdf_mode = 5; ## LuaLaTeX (4) is slower than XeLaTeX(5)
-#$view = 'none';
-# $pdf_previewer = 'xdg-open %O %S';
+$latex_silent_switch   = "-interaction=batchmode";
+$xelatex_silent_switch = "-interaction=batchmode";
+
+$pdf_mode = 5; # LuaLaTeX(4) is slower than XeLaTeX(5)
+
+$pdf_previewer = 'xdg-open %O %S';
 
 #$bibtex_use = 2;  # Run biber or bibtex if needed
 
-#$aux_dir = 'auto'; # Save intermedient files to different folder, not compatible with "minted"
+$aux_dir = 'auto'; # Save intermedient files to different folder, not compatible with "minted"
 
 # Maximum runs of xelatex reached without getting stable files
 #$max_repeat = 10;
