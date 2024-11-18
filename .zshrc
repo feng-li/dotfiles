@@ -109,8 +109,8 @@ export VISUAL='emacsclient --alternate-editor="emacs -Q" -c' # $VISUAL opens in 
 ## Dictionary
 export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 
-## GIT-LATEXDIFF
-alias git-latexdiff="git-latexdiff --latexmk --ignore-latex-errors"
+## Pretty GIT-LATEXDIFF
+alias git-latexdiff='git-latexdiff --no-del --latexmk --ignore-latex-errors --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\w\d*@]*" '
 
 ## Linux homebrew
 # if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
