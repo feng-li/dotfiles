@@ -31,9 +31,9 @@ if [[ -n ${SSH_TTY} ]]; then
     fi
 
     # GCC
-    if [[ -f $dotfiles_dir/setvars/compilers.sh ]]; then
-	source $dotfiles_dir/setvars/compilers.sh
-    fi
+    # if [[ -f $dotfiles_dir/setvars/compilers.sh ]]; then
+    #     source $dotfiles_dir/setvars/compilers.sh
+    # fi
 
     # Spark
     if [[ -f $HOME/.local/mapreduce/spark-on-slurm/setup-spark-env.sh ]]; then
@@ -41,9 +41,9 @@ if [[ -n ${SSH_TTY} ]]; then
     fi
 
     # TeXLive
-    if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
+    # if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
 	# export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
-    fi
+    # fi
     # export EMACS_SERVER_FILE=$HOME/.emacs.d/server/${HOST}_${UID}
 fi
 
@@ -111,25 +111,6 @@ export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
 
 ## Pretty GIT-LATEXDIFF
 alias git-latexdiff='git-latexdiff --no-del --latexmk --ignore-latex-errors --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\w\d*@]*" '
-
-## Linux homebrew
-# if [[ -f $HOME/.linuxbrew/bin/brew ]]; then
-
-#     export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-#     export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-#     export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
-
-#     eval "$($HOME/.linuxbrew/bin/brew shellenv)"
-
-#     ## Use local git for brew
-#     if [[ -f $HOME/.local/bin/curl ]]; then
-#         export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-#     fi
-#     if [[ -f $HOME/.local/bin/git ]]; then
-#         export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-#     fi
-
-# fi
 
 ## Auto-TMUX invocation.  If we're in an interactive session and not inside a tmux,
 ## then automatically put us into a tmux session.

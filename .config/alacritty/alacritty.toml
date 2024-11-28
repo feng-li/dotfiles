@@ -48,6 +48,7 @@ save_to_clipboard = true
 
 [window]
 startup_mode = "Maximized"
+padding = { x = 4, y = 0 }
 
 [general]
 import = ["~/.dotfiles/alacritty-dracula-theme/dracula.toml"]
