@@ -15,6 +15,18 @@ python_dist_path=$HOME/.local/python${python3_ver}
 python_virtualenv_name=python${python3_ver}
 python_virtualenv_path=${HOME}/.virtualenvs
 
+miniforge_home=$HOME/.local/miniforge3
+
+# Install minforge if mamba not available
+if [[ ! -f ${miniforge_home}/bin/python3 ]]; then
+
+    # Force download the json file
+    curl -L -O "https://mirrors.tuna.tsinghua.edu.cn/github-release/conda-forge/miniforge/LatestRelease/Miniforge3-$(uname)-$(uname -m).sh"
+    bash "Miniforge3-$(uname)-$(uname -m).sh" -b -u -p "${miniforge_home}"
+
+    ln -sfv ${miniforge_home}/bin/mamba ${HOME}/.local/bin/
+fi
+
 # Install a base Python if not available
 if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
 
@@ -25,22 +37,9 @@ if [[ ! -f $python_dist_path/bin/python3 ]] || [[ ${update} == "update" ]]; then
        mkdir -p $python_dist_path
     fi
 
-    # Download Python Standalone Builds from
-    # https://github.com/indygreg/python-build-standalone
+    # Install Python
+    ${miniforge_home}/bin/mamba create --prefix $python_dist_path python=${python3_ver}
 
-    cd $python_dist_path
-
-    # Force download the json file
-    curl -o latest.json -L https://api.github.com/repos/indygreg/python-build-standalone/releases/latest
-
-    browser_download_url=$(grep -oP '"browser_download_url": "\K[^"]+x86_64-unknown-linux-gnu[^"]+pgo[^"]+lto[^"]+zst' latest.json | grep -m 1 -e "${python3_ver}")
-    python_pkg=$(basename ${browser_download_url})
-
-    curl -L ${browser_download_url} -o ${python_pkg}
-
-    # Only unzip the python directory and extract to current dist path
-    tar -I zstd -axf $python_pkg python/install --strip-components=2
-    cd -
 fi
 
 # Install and upgrade pip and virtualenv to base environment
