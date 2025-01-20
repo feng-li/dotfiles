@@ -34,6 +34,10 @@ if [[ -n ${SSH_TTY} ]]; then
     # if [[ -f $dotfiles_dir/setvars/compilers.sh ]]; then
     #     source $dotfiles_dir/setvars/compilers.sh
     # fi
+    ## miniforge
+    # if [[ -f $HOME/.local/miniforge3/bin/mamba ]]; then
+    #     export PATH=$HOME/.local/miniforge3/bin:$PATH:
+    # fi
 
     # Spark
     if [[ -f $HOME/.local/mapreduce/spark-on-slurm/setup-spark-env.sh ]]; then
