@@ -30,25 +30,21 @@ if [[ -n ${SSH_TTY} ]]; then
 	export TZ='Asia/Shanghai'
     fi
 
-    # GCC
-    # if [[ -f $dotfiles_dir/setvars/compilers.sh ]]; then
-    #     source $dotfiles_dir/setvars/compilers.sh
-    # fi
-    ## miniforge
-    # if [[ -f $HOME/.local/miniforge3/bin/mamba ]]; then
-    #     export PATH=$HOME/.local/miniforge3/bin:$PATH:
-    # fi
-
-    # Spark
-    if [[ -f $HOME/.local/mapreduce/spark-on-slurm/setup-spark-env.sh ]]; then
-	source $HOME/.local/mapreduce/spark-on-slurm/setup-spark-env.sh
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('${HOME}/.local/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+	eval "$__conda_setup"
+    else
+	if [ -f "${HOME}/.local/miniforge3/etc/profile.d/conda.sh" ]; then
+	    . "${HOME}/.local/miniforge3/etc/profile.d/conda.sh"
+	else
+	    export PATH="${HOME}/.local/miniforge3/bin:$PATH"
+	fi
     fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 
-    # TeXLive
-    # if [[ -d $HOME/.local/texlive/bin/x86_64-linux ]]; then
-	# export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
-    # fi
-    # export EMACS_SERVER_FILE=$HOME/.emacs.d/server/${HOST}_${UID}
 fi
 
 ## Add a user PATH

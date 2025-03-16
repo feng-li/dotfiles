@@ -8,11 +8,6 @@ case $- in
       *) return;;
 esac
 
-# Source local development environment
-# if [ -f $HOME/.dotfiles/setvars/*.sh ]; then
-#     source $HOME/.dotfiles/setvars/*.sh
-# fi
-
 # Setup local zsh and tmux if no root access
 if [ -f $HOME/.local/bin/zsh ]; then
     export SHELL=$HOME/.local/bin/zsh
@@ -23,22 +18,25 @@ if [ -f $HOME/.local/bin/zsh ]; then
     fi
 fi
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('${HOME}/.local/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "${HOME}/.local/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/.local/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="${HOME}/.local/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 ################################################################################
 ## Personal configuration
 ################################################################################
-
-# Auto-screen invocation. see: http://taint.org/wk/RemoteLoginAutoScreen
-# if we're coming from a remote SSH connection, in an interactive session
-# then automatically put us into a screen(1) session.   Only try once
-# -- if $STARTED_SCREEN is set, don't try it again, to avoid looping
-# if screen fails for some reason.
-if [ "$PS1" != "" -a "${STARTED_SCREEN:-x}" = x -a "${SSH_TTY:-x}" != x ]
-then
-  STARTED_SCREEN=1 ; export STARTED_SCREEN
-  screen -RR  || echo "Screen failed! continuing with normal bash startup"
-fi
-# [end of auto-screen snippet]
-
 
 export TERM=xterm-256color
 
