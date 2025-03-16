@@ -111,7 +111,7 @@
   <entry key="warnBeforeOverwritingKey" value="true"/>
   <entry key="webSearchVisible" value="false"/>
   <entry key="winEdtPath" value="WinEdt"/>
-  <entry key="windowMaximised" value="true"/>
+  <entry key="windowMaximised" value="false"/>
   <entry key="workingDirectory" value="/home/fli/texmf/bibtex/bib"/>
   <entry key="xmpPrivacyFilters" value="keywords;review;owner;timestamp;pdf;note"/>
 </map>
