@@ -17,10 +17,10 @@ blinking = "Always"
 size = 10.5
 
 [font.normal]
-family = "M PLUS Code Latin 50"
-style = "Medium"
-# family = "M+CodeLat0 Nerd Font Regular"
+# family = "M PLUS Code Latin 50"
 # style = "Medium"
+family = "M+CodeLat50 Nerd Font"
+style = "Medium"
 
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
