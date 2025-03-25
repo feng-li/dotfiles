@@ -20,6 +20,7 @@ do
     ln -sfv $file $HOME/.config/
 done
 
+
 # Terminfo
 ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
 
@@ -67,10 +68,17 @@ ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 export PATH=$HOME/.local/bin:$PATH
 curl -sfL https://direnv.net/install.sh | bash
 
-# Install brew
-# echo "Please use
-# /bin/bash -c $dotfiles_dir/homebrew_install/install.sh
-# to install homebrew.
-# "
+# Install miniforge
+
+# Load miniforge
+if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
+
+    ln -sfv $HOME/.local/miniforge3/bin/zsh          $HOME/.local/bin/
+    ln -sfv $HOME/.local/miniforge3/bin/tmux         $HOME/.local/bin/
+    ln -sfv $HOME/.local/miniforge3/bin/emacs        $HOME/.local/bin/
+    ln -sfv $HOME/.local/miniforge3/bin/emacsclient  $HOME/.local/bin/
+    
+fi
+
 
 exit 0;

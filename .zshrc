@@ -13,8 +13,8 @@ if [[ -f $dotfiles_dir/dir_colors/dircolors ]]; then
 fi
 
 # Local version zsh
-if [[ -f $HOME/.local/bin/zsh ]]; then
-    SHELL=$HOME/.local/bin/zsh
+if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
+    SHELL=$HOME/.local/miniforge3/bin/zsh
 fi
 
 if [[ $TERM = dumb ]]; then
