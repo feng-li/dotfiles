@@ -16,9 +16,6 @@
 [submodule "zsh_custom/plugins/autoswitch-virtualenv"]
 	path = zsh_custom/plugins/autoswitch-virtualenv
 	url = https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git
-[submodule "zsh_custom/plugins/autoswitch_virtualenv"]
-	path = zsh_custom/plugins/autoswitch_virtualenv
-	url = https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git
 [submodule "zsh_custom/plugins/zsh-syntax-highlighting"]
 	path = zsh_custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
