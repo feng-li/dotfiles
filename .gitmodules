@@ -7,9 +7,6 @@
 [submodule "git-latexdiff"]
 	path = git-latexdiff
 	url = https://gitlab.com/git-latexdiff/git-latexdiff.git
-[submodule "alacritty-dracula-theme"]
-	path = alacritty-dracula-theme
-	url = https://github.com/dracula/alacritty.git
 [submodule "zsh_custom/plugins/zsh-autosuggestions"]
         path = zsh_custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
