@@ -7,9 +7,12 @@ dotfiles_dir=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd |
 echo  "['dotfiles' located at $dotfiles_dir]"
 echo  "['dotfiles' setup:]"
 cd $dotfiles_dir
-# git submodule update --recursive
-# git submodule foreach git checkout master
-# git submodule foreach git pull
+echo -e " Run this command if this script is from the git repository
+  git submodule init
+  git submodule update --recursive
+  git submodule foreach git checkout master
+  git submodule foreach git pull
+"
 
 # $XDG_CONFIG_HOME files
 if [ ! -d $HOME/.config ]; then
@@ -77,7 +80,7 @@ if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
     ln -sfv $HOME/.local/miniforge3/bin/tmux         $HOME/.local/bin/
     ln -sfv $HOME/.local/miniforge3/bin/emacs        $HOME/.local/bin/
     ln -sfv $HOME/.local/miniforge3/bin/emacsclient  $HOME/.local/bin/
-    
+
 fi
 
 
