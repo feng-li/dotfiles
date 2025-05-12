@@ -55,12 +55,14 @@ fi
 # ln -sfv $dotfiles_dir/git-latexdiff/git-latexdiff    $HOME/.local/bin/
 ln -sfv $dotfiles_dir/diff-so-fancy/diff-so-fancy $HOME/.local/bin/
 
-ln -sf $dotfiles_dir/.inputrc    $HOME/.inputrc
-ln -sfv $dotfiles_dir/.zshrc    $HOME/.zshrc
+ln -sf $dotfiles_dir/.inputrc      $HOME/.inputrc
+ln -sfv $dotfiles_dir/.zshrc       $HOME/.zshrc
 
 ln -sfv $dotfiles_dir/.Renviron    $HOME/.Renviron
 ln -sfv $dotfiles_dir/.Rprofile    $HOME/.Rprofile
 ln -sfv $dotfiles_dir/.lintr       $HOME/.lintr
+
+ln -sfv $dotfiles_dir/.condarc    $HOME/.condarc
 
 if [ ! -d $HOME/.R ]; then
     mkdir $HOME/.R
@@ -82,6 +84,5 @@ if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
     ln -sfv $HOME/.local/miniforge3/bin/emacsclient  $HOME/.local/bin/
 
 fi
-
 
 exit 0;
