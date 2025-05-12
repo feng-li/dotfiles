@@ -79,6 +79,10 @@ if [[ -f /usr/bin/info ]]; then
     alias man=info
 fi
 
+## fzf for fast search
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
 
 ## SET TERM for ssh
 alias ssh="TERM=xterm-256color $(which ssh)"
