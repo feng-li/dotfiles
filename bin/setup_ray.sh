@@ -6,7 +6,11 @@ set -e
 HEAD_IP="10.10.10.9"
 WORKER_IPS=("10.10.10.10" "10.10.10.11" "10.10.10.12" "10.10.10.13" "10.10.10.14" "10.10.10.15" "10.10.10.16")
 RAY_PORT=2024  # Default Ray head node port
-NUM_CPUS=32    # Number of CPUs per node
+
+NUM_CPUS=$(nproc --all)
+echo "Detected $NUM_CORES cores"
+
+# NUM_CPUS=32    # Number of CPUs per node
 
 # Automatically get the current user
 SSH_USER=$(whoami)
