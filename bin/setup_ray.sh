@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Ray Cluster Configuration
 HEAD_IP="10.10.10.9"
 WORKER_IPS=("10.10.10.10" "10.10.10.11" "10.10.10.12" "10.10.10.13" "10.10.10.14" "10.10.10.15" "10.10.10.16")
@@ -34,12 +36,12 @@ stop_ray() {
     # Stop workers first
     for ip in "${WORKER_IPS[@]}"; do
         echo "Stopping Ray on worker $ip..."
-        ssh $SSH_OPTS "$SSH_USER@$ip" "ray stop"
+        ssh $SSH_OPTS "$SSH_USER@$ip" "export PATH=$RAY_PATH:\$PATH; ray stop"
     done
 
     # Stop head node
     echo "Stopping Ray on head node $HEAD_IP..."
-    ssh $SSH_OPTS "$SSH_USER@$HEAD_IP" "ray stop"
+    ssh $SSH_OPTS "$SSH_USER@$HEAD_IP" "export PATH=$RAY_PATH:\$PATH; ray stop"
 
     echo "Ray cluster stopped successfully!"
 }
