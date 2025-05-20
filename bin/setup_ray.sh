@@ -8,7 +8,7 @@ WORKER_IPS=("10.10.10.10" "10.10.10.11" "10.10.10.12" "10.10.10.13" "10.10.10.14
 RAY_PORT=2024  # Default Ray head node port
 
 NUM_CPUS=$(nproc --all)
-echo "Detected $NUM_CORES cores"
+echo "Using $NUM_CPUS cores for each machine from HEAD NODE $HEAD_IP"
 
 # NUM_CPUS=32    # Number of CPUs per node
 

@@ -13,8 +13,9 @@ if [[ -f $dotfiles_dir/dir_colors/dircolors ]]; then
 fi
 
 # Local version zsh
-if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
-    SHELL=$HOME/.local/miniforge3/bin/zsh
+if [[ -f ${HOME}/.local/miniforge3/bin/zsh ]]; then
+    export SHELL="${HOME}/.local/miniforge3/bin/zsh"
+    export INFOPATH="${HOME}/.local/miniforge3/share/info"
 fi
 
 if [[ $TERM = dumb ]]; then
@@ -32,7 +33,7 @@ if [[ -n ${SSH_TTY} ]]; then
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('${HOME}/.local/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('${HOME}/.local/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
     else
@@ -64,15 +65,6 @@ fi
 
 ## No. of threads
 export OMP_NUM_THREADS=1
-
-## Julia
-## alias julia="julia -f"
-
-## TexLive
-# alias latex='latex -interaction=nonstopmode -shell-escape -output-directory="auto"'
-# alias pdflatex='pdflatex -interaction=nonstopmode -shell-escape -output-directory="auto"'
-# alias xelatex='xelatex -interaction=nonstopmode -shell-escape -output-directory="auto"'
-# alias luatex='luatex -interaction=nonstopmode -shell-escape -output-directory="auto"'
 
 ## Use info to replace man if installed
 if [[ -f /usr/bin/info ]]; then
