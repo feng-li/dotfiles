@@ -130,12 +130,6 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # Zsh profile tool
     # zmodload zsh/zprof
 
-    # Set name of the theme to load. Optionally, if you set this to "random"
-    # it'll load a random theme each time that oh-my-zsh is loaded.
-    # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-    ZSH_THEME="robbyrussell"
-    # ZSH_THEME="dracula"
-
     # Uncomment the following line to use case-sensitive completion.
     # CASE_SENSITIVE="true"
 
@@ -170,6 +164,13 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     # stamp shown in the history command output.
     # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
     # HIST_STAMPS="mm/dd/yyyy"
+
+    # Set name of the theme to load. Optionally, if you set this to "random"
+    # it'll load a random theme each time that oh-my-zsh is loaded.
+    # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+    ZSH_THEME="robbyrussell"
+    # ZSH_THEME="dracula"
+
 
     # Would you like to use another custom folder than $ZSH/custom?
     ZSH_CUSTOM=$dotfiles_dir/zsh_custom
