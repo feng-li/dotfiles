@@ -27,14 +27,6 @@ done
 # Terminfo
 ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
 
-# if [ "$(realpath "$dotfiles_dir")" = "$(realpath "$HOME/.dotfiles")"  ]; then
-#     echo  "Location of 'dotfiles' and $HOME/.dotfiles are the same."
-# else
-#     rm -rf $HOME/.dotfiles
-#     ln -sf $dotfiles_dir    $HOME/.dotfiles
-#     echo  "$dotfiles_dir -> $HOME/.dotfiles"
-# fi
-
 # Emacs
 mv -f $HOME/.emacs.d  $HOME/.emacs.d_bak
 rm -rf $HOME/.emacs
@@ -69,11 +61,6 @@ if [ ! -d $HOME/.R ]; then
 fi
 ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 
-# Install the direnv binary
-export PATH=$HOME/.local/bin:$PATH
-curl -sfL https://direnv.net/install.sh | bash
-
-# Install miniforge
 
 # Load miniforge
 if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then

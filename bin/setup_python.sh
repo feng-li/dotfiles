@@ -87,3 +87,7 @@ python -m ipykernel install --user --name ${python_virtualenv_name} --display-na
 echo -e "
 ipykernel for this Python virtual environment is installed.
 "
+
+# Install the direnv binary
+export PATH=$HOME/.local/bin:$PATH
+curl -sfL https://direnv.net/install.sh | bash
