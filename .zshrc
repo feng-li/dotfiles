@@ -46,6 +46,10 @@ else
     fi
 fi
 unset __conda_setup
+
+if [ -f "${HOME}/.local/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "${HOME}/.local/miniforge3/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 
 ## Add a user PATH
