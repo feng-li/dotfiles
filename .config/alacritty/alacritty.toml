@@ -17,10 +17,10 @@ blinking = "Always"
 size = 10.5
 
 [font.normal]
-family = "JuliaMono Nerd Font Mono"
+# family = "JuliaMono Nerd Font Mono"
 # style = "Medium"
 # family = "M+CodeLat50 Nerd Font"
-# family = "M+CodeLat60 Nerd Font"
+family = "M+CodeLat60 Nerd Font"
 style = "Medium"
 
 [[keyboard.bindings]]
