@@ -203,8 +203,8 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     ZSH_CACHE_DIR="$HOME/.cache"
 
     # Fancy color prompt
-    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔ %{$fg[cyan]%}) "
-    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}✗ %{$fg[cyan]%}) "
+    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$fg[cyan]%}) "
+    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}✗%{$fg[cyan]%}) "
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}("
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
