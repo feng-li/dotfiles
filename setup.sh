@@ -7,7 +7,8 @@ dotfiles_dir=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd |
 echo  "['dotfiles' located at $dotfiles_dir]"
 echo  "['dotfiles' setup:]"
 cd $dotfiles_dir
-echo -e " Run this command if this script is from the git repository
+echo -e "
+Run this command if this script is from the git repository
   git submodule init
   git submodule update --recursive
   git submodule foreach git checkout master
@@ -55,6 +56,10 @@ ln -sfv $dotfiles_dir/.Rprofile    $HOME/.Rprofile
 ln -sfv $dotfiles_dir/.lintr       $HOME/.lintr
 
 ln -sfv $dotfiles_dir/.condarc    $HOME/.condarc
+
+ln -sfv $dotfiles_dir/.hunspell_en_US    $HOME/.hunspell_en_US
+ln -sfv $dotfiles_dir/.hunspell_en_US    $HOME/.config/enchant/en_US.dic
+
 
 if [ ! -d $HOME/.R ]; then
     mkdir $HOME/.R
