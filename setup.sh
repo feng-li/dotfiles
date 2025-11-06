@@ -29,7 +29,7 @@ done
 ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
 
 # Emacs
-mv -f $HOME/.emacs.d  $HOME/.emacs.d_bak
+rm -rf $HOME/.emacs.d
 rm -rf $HOME/.emacs
 ln -sfv $dotfiles_dir/.emacs.d    $HOME/.emacs.d
 
@@ -42,6 +42,10 @@ ln -sfv $dotfiles_dir/.java    $HOME/.java
 
 if [ ! -d $HOME/.local/bin/ ]; then
     mkdir -p $HOME/.local/bin
+fi
+
+if [ ! -d $HOME/.config/enchant/ ]; then
+    mkdir -p $HOME/.config/enchant
 fi
 
 # # git-latexdiff
