@@ -30,6 +30,7 @@
 *.sav
 *\(Case\ Conflict\)*
 *.venv
+*ERROR
 # History files
 ################
 .Rhistory
