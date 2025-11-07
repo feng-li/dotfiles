@@ -15,16 +15,10 @@ source "${HOME}/.local/miniforge3/etc/profile.d/conda.sh"
 source "${HOME}/.local/miniforge3/etc/profile.d/mamba.sh"
 
 # Install necessary software
-# mamba install emacs
-# mamba install enchant
-# mamba install git
-# mamba install tmux
-# mamba install ncdu
-# mamba install htop
-# mamba install direnv
+# mamba install -y emacs enchant git tmux ncdu htop direnv
 
 # Compilers
 # mamba install gcc gfortran clang
 
 # Development environment
-mamba install r-base
+# mamba install -y r-base
