@@ -39,6 +39,7 @@ __conda_setup="$('${HOME}/.local/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /de
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
+    export MAMBA_ROOT_PREFIX=${HOME}/.local/miniforge3
     if [ -f "${HOME}/.local/miniforge3/etc/profile.d/conda.sh" ]; then
         . "${HOME}/.local/miniforge3/etc/profile.d/conda.sh"
     else
@@ -46,10 +47,6 @@ else
     fi
 fi
 unset __conda_setup
-
-if [ -f "${HOME}/.local/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "${HOME}/.local/miniforge3/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 
 ## Add a user PATH
