@@ -42,6 +42,7 @@ DISABLE_CONFIG="${3:-}"
 # --- 2. Resolve real paths ---
 GIT_LATEXDIFF_PATH="$(realpath "$(command -v git-latexdiff)")"
 MAIN_TEX_PATH=$MAIN_TEX
+DIFF_PDF="diff_${COMMIT_HASH}.pdf"
 
 # --- 3. Build base command ---
 CMD=(
@@ -50,6 +51,7 @@ CMD=(
     --ignore-latex-errors
     --no-del
     --main "$MAIN_TEX_PATH"
+    --output "$DIFF_PDF"
 )
 
 # --- 4. Enable config by default unless 'noconfig' is passed ---
@@ -63,3 +65,16 @@ fi
 # --- 5. Execute command ---
 echo "Running: ${CMD[*]}"
 "${CMD[@]}"
+
+# --- 6. Rename output PDF ---
+if [[ -f ${DIFF_PDF} ]]; then
+    if command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "$DIFF_PDF" >/dev/null 2>&1 &
+    elif command -v open >/dev/null 2>&1; then
+        open "$DIFF_PDF" >/dev/null 2>&1 &
+    else
+        echo "PDF generated but cannot auto-open (no xdg-open or open found)."
+    fi
+else
+    echo "No ${DIFF_PDF} found — check LaTeX compilation errors."
+fi
