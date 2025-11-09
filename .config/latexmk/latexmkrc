@@ -13,7 +13,10 @@ $pdf_previewer = 'xdg-open %O %S';
 
 $bibtex_use = 2;  # Run biber or bibtex if needed, bbl  files  are  always treated as regeneratable, and are deleted in a cleanup.
 
-# $aux_dir = 'auto'; # Save intermediate files to different folder, not compatible with "minted" nor auctex
+# Save intermediate files to different folder, not compatible with "minted" nor auctex
+use Sys::Hostname;
+my $hostname = hostname;
+$aux_dir = "auto/$hostname";
 
 # Maximum runs of xelatex reached without getting stable files
 #$max_repeat = 10;
