@@ -58,7 +58,7 @@ CMD=(
 if [[ "$DISABLE_CONFIG" == "noconfig" ]]; then
     echo "ℹ️  Running without --config (disabled manually)."
 else
-    CMD+=( --config='PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\\w\\d*@]*' )
+    CMD+=( --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\\w\\d*@]*")
     echo "✅  Custom --config ENABLED (default)."
 fi
 
