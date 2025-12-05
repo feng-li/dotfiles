@@ -9,6 +9,7 @@
 	fileMode = false
 	editor = emacsclient --tty -create-frame -a=""
 	pager = ~/.dotfiles/diff-so-fancy/diff-so-fancy | less --tabs=4 -RF
+	whitespace = trailing-space,cr-at-eol,tab-in-indent
 
 [color]
 	ui = true
