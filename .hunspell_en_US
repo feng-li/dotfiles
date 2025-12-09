@@ -38,3 +38,6 @@ exogenous
 autoregression
 generalizable
 Vectorize
+reparameterization
+invertibility
+stationarity
