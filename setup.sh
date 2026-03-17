@@ -26,6 +26,7 @@ done
 
 
 # Terminfo
+rm -rf $HOME/.terminfo
 ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
 
 # Emacs
@@ -38,6 +39,7 @@ ln -sfv $dotfiles_dir/.emacs.d    $HOME/.emacs.d
 # echo  Starting emacs daemon via systemctl
 # systemctl start --user emacs
 
+rm -rf $HOME/.java
 ln -sfv $dotfiles_dir/.java    $HOME/.java
 
 if [ ! -d $HOME/.local/bin/ ]; then

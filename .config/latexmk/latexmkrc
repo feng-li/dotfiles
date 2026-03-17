@@ -1,3 +1,4 @@
+
 $latex = 'latex -shell-escape -file-line-error  %O %S';
 
 # Force pdflatex to use xelatex
