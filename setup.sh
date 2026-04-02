@@ -72,6 +72,8 @@ if [ ! -d $HOME/.R ]; then
 fi
 ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
 
+# install direnv
+curl -sfL https://direnv.net/install.sh | bash
 
 # Load miniforge
 if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
