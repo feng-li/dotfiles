@@ -25,20 +25,25 @@ export TERM=xterm-256color
 
 # SPECIAL SETTINGS ON REMOTE DEVELOPMENT ENVIRONMENT
 if [[ -n "$SSH_CONNECTION" && -o interactive ]]; then
-# Only do this for interactive SSH sessions
-
-    # Time zone
     if [[ -z $TZ ]]; then
-	export TZ='Asia/Shanghai'
+        export TZ='Asia/Shanghai'
     fi
 
-    # Set terminal background
-    printf '\e]11;#2e003e\a'
-    # function _restore_terminal_bg_on_exit() {
-    #     printf '\e]111\a'
-    # }
-    # trap _restore_terminal_bg_on_exit EXIT
+    if [[ -n "$TMUX" ]]; then
+        # Pass OSC 11 through tmux to the outer terminal
+        printf '\ePtmux;\e\e]11;#2e003e\a\e\\'
+    else
+        printf '\e]11;#2e003e\a'
+    fi
 
+    function _restore_terminal_bg_on_exit() {
+        if [[ -n "$TMUX" ]]; then
+            printf '\ePtmux;\e\e]111\a\e\\'
+        else
+            printf '\e]111\a'
+        fi
+    }
+    trap _restore_terminal_bg_on_exit EXIT
 fi
 
 # >>> conda initialize >>>
