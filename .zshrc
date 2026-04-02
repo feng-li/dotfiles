@@ -29,19 +29,10 @@ if [[ -n "$SSH_CONNECTION" && -o interactive ]]; then
         export TZ='Asia/Shanghai'
     fi
 
-    if [[ -n "$TMUX" ]]; then
-        # Pass OSC 11 through tmux to the outer terminal
-        printf '\ePtmux;\e\e]11;#2e003e\a\e\\'
-    else
-        printf '\e]11;#2e003e\a'
-    fi
-
+    # Pass OSC 11 through the outer terminal
+    printf '\e]11;#2e003e\a'
     function _restore_terminal_bg_on_exit() {
-        if [[ -n "$TMUX" ]]; then
-            printf '\ePtmux;\e\e]111\a\e\\'
-        else
-            printf '\e]111\a'
-        fi
+        printf '\e]111\a'
     }
     trap _restore_terminal_bg_on_exit EXIT
 fi
