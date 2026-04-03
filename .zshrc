@@ -30,11 +30,11 @@ if [[ -n "$SSH_CONNECTION" && -o interactive ]]; then
     fi
 
     # Pass OSC 11 through the outer terminal
-    printf '\e]11;#2e003e\a'
-    function _restore_terminal_bg_on_exit() {
-        printf '\e]111\a'
-    }
-    trap _restore_terminal_bg_on_exit EXIT
+    # printf '\e]11;#2e003e\a'
+    # function _restore_terminal_bg_on_exit() {
+    #     printf '\e]111\a'
+    # }
+    # trap _restore_terminal_bg_on_exit EXIT
 fi
 
 # >>> conda initialize >>>
