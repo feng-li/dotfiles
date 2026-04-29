@@ -78,7 +78,10 @@ fi
 
 ## fzf for fast search
 if command -v fzf >/dev/null 2>&1; then
-  source <(fzf --zsh)
+    source <(fzf --zsh)
+    export FZF_DEFAULT_COMMAND='rg --files --follow'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND='fdfind --type d --follow'
 fi
 
 ## SET TERM for ssh
