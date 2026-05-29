@@ -15,6 +15,7 @@
 ################
 *secrets*
 .envrc
+.codex
 
 # Backup files #
 ################

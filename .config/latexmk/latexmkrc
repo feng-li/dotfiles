@@ -18,6 +18,8 @@ $bibtex_use = 2;  # Run biber or bibtex if needed, bbl  files  are  always treat
 use Sys::Hostname;
 my $hostname = hostname;
 $aux_dir = "auto/$hostname";
+# Do not cd into aux_dir for BibTeX; keeps relative \bibliography paths stable.
+$bibtex_fudge = 0;
 
 # Maximum runs of xelatex reached without getting stable files
 #$max_repeat = 10;
