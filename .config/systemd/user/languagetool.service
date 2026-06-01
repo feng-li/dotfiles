@@ -1,0 +1,10 @@
+[Unit]
+Description=LanguageTool embedded HTTP Server
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=java -cp /home/fli/.opt/LanguageTool/languagetool-server.jar org.languagetool.server.HTTPServer --config /home/fli/.opt/LanguageTool/server.properties   --port 8081 --allow-origin
+
+[Install]
+WantedBy=default.target

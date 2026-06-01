@@ -1,0 +1,26 @@
+[Unit]
+Description=AUTOSSH tunnel to Home
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# Let autossh/ssh fail immediately if forwarding fails
+Environment="AUTOSSH_GATETIME=0"
+
+ExecStart=/usr/bin/autossh -M 0 -N \
+  -o "ExitOnForwardFailure yes" \
+  -o "ServerAliveInterval=30" \
+  -o "ServerAliveCountMax=3" \
+  -R 1219:localhost:22 stat.ac.cn
+
+# Only keep one Restart= line; this overrides the previous one
+Restart=on-failure
+RestartSec=5
+
+# You usually don't need SuccessExitStatus here; remove it unless you know why you want it.
+# SuccessExitStatus=15
+
+[Install]
+WantedBy=multi-user.target
