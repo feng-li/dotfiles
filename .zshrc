@@ -6,7 +6,7 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-dotfiles_dir=`dirname $(readlink $HOME/.zshrc)`
+dotfiles_dir=$(dirname "$(readlink -f "$HOME/.zshrc")")
 
 if [[ -f $dotfiles_dir/dir_colors/dircolors ]]; then
     eval `dircolors $dotfiles_dir/dir_colors/dircolors`

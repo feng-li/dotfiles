@@ -2,11 +2,11 @@
 
 # Get current dir path for this script
 
-dotfiles_dir=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd || /bin/pwd || pwd)
+dotfiles_dir=$(exec 2>/dev/null;cd -- "$(dirname "$0")"; unset PWD; /usr/bin/pwd || /bin/pwd || pwd)
 
 echo  "['dotfiles' located at $dotfiles_dir]"
 echo  "['dotfiles' setup:]"
-cd $dotfiles_dir
+cd "$dotfiles_dir"
 echo -e "
 Run this command if this script is from the git repository
   git submodule init
@@ -16,72 +16,68 @@ Run this command if this script is from the git repository
 "
 
 # $XDG_CONFIG_HOME files
-if [ ! -d $HOME/.config ]; then
-    mkdir $HOME/.config
+if [ ! -d "$HOME/.config" ]; then
+    mkdir "$HOME/.config"
 fi
 for file in $dotfiles_dir/.config/*
 do
-    ln -sfv $file $HOME/.config/
+    ln -sfv "$file" "$HOME/.config/"
 done
 
 
 # Terminfo
-rm -rf $HOME/.terminfo
-ln -sfv $dotfiles_dir/.terminfo $HOME/.terminfo
+ln -sfnvT "$dotfiles_dir/.terminfo" "$HOME/.terminfo"
 
 # Emacs
-rm -rf $HOME/.emacs.d
-rm -rf $HOME/.emacs
-ln -sfv $dotfiles_dir/.emacs.d    $HOME/.emacs.d
+ln -sfnvT "$dotfiles_dir/.emacs.d" "$HOME/.emacs.d"
 
 # echo  Enabling emacs daemon via systemctl
 # systemctl enable --user emacs
 # echo  Starting emacs daemon via systemctl
 # systemctl start --user emacs
 
-rm -rf $HOME/.java
-ln -sfv $dotfiles_dir/.java    $HOME/.java
+ln -sfnvT "$dotfiles_dir/.java" "$HOME/.java"
 
-if [ ! -d $HOME/.local/bin/ ]; then
-    mkdir -p $HOME/.local/bin
+if [ ! -d "$HOME/.local/bin/" ]; then
+    mkdir -p "$HOME/.local/bin"
 fi
 
-if [ ! -d $HOME/.config/enchant/ ]; then
-    mkdir -p $HOME/.config/enchant
+if [ ! -d "$HOME/.config/enchant/" ]; then
+    mkdir -p "$HOME/.config/enchant"
 fi
 
 # # git-latexdiff
 # ln -sfv $dotfiles_dir/git-latexdiff/git-latexdiff    $HOME/.local/bin/
-ln -sfv $dotfiles_dir/diff-so-fancy/diff-so-fancy $HOME/.local/bin/
+ln -sfv "$dotfiles_dir/diff-so-fancy/diff-so-fancy" "$HOME/.local/bin/"
 
-ln -sf $dotfiles_dir/.inputrc      $HOME/.inputrc
-ln -sfv $dotfiles_dir/.zshrc       $HOME/.zshrc
+ln -sf "$dotfiles_dir/.inputrc"      "$HOME/.inputrc"
+ln -sfv "$dotfiles_dir/.zshrc"       "$HOME/.zshrc"
 
-ln -sfv $dotfiles_dir/.Renviron    $HOME/.Renviron
-ln -sfv $dotfiles_dir/.Rprofile    $HOME/.Rprofile
-ln -sfv $dotfiles_dir/.lintr       $HOME/.lintr
+ln -sfv "$dotfiles_dir/.Renviron"    "$HOME/.Renviron"
+ln -sfv "$dotfiles_dir/.Rprofile"    "$HOME/.Rprofile"
+ln -sfv "$dotfiles_dir/.lintr"       "$HOME/.lintr"
 
-ln -sfv $dotfiles_dir/.condarc    $HOME/.condarc
+ln -sfv "$dotfiles_dir/.condarc"    "$HOME/.condarc"
 
-ln -sfv $dotfiles_dir/.hunspell_en_US    $HOME/.hunspell_en_US
-ln -sfv $dotfiles_dir/.hunspell_en_US    $HOME/.config/enchant/en_US.dic
+ln -sfv "$dotfiles_dir/.hunspell_en_US"    "$HOME/.hunspell_en_US"
+ln -sfv "$dotfiles_dir/.hunspell_en_US"    "$HOME/.config/enchant/en_US.dic"
 
 
-if [ ! -d $HOME/.R ]; then
-    mkdir $HOME/.R
+if [ ! -d "$HOME/.R" ]; then
+    mkdir "$HOME/.R"
 fi
-ln -sf $dotfiles_dir/.R/Makevars    $HOME/.R/Makevars
+ln -sf "$dotfiles_dir/Makevars.local"    "$HOME/.R/Makevars"
 
 # install direnv
 curl -sfL https://direnv.net/install.sh | bash
 
 # Load miniforge
-if [[ -f $HOME/.local/miniforge3/bin/zsh ]]; then
+if [[ -f "$HOME/.local/miniforge3/bin/zsh" ]]; then
 
-    ln -sfv $HOME/.local/miniforge3/bin/zsh          $HOME/.local/bin/
-    ln -sfv $HOME/.local/miniforge3/bin/tmux         $HOME/.local/bin/
-    ln -sfv $HOME/.local/miniforge3/bin/emacs        $HOME/.local/bin/
-    ln -sfv $HOME/.local/miniforge3/bin/emacsclient  $HOME/.local/bin/
+    ln -sfv "$HOME/.local/miniforge3/bin/zsh"          "$HOME/.local/bin/"
+    ln -sfv "$HOME/.local/miniforge3/bin/tmux"         "$HOME/.local/bin/"
+    ln -sfv "$HOME/.local/miniforge3/bin/emacs"        "$HOME/.local/bin/"
+    ln -sfv "$HOME/.local/miniforge3/bin/emacsclient"  "$HOME/.local/bin/"
 
 fi
 

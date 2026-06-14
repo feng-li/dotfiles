@@ -1,9 +1,9 @@
 
-$latex = 'latex -shell-escape -file-line-error  %O %S';
+$latex = 'latex -file-line-error  %O %S';
 
 # Force pdflatex to use xelatex
-$pdflatex = 'xelatex -shell-escape -file-line-error  %O %S';
-$xelatex = 'xelatex -shell-escape -file-line-error %O %S';
+$pdflatex = 'xelatex -file-line-error  %O %S';
+$xelatex = 'xelatex -file-line-error %O %S';
 
 $latex_silent_switch   = "-interaction=batchmode";
 $xelatex_silent_switch = "-interaction=batchmode";

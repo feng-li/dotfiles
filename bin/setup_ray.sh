@@ -18,8 +18,8 @@ SSH_USER=$(whoami)
 # Path to Ray installation (modify if needed)
 RAY_PATH="${HOME}/.local/miniforge3/bin"  # Example: "/home/$SSH_USER/.local/bin"
 
-# SSH options to automatically accept new host keys and disable strict checking
-SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+# Optional SSH options; leave empty to use normal host key checking.
+SSH_OPTS="${SSH_OPTS:-}"
 
 start_ray() {
     echo "Starting Ray head node on $HEAD_IP..."

@@ -5,7 +5,7 @@ export orig_INFOPATH=$INFOPATH
 export orig_MANPATH=$MANPATH
 export orig_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 export orig_C_INCLUDE_PATH=$C_INCLUDE_PATH
-export orig_CPLUS_INCLUDE_PAT=$CPLUS_INCLUDE_PATH
+export orig_CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH
 
 ## GNU Source Release Collection
 ## source $HOME/.opt/gsrc/setup.sh
@@ -66,7 +66,7 @@ my_unset_dev_env(){
     export MANPATH=$orig_MANPATH
     export PKG_CONFIG_PATH=$orig_PKG_CONFIG_PATH
     export C_INCLUDE_PATH=$orig_C_INCLUDE_PATH
-    export CPLUS_INCLUDE_PAT=$ORGIG_CPLUS_INCLUDE_PATH
+    export CPLUS_INCLUDE_PATH=$orig_CPLUS_INCLUDE_PATH
     unset  LD_PRELOAD
 
 }
