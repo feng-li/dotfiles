@@ -10,6 +10,7 @@
 **/.ropeproject/
 **/.eggs/
 *.egg-info/
+docs/
 
 # Secrets #
 ################
