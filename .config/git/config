@@ -48,7 +48,7 @@
         auto = 500
         autoPackLimit = 10
 [log]
-	date = human-local
+	date = default
 [advice]
 	ignoredHook = false
 	skippedCherryPicks = false
