@@ -17,13 +17,16 @@ You may also install dependencies with:
   sudo apt install latexmk libalgorithm-diff-perl
 
 Usage:
-  $0 <main_tex> <commit_hash> [noconfig]
+  $0 <main_tex> <commit_hash> [noconfig] [--underwave]
 
 Examples:
-  $0 main.tex f88fa29d18f0bbc0f1
+  $0 main.tex f88fa29d18f0bbc0f1            # blue additions by default
   $0 main.tex f88fa29d18f0bbc0f1 noconfig   # disable custom config
+  $0 main.tex f88fa29d18f0bbc0f1 --underwave
 
-By default, --config is ENABLED.
+By default, --config and blue-only additions are ENABLED.
+Blue-only mode preserves the document font and marks additions only by changing
+their text color to blue. Pass --underwave to use latexdiff's default markup.
 This script runs git-latexdiff using full path resolution.
 "
 }
@@ -37,7 +40,28 @@ fi
 # --- 1. Parse input arguments ---
 MAIN_TEX="$1"
 COMMIT_HASH="$2"
-DISABLE_CONFIG="${3:-}"
+DISABLE_CONFIG=false
+BLUE_ONLY=true
+BLUE_ONLY_PREAMBLE=""
+
+for option in "${@:3}"; do
+    case "$option" in
+        noconfig|--no-config)
+            DISABLE_CONFIG=true
+            ;;
+        blueonly|--blue-only)
+            BLUE_ONLY=true
+            ;;
+        underwave|--underwave)
+            BLUE_ONLY=false
+            ;;
+        *)
+            echo "Unknown option: $option" >&2
+            print_help >&2
+            exit 2
+            ;;
+    esac
+done
 
 # --- 2. Resolve real paths ---
 GIT_LATEXDIFF_PATH="$(realpath "$(command -v git-latexdiff)")"
@@ -54,19 +78,56 @@ CMD=(
     --output "$DIFF_PDF"
 )
 
-# --- 4. Enable config by default unless 'noconfig' is passed ---
-if [[ "$DISABLE_CONFIG" == "noconfig" ]]; then
+# --- 4. Optionally use blue text without underlining or font changes ---
+if [[ "$BLUE_ONLY" == true ]]; then
+    BLUE_ONLY_PREAMBLE="$(mktemp "${TMPDIR:-/tmp}/git-latexdiff-blue-only.XXXXXX")"
+    trap 'rm -f -- "$BLUE_ONLY_PREAMBLE"' EXIT
+    BLUE_ONLY_PREAMBLE_LINES=(
+        '% Custom latexdiff preamble: blue additions without underlining or font changes.'
+        '\RequirePackage{color}'
+        '\providecommand{\DIFadd}[1]{{\protect\color{blue}#1}}'
+        '\providecommand{\DIFdel}[1]{}'
+        '\providecommand{\DIFaddbegin}{}'
+        '\providecommand{\DIFaddend}{}'
+        '\providecommand{\DIFdelbegin}{}'
+        '\providecommand{\DIFdelend}{}'
+        '\providecommand{\DIFmodbegin}{}'
+        '\providecommand{\DIFmodend}{}'
+        '\providecommand{\DIFaddFL}[1]{\DIFadd{#1}}'
+        '\providecommand{\DIFdelFL}[1]{\DIFdel{#1}}'
+        '\providecommand{\DIFaddbeginFL}{}'
+        '\providecommand{\DIFaddendFL}{}'
+        '\providecommand{\DIFdelbeginFL}{}'
+        '\providecommand{\DIFdelendFL}{}'
+        '\RequirePackage{listings}'
+        '\lstdefinelanguage{DIFcode}{'
+        '  morecomment=[il]{\%DIF\ <\ },'
+        '  moredelim=[il][\color{blue}]{\%DIF\ >\ }'
+        '}'
+        '\lstdefinestyle{DIFverbatimstyle}{'
+        '  language=DIFcode,basicstyle=\ttfamily,columns=fullflexible,keepspaces=true'
+        '}'
+        '\lstnewenvironment{DIFverbatim}[1][]{\lstset{style=DIFverbatimstyle}}{}'
+        '\lstnewenvironment{DIFverbatim*}[1][]{\lstset{style=DIFverbatimstyle,showspaces=true}}{}'
+    )
+    printf '%s\n' "${BLUE_ONLY_PREAMBLE_LINES[@]}" > "$BLUE_ONLY_PREAMBLE"
+    CMD+=( --preamble="$BLUE_ONLY_PREAMBLE" )
+    echo "Blue-only additions ENABLED (no underline or font change)."
+fi
+
+# --- 5. Enable config by default unless 'noconfig' is passed ---
+if [[ "$DISABLE_CONFIG" == true ]]; then
     echo "ℹ️  Running without --config (disabled manually)."
 else
     CMD+=( --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\\w\\d*@]*")
     echo "✅  Custom --config ENABLED (default)."
 fi
 
-# --- 5. Execute command ---
+# --- 6. Execute command ---
 echo "Running: ${CMD[*]}"
 "${CMD[@]}"
 
-# --- 6. Rename output PDF ---
+# --- 7. Open output PDF ---
 if [[ -f ${DIFF_PDF} ]]; then
     if command -v xdg-open >/dev/null 2>&1; then
         xdg-open "$DIFF_PDF" >/dev/null 2>&1 &
