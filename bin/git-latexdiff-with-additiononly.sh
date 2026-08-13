@@ -107,8 +107,8 @@ fi
 
 # --- Function: Print usage and installation instructions ---
 print_help() {
-    echo "This script diffs on a git-controlled LaTeX source file and generated PDF
-between the HEAD and a historical commit.
+    echo "This script diffs a git-controlled LaTeX source file and generates a PDF
+between the working tree and a historical commit.
 
 Make sure you have latexdiff (>= 1.3.3) installed. Otherwise, please go to
 https://github.com/ftilmann/latexdiff/ and install the latest version.
@@ -204,10 +204,11 @@ DIFF_PDF="diff_${COMMIT_HASH}.pdf"
 
 # --- 3. Build base command ---
 CMD=(
-    "$GIT_LATEXDIFF_PATH" "$COMMIT_HASH"
+    "$GIT_LATEXDIFF_PATH" "$COMMIT_HASH" --
     --latexmk
     --ignore-latex-errors
     --no-del
+    --math-markup=whole
     --main "$MAIN_TEX_PATH"
     --output "$DIFF_PDF"
 )
