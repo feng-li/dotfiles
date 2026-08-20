@@ -200,7 +200,8 @@ SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 GIT_ROOT="$(git rev-parse --show-toplevel)"
 MAIN_TEX_PATH=$MAIN_TEX
 MAIN_TEX_GIT_REL="$(realpath --relative-to="$GIT_ROOT" "$MAIN_TEX_PATH")"
-DIFF_PDF="diff_${COMMIT_HASH}.pdf"
+MAIN_TEX_BASENAME="$(basename -- "$MAIN_TEX_PATH")"
+DIFF_PDF="${MAIN_TEX_BASENAME%.*}_diff_${COMMIT_HASH}.pdf"
 
 # --- 3. Build base command ---
 CMD=(

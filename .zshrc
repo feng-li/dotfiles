@@ -220,10 +220,10 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     autoload -U colors && colors
     if [[ -z ${SSH_TTY} ]]; then
         local ret_status="%(?:%{$fg[green]%}%n@%m:%{$fg[green]%}%n@%m)"
-        PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
+        PROMPT='${ret_status}:%{$fg[green]%}%p%{$fg[blue]%}%2c$ $(git_prompt_info)% %{$reset_color%}'
     else
         local ret_status="%(?:%{$fg[red]%}%n@%m:%{$fg[green]%}%n@%m)"
-        PROMPT='${ret_status}:%{$fg[red]%}%p%{$fg[blue]%}%c$ $(git_prompt_info)% %{$reset_color%}'
+        PROMPT='${ret_status}:%{$fg[red]%}%p%{$fg[blue]%}%2c$ $(git_prompt_info)% %{$reset_color%}'
     fi
 else
     # autoload -U colors && colors
