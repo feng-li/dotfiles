@@ -1,29 +1,108 @@
-
-$latex = 'latex -file-line-error  %O %S';
+$latex = 'latex -file-line-error -synctex=1 %O %S';
 
 # Force pdflatex to use xelatex
-$pdflatex = 'xelatex -file-line-error  %O %S';
-$xelatex = 'xelatex -file-line-error %O %S';
+$pdflatex = 'xelatex -file-line-error -synctex=1 %O %S';
+$xelatex  = 'xelatex -file-line-error -synctex=1 %O %S';
 
 $latex_silent_switch   = "-interaction=batchmode";
 $xelatex_silent_switch = "-interaction=batchmode";
 
-$pdf_mode = 5; # LuaLaTeX(4) is slower than XeLaTeX(5)
+$pdf_mode = 5; # XeLaTeX
 
 $pdf_previewer = 'xdg-open %O %S';
 
-$bibtex_use = 2;  # Run biber or bibtex if needed, bbl  files  are  always treated as regeneratable, and are deleted in a cleanup.
+$bibtex_use = 2;
 
-# Save intermediate files to different folder, not compatible with "minted" nor auctex
+
+# --------------------------------------------------
+# Build in RAM
+# --------------------------------------------------
+
 use Sys::Hostname;
-my $hostname = hostname;
-$aux_dir = "auto/$hostname";
-# Do not cd into aux_dir for BibTeX; keeps relative \bibliography paths stable.
-$bibtex_fudge = 0;
+use Cwd qw(abs_path);
+use Digest::MD5 qw(md5_hex);
+use File::Copy qw(copy);
+use File::Path qw(make_path);
+use File::Basename qw(basename);
 
-# Maximum runs of xelatex reached without getting stable files
-#$max_repeat = 10;
+my $project  = abs_path('.');
+my $hash     = md5_hex($project);
+my $ramdir   = "/dev/shm/latexmk-$ENV{USER}/$hash";
 
-# biber by default assumes we're running a more modern compiler like XeLaTeX or LuaTeX on
-# the backend, which isn't true in arXiv submission
-#$biber = 'biber --output-safechars %O %S';
+# --------------------------------------------------
+# Configurable variables
+# --------------------------------------------------
+my @figdirs = qw(
+    figures
+    pictures
+    figs
+);
+
+my $texmfbibdir = "$ENV{HOME}/texmf/bibtex/bib";
+
+my @bibfiles = (
+    glob("$texmfbibdir/*.bib"),
+    glob("*.bib"),
+);
+
+
+# --------------------------------------------------
+# Cache texmf bibliography files in RAM
+# --------------------------------------------------
+
+my %bibfiles;
+
+make_path($ramdir) unless -d $ramdir;
+
+# TeXMF files first
+foreach my $src (glob("$texmfbibdir/*.bib")) {
+    $bibfiles{basename($src)} = $src;
+}
+
+# Project-local files override TeXMF files
+foreach my $src (glob("*.bib")) {
+    $bibfiles{basename($src)} = $src;
+}
+
+foreach my $bib (keys %bibfiles) {
+    my $src = $bibfiles{$bib};
+    my $dst = "$ramdir/$bib";
+
+    if (!-e $dst || (stat($src))[9] > (stat($dst))[9]) {
+        print "Latexmk: caching $src -> $dst\n";
+
+        copy($src, $dst)
+            or die "Cannot copy $src to $dst: $!";
+
+        my @st = stat($src);
+        utime($st[8], $st[9], $dst);
+    }
+}
+
+# --------------------------------------------------
+# Cache figures/ folder in RAM
+# --------------------------------------------------
+
+# Cache figures into ram
+
+foreach my $dir (@figdirs) {
+    if (-d $dir) {
+        system(
+            "rsync", "-av", "--delete",
+            "$dir/", "$ramdir/$dir/"
+        );
+    }
+}
+
+# --------------------------------------------------
+# AUX, OUT files in RAM
+# --------------------------------------------------
+# Everything generated during compilation goes to RAM
+$aux_dir = $ramdir;
+$out_dir = $ramdir;
+
+# Only final PDF/synctex are copied back after latexmk has converged
+$out2_dir = '.';
+
+# Important when aux_dir is outside the project tree
+$bibtex_fudge = 1;
