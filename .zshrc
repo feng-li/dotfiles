@@ -6,7 +6,7 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-dotfiles_dir=$(dirname "$(readlink -f "$HOME/.zshrc")")
+dotfiles_dir=$(dirname "$(readlink -f "${HOME}/.zshrc")")
 
 if [[ -f $dotfiles_dir/dir_colors/dircolors ]]; then
     eval `dircolors $dotfiles_dir/dir_colors/dircolors`
@@ -54,18 +54,18 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 ## Add a user PATH
-LOCALBIN=$HOME/.local/bin:$HOME/.local/share/coursier/bin
+LOCALBIN=${HOME}/.local/bin:${HOME}/.local/share/coursier/bin:${HOME}/.local/node_modules/bin
 PATH=$LOCALBIN:$PATH:
 export PATH
 
 ## Add LD_LIBRARY_PATH (use comma to separate)
-LOCAL_LIB=$HOME/.local/lib:$HOME/.local/lib64
+LOCAL_LIB=${HOME}/.local/lib:${HOME}/.local/lib64
 LD_LIBRARY_PATH=$LOCAL_LIB:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
 ## RUST
-if [[ -f $HOME/.cargo/env ]]; then
-    . "$HOME/.cargo/env"
+if [[ -f ${HOME}/.cargo/env ]]; then
+    . "${HOME}/.cargo/env"
 fi
 
 ## No. of threads
@@ -111,7 +111,7 @@ export EDITOR="emacsclient -t --create-frame" # $EDITOR opens in terminal
 export VISUAL='emacsclient --alternate-editor="emacs -Q" -c' # $VISUAL opens in GUI mode
 
 ## Dictionary
-export DICPATH=$HOME/.emacs.d/hunspell:$DICPATH
+export DICPATH=${HOME}/.emacs.d/hunspell:$DICPATH
 
 ## Pretty GIT-LATEXDIFF
 alias git-latexdiff='git-latexdiff --no-del --latexmk --ignore-latex-errors --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\w\d*@]*" '
@@ -128,7 +128,7 @@ fi
 
 if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
 
-    export FPATH=$HOME/.local/share/zsh/$ZSH_VERSION/functions:$FPATH
+    export FPATH=${HOME}/.local/share/zsh/$ZSH_VERSION/functions:$FPATH
 
     # Path to your oh-my-zsh installation.
     export ZSH=$dotfiles_dir/oh-my-zsh
@@ -194,7 +194,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     plugins=(zsh-autosuggestions git direnv $plugins zsh-syntax-highlighting)
 
     # Run ssh-agen when in SSH but not in SLURM,
-    if [[ (-n ${SSH_TTY})  && (-f $HOME/.ssh/fli_rsa ) && (-z ${SLURM_JOB_ID}) ]]; then
+    if [[ (-n ${SSH_TTY})  && (-f ${HOME}/.ssh/fli_rsa ) && (-z ${SLURM_JOB_ID}) ]]; then
 	 plugins=(ssh-agent $plugins)
 	 # Extra files send to ssh-agent
 	 zstyle :omz:plugins:ssh-agent identities fli_rsa
@@ -204,7 +204,7 @@ if [ -f $dotfiles_dir/oh-my-zsh/oh-my-zsh.sh ]; then
     source $ZSH/oh-my-zsh.sh
 
     # Add local catached dir
-    ZSH_CACHE_DIR="$HOME/.cache"
+    ZSH_CACHE_DIR="${HOME}/.cache"
 
     # Fancy color prompt
     ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$fg[cyan]%}) "
