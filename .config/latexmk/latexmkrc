@@ -2,14 +2,14 @@
 
 $latex = 'latex -file-line-error -synctex=1 %O %S';
 
-# Force pdflatex to use xelatex
-$pdflatex = 'xelatex -file-line-error -synctex=1 %O %S';
+# Keep engine selection explicit: -pdf uses pdfLaTeX, -xelatex uses XeLaTeX.
+$pdflatex = 'pdflatex -file-line-error -synctex=1 %O %S';
 $xelatex  = 'xelatex -file-line-error -synctex=1 %O %S';
 
 $latex_silent_switch   = "-interaction=batchmode";
 $xelatex_silent_switch = "-interaction=batchmode";
 
-$pdf_mode = 5; # XeLaTeX
+$pdf_mode = 1; # pdfLaTeX; use -xelatex when required
 
 $pdf_previewer = 'xdg-open %O %S';
 
@@ -100,12 +100,13 @@ foreach my $dir (@figdirs) {
 # --------------------------------------------------
 # AUX, OUT files in RAM
 # --------------------------------------------------
-# Everything generated during compilation goes to RAM
+# Keep auxiliary files in RAM and final output beside the source. XeLaTeX's
+# image conversion must resolve relative figure paths from the project.
 $aux_dir = $ramdir;
-$out_dir = $ramdir;
+$out_dir = '.';
 
 # Only final PDF/synctex are copied back after latexmk has converged
 $out2_dir = '.';
 
-# Important when aux_dir is outside the project tree
-$bibtex_fudge = 1;
+# Resolve relative bibliography paths from the project, not the aux directory.
+$bibtex_fudge = 0;

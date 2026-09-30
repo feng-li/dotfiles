@@ -207,7 +207,8 @@ DIFF_PDF="${MAIN_TEX_BASENAME%.*}_diff_${COMMIT_HASH}.pdf"
 CMD=(
     "$GIT_LATEXDIFF_PATH" "$COMMIT_HASH" --
     --latexmk
-    --ignore-latex-errors
+    --whole-tree
+    --latexopt '-pdflatex=pdflatex -nobibtexfudge'
     --no-del
     --math-markup=whole
     --main "$MAIN_TEX_PATH"
