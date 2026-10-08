@@ -37,6 +37,13 @@ if [[ -n "$SSH_CONNECTION" && -o interactive ]]; then
     # trap _restore_terminal_bg_on_exit EXIT
 fi
 
+
+# Color interactive SSH/Mosh connections on the local terminal.
+if [[ -o interactive ]]; then
+    source "$dotfiles_dir/zsh_custom/remote-background.zsh"
+fi
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('${HOME}/.local/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -85,7 +92,7 @@ if command -v fzf >/dev/null 2>&1; then
 fi
 
 ## SET TERM for ssh
-alias ssh="TERM=xterm-256color $(which ssh)"
+# The ssh function above preserves TERM=xterm-256color.
 
 ## Emacs client as an editor. Set the XDG environment to allow emacsclient find the
 ## server.
