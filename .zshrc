@@ -241,3 +241,4 @@ fi
 # >>> Codex installer >>>
 export PATH="/home/fli/.local/bin:$PATH"
 # <<< Codex installer <<<
+. "/home/fli/.local/env"

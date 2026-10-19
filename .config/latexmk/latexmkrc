@@ -1,5 +1,76 @@
 
 
+# Serialize complete build cycles across projects, including bibliography and
+# PDF conversion. Release between -pvc cycles so idle watchers do not block.
+{
+    package LatexmkCompileLock;
+    use Fcntl qw(:flock O_CREAT O_RDWR F_SETFD);
+    use File::Path qw(make_path);
+    our ($handle, $held, $installed);
+
+    sub acquire {
+        return 0 if $held;
+        unless ($handle) {
+            my $cache = $ENV{XDG_CACHE_HOME} || "$ENV{HOME}/.cache";
+            my $directory = "$cache/latexmk";
+            make_path($directory, { mode => 0700 }) unless -d $directory;
+            sysopen($handle, "$directory/compile.lock", O_CREAT | O_RDWR, 0600)
+                or die "Cannot open latexmk compile lock: $!\n";
+            # A compiler child retains protection if its parent is killed.
+            fcntl($handle, F_SETFD, 0)
+                or die "Cannot configure latexmk compile lock: $!\n";
+        }
+        unless (flock($handle, LOCK_EX | LOCK_NB)) {
+            print "Latexmk: waiting for the global compile lock...\n";
+            flock($handle, LOCK_EX)
+                or die "Cannot acquire latexmk compile lock: $!\n";
+        }
+        $held = 1;
+        return 0;
+    }
+
+    sub release {
+        if ($held) {
+            flock($handle, LOCK_UN)
+                or die "Cannot release latexmk compile lock: $!\n";
+            $held = 0;
+        }
+        return 0;
+    }
+
+    sub close_handle {
+        # Close rather than unlock on exit: a still-running compiler child
+        # must retain protection until it exits too.
+        close($handle) if $handle;
+        undef $handle;
+        $held = 0;
+    }
+}
+
+# Protect startup cache operations and each subsequent compilation. Wrapping
+# rdb_make is necessary because compile_end is not called on failed -pvc
+# cycles in latexmk 4.88, or on ordinary non-watcher builds.
+LatexmkCompileLock::acquire();
+unless ($LatexmkCompileLock::installed) {
+    defined(&rdb_make) or die "latexmk does not expose its build-cycle routine\n";
+    my $original_make = \&rdb_make;
+    no warnings 'redefine';
+    *rdb_make = sub {
+        LatexmkCompileLock::acquire();
+        my $result;
+        my $ok = eval { $result = $original_make->(@_); 1 };
+        my $error = $@;
+        unless ($ok) {
+            LatexmkCompileLock::close_handle();
+            die $error;
+        }
+        LatexmkCompileLock::release();
+        return $result;
+    };
+    $LatexmkCompileLock::installed = 1;
+}
+END { LatexmkCompileLock::close_handle(); }
+
 $latex = 'latex -file-line-error -synctex=1 %O %S';
 
 # Keep engine selection explicit: -pdf uses pdfLaTeX, -xelatex uses XeLaTeX.
@@ -9,7 +80,7 @@ $xelatex  = 'xelatex -file-line-error -synctex=1 %O %S';
 $latex_silent_switch   = "-interaction=batchmode";
 $xelatex_silent_switch = "-interaction=batchmode";
 
-$pdf_mode = 1; # pdfLaTeX; use -xelatex when required
+$pdf_mode = 5; # XeLaTeX;
 
 $pdf_previewer = 'xdg-open %O %S';
 

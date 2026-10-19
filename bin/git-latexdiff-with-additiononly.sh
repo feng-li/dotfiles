@@ -2,6 +2,75 @@
 
 set -euo pipefail
 
+# git-latexdiff exports tracked files only. Copy untracked supporting assets
+# into each temporary checkout, preserving assets from the historical commit.
+copy_untracked_assets() {
+    python3 - "$1" "$2" <<'PY'
+from pathlib import Path, PurePosixPath
+import os
+import re
+import shutil
+import subprocess
+import sys
+
+source_root = Path(sys.argv[1]).resolve()
+checkout_root = Path.cwd()
+for _ in PurePosixPath(sys.argv[2]).parts:
+    checkout_root = checkout_root.parent
+extensions = {'.pdf', '.png', '.jpg', '.jpeg', '.eps', '.ps', '.svg',
+              '.bib', '.bst', '.cls', '.sty', '.bbx', '.cbx'}
+paths = subprocess.check_output(
+    ['git', 'ls-files', '--others', '--exclude-standard', '-z'], cwd=source_root
+).split(b'\0')
+candidates = {Path(os.fsdecode(raw)) for raw in paths if raw}
+# Globally ignored PDFs are also absent from git archives. Include literal
+# figure references without copying unrelated ignored build directories.
+texts = [p.read_text(errors='replace') for p in checkout_root.rglob('*.tex')]
+graphics_roots = [Path.cwd()]
+for text in texts:
+    for group in re.findall(r'\\graphicspath\{((?:\{[^}]*\})+)\}', text):
+        graphics_roots.extend(Path.cwd() / p for p in re.findall(r'\{([^}]*)\}', group))
+for text in texts:
+    references = re.findall(
+        r'\\(?:includegraphics|includepdf)\*?(?:\[[^]]*\])?\{([^}]+)\}', text
+    )
+    for reference in references:
+        if '\\' in reference or Path(reference).is_absolute():
+            continue
+        for base in graphics_roots:
+            destination = Path(os.path.normpath(base / reference))
+            try:
+                relative = destination.relative_to(checkout_root)
+            except ValueError:
+                continue
+            choices = [relative] if relative.suffix else [
+                relative.with_suffix(ext) for ext in ['.pdf', '.png', '.jpg', '.jpeg', '.eps']
+            ]
+            for choice in choices:
+                if (source_root / choice).is_file():
+                    candidates.add(choice)
+                    break
+copied = 0
+for relative in sorted(candidates):
+    if relative.suffix.lower() not in extensions:
+        continue
+    source = source_root / relative
+    destination = checkout_root / relative
+    if not source.is_file() or destination.exists() or destination.is_symlink():
+        continue
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination, follow_symlinks=True)
+    copied += 1
+print(f'Copied {copied} supporting assets into {checkout_root}.')
+PY
+}
+
+if [[ "${1:-}" == "--copy-untracked-assets" ]]; then
+    [[ $# -eq 3 ]] || { echo 'Internal error: asset copy expects a repository and prefix.' >&2; exit 2; }
+    copy_untracked_assets "$2" "$3"
+    exit 0
+fi
+
 # --- Internal filter helpers for the generated TeX checkout ---
 normalize_pdf_assets() {
     local target="$1"
@@ -198,6 +267,7 @@ fi
 GIT_LATEXDIFF_PATH="$(realpath "$(command -v git-latexdiff)")"
 SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 GIT_ROOT="$(git rev-parse --show-toplevel)"
+GIT_PREFIX="$(git rev-parse --show-prefix)"
 MAIN_TEX_PATH=$MAIN_TEX
 MAIN_TEX_GIT_REL="$(realpath --relative-to="$GIT_ROOT" "$MAIN_TEX_PATH")"
 MAIN_TEX_BASENAME="$(basename -- "$MAIN_TEX_PATH")"
@@ -208,12 +278,15 @@ CMD=(
     "$GIT_LATEXDIFF_PATH" "$COMMIT_HASH" --
     --latexmk
     --whole-tree
-    --latexopt '-pdflatex=pdflatex -nobibtexfudge'
+    --latexopt '-pdflatex=pdflatex -nobibtexfudge -halt-on-error'
     --no-del
     --math-markup=whole
     --main "$MAIN_TEX_PATH"
     --output "$DIFF_PDF"
 )
+printf -v PREPARE_ASSETS_COMMAND '%q %q %q %q' \
+    "$SCRIPT_PATH" --copy-untracked-assets "$GIT_ROOT" "$GIT_PREFIX"
+CMD+=( --prepare "$PREPARE_ASSETS_COMMAND" )
 
 # --- 4. Filter generated TeX and normalize newer included PDFs ---
 if [[ "$COLOR_ONLY" == true ]]; then

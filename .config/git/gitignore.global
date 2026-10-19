@@ -14,6 +14,8 @@ docs/
 .zcode/
 tests/
 .qoder/
+tests/
+**/tests/
 
 # Secrets #
 ################
