@@ -114,11 +114,30 @@ them into a directory on `PATH`.
 - `bin/setup_python.sh VERSION [update]` builds a versioned Conda Python and a
   matching virtual environment and Jupyter kernel.
 - `bin/biblatex2bibtex.sh FILE.bib` converts common BibLaTeX fields to BibTeX.
-- `bin/git-latexdiff-with-additiononly.sh` builds an additions-only PDF diff for
-  a Git-controlled LaTeX document.
+- `bin/git-latexdiff-with-additiononly.sh main.tex COMMIT` builds a PDF diff
+  with additions only by default. Add `--show-deletions` to include deleted
+  text with strikeout and mark additions with underwaves, retaining the
+  document typeface. `--additions-only` / `--no-del` explicitly hides deletions.
+  Additions-only mode keeps its color-only default; `--color-only` and
+  `--underwave` override automatic styling. Color and `noconfig` options work
+  in either mode.
+  Missing figures are allowed by default (`--allow-missing-figures`): only
+  missing `\includegraphics` images become labelled placeholders, while
+  existing images and captions remain. This changes the temporary diff only;
+  other LaTeX errors still fail normally. Use `--strict-figures` to fail on
+  missing images instead. Placeholder output is not a publication-ready build.
 - `bin/tex2docx.sh FILE.tex` converts LaTeX to DOCX with Pandoc using a configured
   personal bibliography.
 - `bin/setup_ray.sh start|stop` controls the hard-coded Ray cluster over SSH.
+- [`scripts/qianxin-vpn-launcher.py`](scripts/qianxin-vpn-launcher.py) opens
+  QianxinVPN on the Ubuntu jump VM with an app-specific GNOME/X11 titlebar
+  workaround. The installed user launcher overrides `vpnclient.desktop` and
+  its desktop shortcut; each launch repairs the main window automatically,
+  without restarting the VPN backend. `qianxin-vpn-launcher --check` reports
+  window state, and `--repair-only` fixes an existing GUI without starting one.
+  It needs Python Xlib and a graphical login; it does not alter GNOME globally
+  or handle VPN credentials. It does not cover starting the vendor script
+  directly instead of using the installed launcher.
 
 Review each script before running it: the development setup scripts download
 and install software, while the Ray and ebook tools operate on remote or

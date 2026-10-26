@@ -2,3 +2,11 @@
 !README.md
 !zsh_custom/
 !zsh_custom/remote-background.zsh
+!scripts/
+!scripts/qianxin-vpn-launcher.py
+!scripts/qianxin-vpn.desktop
+!scripts/tests/
+!scripts/tests/test_qianxin_vpn_launcher.py
+!scripts/tests/test_git_latexdiff_options.py
+!bin/
+!bin/git-latexdiff-missing-figures.tex

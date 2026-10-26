@@ -159,9 +159,30 @@ apply_addition_color_filter() {
         ' "$target"
 }
 
+apply_missing_figure_filter() {
+    local target="$1"
+    local preamble
+    preamble="$(dirname -- "$(realpath "${BASH_SOURCE[0]}")")/git-latexdiff-missing-figures.tex"
+    if [[ ! -r "$preamble" ]]; then
+        echo "Missing figure-fallback helper: $preamble" >&2
+        exit 1
+    fi
+    LATEXDIFF_MISSING_FIGURE_PREAMBLE="$preamble" perl -0777 -i -pe '
+        BEGIN {
+            open my $fh, "<", $ENV{LATEXDIFF_MISSING_FIGURE_PREAMBLE} or die $!;
+            local $/;
+            $preamble = <$fh>;
+        }
+        unless (/git-latexdiff missing-figure fallback begin/) {
+            s/(?=\\begin\{document\})/$preamble\n/
+                or die "Cannot insert missing-figure fallback: no begin{document}\n";
+        }
+    ' "$target"
+}
+
 if [[ "${1:-}" == "--filter-generated-tex" ]]; then
-    if [[ $# -ne 4 ]]; then
-        echo "Internal error: generated-TeX filter expects a mode, color, and TeX file." >&2
+    if [[ $# -ne 4 && $# -ne 5 ]]; then
+        echo "Internal error: generated-TeX filter expects a mode, color, TeX file, and optional missing-figure flag." >&2
         exit 2
     fi
     normalize_pdf_assets "$4"
@@ -170,6 +191,9 @@ if [[ "${1:-}" == "--filter-generated-tex" ]]; then
     else
         echo "Internal error: unknown generated-TeX filter mode: $2" >&2
         exit 2
+    fi
+    if [[ "${5:-true}" == true ]]; then
+        apply_missing_figure_filter "$4"
     fi
     exit 0
 fi
@@ -192,7 +216,15 @@ Usage:
   $0 <main_tex> <commit_hash> [options]
 
 Options:
+  --additions-only    Hide deletions (default; alias: --no-del)
+  --show-deletions    Strike out deletions and underwave additions, keeping
+                     the document typeface
+  --allow-missing-figures
+                     Replace missing includegraphics images with labelled
+                     placeholders in the diff PDF only (default)
+  --strict-figures    Fail on missing images instead of using placeholders
   --color COLOR       Addition color (default: blue)
+  --color-only        Override automatic style with legacy color-only markup
   --underwave         Use wavy underlining instead of color-only markup
   noconfig            Disable the default custom latexdiff configuration
 
@@ -200,12 +232,21 @@ Examples:
   $0 main.tex f88fa29d18f0bbc0f1            # blue additions by default
   $0 main.tex f88fa29d18f0bbc0f1 --color red
   $0 main.tex f88fa29d18f0bbc0f1 --color=ForestGreen
+  $0 main.tex f88fa29d18f0bbc0f1 --show-deletions
+  $0 main.tex f88fa29d18f0bbc0f1 --show-deletions --allow-missing-figures
+  $0 main.tex f88fa29d18f0bbc0f1 --strict-figures
   $0 main.tex f88fa29d18f0bbc0f1 noconfig   # disable custom config
   $0 main.tex f88fa29d18f0bbc0f1 --underwave --color red
 
-By default, --config and color-only additions are ENABLED. Color-only mode
-preserves the document font and marks additions only by changing their text
-color. COLOR may be an xcolor name or mixture such as blue!70!black.
+By default, deletions are hidden; --show-deletions includes them in the diff.
+Missing figures become labelled placeholders by default; --strict-figures
+restores missing-image errors. Other LaTeX errors always fail normally.
+If both deletion options are supplied, the last one takes precedence.
+The --config option is ENABLED. Additions-only mode defaults to color-only
+markup; --show-deletions defaults to UNDERLINE (struck-out deletions and
+underwaved additions). Both defaults preserve the document typeface.
+Use --color-only or --underwave to override the automatic markup style.
+COLOR may be an xcolor name or mixture such as blue!70!black.
 This script runs git-latexdiff using full path resolution.
 "
 }
@@ -220,17 +261,35 @@ fi
 MAIN_TEX="$1"
 COMMIT_HASH="$2"
 DISABLE_CONFIG=false
-COLOR_ONLY=true
+COLOR_ONLY=auto
+ADDITIONS_ONLY=true
+ALLOW_MISSING_FIGURES=true
 ADDITION_COLOR=blue
 
 shift 2
 while [[ $# -gt 0 ]]; do
     case "$1" in
+        --allow-missing-figures)
+            ALLOW_MISSING_FIGURES=true
+            shift
+            ;;
+        --strict-figures)
+            ALLOW_MISSING_FIGURES=false
+            shift
+            ;;
+        --additions-only|--no-del)
+            ADDITIONS_ONLY=true
+            shift
+            ;;
+        --show-deletions)
+            ADDITIONS_ONLY=false
+            shift
+            ;;
         noconfig|--no-config)
             DISABLE_CONFIG=true
             shift
             ;;
-        blueonly|--blue-only)
+        blueonly|--blue-only|--color-only)
             COLOR_ONLY=true
             shift
             ;;
@@ -258,6 +317,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Resolve automatic styling only after all mode options have been parsed.
+if [[ "$COLOR_ONLY" == auto ]]; then
+    COLOR_ONLY="$ADDITIONS_ONLY"
+fi
+
 if [[ ! "$ADDITION_COLOR" =~ ^[[:alpha:]][[:alnum:]_.-]*(![[:digit:]]{1,3}(![[:alpha:]][[:alnum:]_.-]*)?)*$ ]]; then
     echo "Invalid color expression: $ADDITION_COLOR" >&2
     exit 2
@@ -279,7 +343,6 @@ CMD=(
     --latexmk
     --whole-tree
     --latexopt '-pdflatex=pdflatex -nobibtexfudge -halt-on-error'
-    --no-del
     --math-markup=whole
     --main "$MAIN_TEX_PATH"
     --output "$DIFF_PDF"
@@ -287,6 +350,12 @@ CMD=(
 printf -v PREPARE_ASSETS_COMMAND '%q %q %q %q' \
     "$SCRIPT_PATH" --copy-untracked-assets "$GIT_ROOT" "$GIT_PREFIX"
 CMD+=( --prepare "$PREPARE_ASSETS_COMMAND" )
+if [[ "$ADDITIONS_ONLY" == true ]]; then
+    CMD+=( --no-del )
+    echo "Additions-only diff ENABLED (default; deletions hidden)."
+else
+    echo "Full diff ENABLED (additions and deletions shown)."
+fi
 
 # --- 4. Filter generated TeX and normalize newer included PDFs ---
 if [[ "$COLOR_ONLY" == true ]]; then
@@ -295,12 +364,16 @@ if [[ "$COLOR_ONLY" == true ]]; then
     echo "Color-only additions ENABLED in $ADDITION_COLOR (no underline or font change)."
 else
     FILTER_MODE=underwave
-    echo "Underwave additions ENABLED in $ADDITION_COLOR."
+    CMD+=( --type=UNDERLINE )
+    echo "Underwave additions ENABLED in $ADDITION_COLOR; deletions use strikeout (document typeface preserved)."
 fi
-printf -v GENERATED_TEX_FILTER_COMMAND '%q %q %q %q %q' \
+printf -v GENERATED_TEX_FILTER_COMMAND '%q %q %q %q %q %q' \
     "$SCRIPT_PATH" --filter-generated-tex "$FILTER_MODE" \
-    "$ADDITION_COLOR" "$MAIN_TEX_GIT_REL"
+    "$ADDITION_COLOR" "$MAIN_TEX_GIT_REL" "$ALLOW_MISSING_FIGURES"
 CMD+=( --filter "$GENERATED_TEX_FILTER_COMMAND" )
+if [[ "$ALLOW_MISSING_FIGURES" == true ]]; then
+    echo "WARNING: Missing figures will become labelled placeholders in this diff preview." >&2
+fi
 
 # --- 5. Enable config by default unless 'noconfig' is passed ---
 if [[ "$DISABLE_CONFIG" == true ]]; then
