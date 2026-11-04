@@ -216,6 +216,9 @@ Usage:
   $0 <main_tex> <commit_hash> [options]
 
 Options:
+  --pdflatex          Override the default and compile with pdfLaTeX
+  --xelatex           Compile with XeLaTeX (default; supports system fonts)
+  --lualatex          Compile with LuaLaTeX
   --additions-only    Hide deletions (default; alias: --no-del)
   --show-deletions    Strike out deletions and underwave additions, keeping
                      the document typeface
@@ -229,10 +232,12 @@ Options:
   noconfig            Disable the default custom latexdiff configuration
 
 Examples:
-  $0 main.tex f88fa29d18f0bbc0f1            # blue additions by default
+  $0 main.tex f88fa29d18f0bbc0f1            # blue additions, using XeLaTeX
+  $0 main.tex f88fa29d18f0bbc0f1 --pdflatex # use pdfLaTeX instead
   $0 main.tex f88fa29d18f0bbc0f1 --color red
   $0 main.tex f88fa29d18f0bbc0f1 --color=ForestGreen
   $0 main.tex f88fa29d18f0bbc0f1 --show-deletions
+  $0 main.tex f88fa29d18f0bbc0f1 --show-deletions --xelatex
   $0 main.tex f88fa29d18f0bbc0f1 --show-deletions --allow-missing-figures
   $0 main.tex f88fa29d18f0bbc0f1 --strict-figures
   $0 main.tex f88fa29d18f0bbc0f1 noconfig   # disable custom config
@@ -265,10 +270,15 @@ COLOR_ONLY=auto
 ADDITIONS_ONLY=true
 ALLOW_MISSING_FIGURES=true
 ADDITION_COLOR=blue
+LATEX_ENGINE=xelatex
 
 shift 2
 while [[ $# -gt 0 ]]; do
     case "$1" in
+        --pdflatex|--xelatex|--lualatex)
+            LATEX_ENGINE="${1#--}"
+            shift
+            ;;
         --allow-missing-figures)
             ALLOW_MISSING_FIGURES=true
             shift
@@ -338,15 +348,21 @@ MAIN_TEX_BASENAME="$(basename -- "$MAIN_TEX_PATH")"
 DIFF_PDF="${MAIN_TEX_BASENAME%.*}_diff_${COMMIT_HASH}.pdf"
 
 # --- 3. Build base command ---
+case "$LATEX_ENGINE" in
+    pdflatex) LATEXMK_ENGINE_OPTION='-pdflatex=pdflatex' ;;
+    xelatex) LATEXMK_ENGINE_OPTION='-xelatex' ;;
+    lualatex) LATEXMK_ENGINE_OPTION='-lualatex' ;;
+esac
 CMD=(
     "$GIT_LATEXDIFF_PATH" "$COMMIT_HASH" --
     --latexmk
     --whole-tree
-    --latexopt '-pdflatex=pdflatex -nobibtexfudge -halt-on-error'
+    --latexopt "$LATEXMK_ENGINE_OPTION -nobibtexfudge -halt-on-error"
     --math-markup=whole
     --main "$MAIN_TEX_PATH"
     --output "$DIFF_PDF"
 )
+echo "LaTeX engine: $LATEX_ENGINE."
 printf -v PREPARE_ASSETS_COMMAND '%q %q %q %q' \
     "$SCRIPT_PATH" --copy-untracked-assets "$GIT_ROOT" "$GIT_PREFIX"
 CMD+=( --prepare "$PREPARE_ASSETS_COMMAND" )
@@ -379,7 +395,7 @@ fi
 if [[ "$DISABLE_CONFIG" == true ]]; then
     echo "ℹ️  Running without --config (disabled manually)."
 else
-    CMD+=( --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\\w\\d*@]*")
+    CMD+=( --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\\w\\d*@]*")
     echo "✅  Custom --config ENABLED (default)."
 fi
 
