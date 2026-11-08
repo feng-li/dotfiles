@@ -5,8 +5,10 @@
 !scripts/
 !scripts/qianxin-vpn-launcher.py
 !scripts/qianxin-vpn.desktop
+!scripts/tmux-paste-clipboard.py
 !scripts/tests/
 !scripts/tests/test_qianxin_vpn_launcher.py
 !scripts/tests/test_git_latexdiff_options.py
+!scripts/tests/test_tmux_paste_clipboard.py
 !bin/
 !bin/git-latexdiff-missing-figures.tex

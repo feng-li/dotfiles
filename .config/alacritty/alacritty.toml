@@ -42,7 +42,15 @@ mods = "Control"
 mouse = "Middle"
 
 [[mouse.bindings]]
-action = "PasteSelection"
+# Use the same system clipboard as Ctrl+Shift+V.
+action = "Paste"
+mode = "~Vi"
+mouse = "Right"
+
+[[mouse.bindings]]
+# Always available, including when tmux or a terminal application captures the mouse.
+action = "Paste"
+mods = "Shift"
 mode = "~Vi"
 mouse = "Right"
 
