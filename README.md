@@ -21,6 +21,12 @@ account.
 | Languages | R startup/build settings, Conda and pip mirrors, virtualenv defaults, Julia settings, and JabRef preferences |
 | LaTeX | XeLaTeX defaults, bibliography and figure caching in `/dev/shm`, and helper scripts for diffs and conversion |
 
+In tmux, plain dragging copies a rectangle within one pane. Right-click pastes
+the desktop clipboard locally and the latest tmux selection on headless SSH
+hosts. Ctrl+Shift+V or Shift+right-click pastes the connecting computer's
+clipboard in either case. Nested SSH/Mosh sessions receive their own mouse
+events; F12 hands keyboard control to the inner tmux and toggles it back.
+
 ## Requirements
 
 The installer and primary configuration target GNU/Linux. At minimum, expect:
