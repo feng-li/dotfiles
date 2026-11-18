@@ -82,7 +82,14 @@ $xelatex_silent_switch = "-interaction=batchmode";
 
 $pdf_mode = 5; # XeLaTeX;
 
-$pdf_previewer = 'xdg-open %O %S';
+# Continuous preview is launched by latexmk itself, including from AUCTeX.
+# Prefer the SyncTeX-capable viewer while retaining a desktop-default fallback.
+use File::Spec;
+my $have_evince = grep {
+    my $viewer = File::Spec->catfile($_, 'evince');
+    -f $viewer && -x $viewer;
+} File::Spec->path();
+$pdf_previewer = $have_evince ? 'evince %O %S' : 'xdg-open %O %S';
 
 $bibtex_use = 2;
 
